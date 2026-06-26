@@ -3,8 +3,7 @@ import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { baseOptions } from '@/lib/layout.shared';
 import { DocsNavigationFeedback } from '@/components/docs-navigation-feedback';
 import { DocsSidebarFooter } from '@/components/docs-toolbar';
-// AI feature temporarily disabled
-// import { AISearchTrigger } from '@/components/search';
+import { AISearchTrigger } from '@/components/search';
 import 'katex/dist/katex.min.css';
 import { notFound } from 'next/navigation';
 import { i18n } from '@/lib/i18n';
@@ -41,8 +40,7 @@ export default async function Layout({
     >
       <DocsNavigationFeedback />
       {children}
-      {/* AI feature temporarily disabled */}
-      {/* <AISearchTrigger /> */}
+      {process.env.INKEEP_API_KEY && <AISearchTrigger />}
     </DocsLayout>
   );
 }

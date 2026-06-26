@@ -1,6 +1,6 @@
 {
   "title": "API Reference",
-  "description": "New API Complete API Documentation",
+  "description": "Lychee AI Complete API Documentation",
   "icon": "Code",
   "pages": ["index", "ai-model", "management", "apps"]
 }

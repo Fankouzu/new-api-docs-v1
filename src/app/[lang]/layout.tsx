@@ -55,27 +55,27 @@ const titleMap: Record<
   { default: string; template: string; description: string }
 > = {
   en: {
-    default: 'New API API Reference',
-    template: '%s | New API',
+    default: 'Lychee AI API Reference',
+    template: '%s | Lychee AI',
     description:
-      'API reference for New API model endpoints, management endpoints, and supported AI application integrations.',
+      'API reference for Lychee AI model endpoints, management endpoints, and supported AI application integrations.',
   },
   zh: {
-    default: 'New API API 参考',
-    template: '%s | New API',
-    description: 'New API 模型接口、管理接口与 AI 应用接入的 API 参考文档。',
+    default: 'Lychee AI API 参考',
+    template: '%s | Lychee AI',
+    description: 'Lychee AI 模型接口、管理接口与 AI 应用接入的 API 参考文档。',
   },
   ja: {
-    default: 'New API APIリファレンス',
-    template: '%s | New API',
+    default: 'Lychee AI APIリファレンス',
+    template: '%s | Lychee AI',
     description:
-      'New API のモデルエンドポイント、管理エンドポイント、AI アプリ連携の API リファレンス。',
+      'Lychee AI のモデルエンドポイント、管理エンドポイント、AI アプリ連携の API リファレンス。',
   },
   ru: {
-    default: 'Справочник API New API',
-    template: '%s | New API',
+    default: 'Справочник API Lychee AI',
+    template: '%s | Lychee AI',
     description:
-      'Справочник API для модельных и административных интерфейсов New API, а также поддерживаемых интеграций AI-приложений.',
+      'Справочник API для модельных и административных интерфейсов Lychee AI, а также поддерживаемых интеграций AI-приложений.',
   },
 };
 
@@ -107,9 +107,9 @@ export async function generateMetadata({
       'Intelligent API Management',
     ],
     authors: [
-      { name: 'New API Team', url: 'https://github.com/QuantumNous/new-api' },
+      { name: 'Lychee AI Team', url: 'https://github.com/QuantumNous/new-api' },
     ],
-    creator: 'New API Team',
+    creator: 'Lychee AI Team',
     alternates: {
       languages: {
         en: '/en/docs',
@@ -123,7 +123,7 @@ export async function generateMetadata({
       locale: lang,
       title: titles.default,
       description: titles.description,
-      siteName: 'New API',
+      siteName: 'Lychee AI',
     },
     twitter: {
       card: 'summary_large_image',

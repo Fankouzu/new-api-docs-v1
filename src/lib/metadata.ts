@@ -19,7 +19,7 @@ export function createMetadata(override: Metadata): Metadata {
       description: override.description ?? undefined,
       url: 'https://www.newapi.ai',
       images: '/assets/auth_logo.png',
-      siteName: 'New API',
+      siteName: 'Lychee AI',
       type: 'website',
       ...override.openGraph,
     },

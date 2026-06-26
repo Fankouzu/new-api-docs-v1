@@ -178,7 +178,7 @@ function getPrompt(locale: TargetLocale, items: string[]) {
 
 要求：
 1. 只输出 JSON 数组，数组长度和顺序必须与输入完全一致。
-2. 保留 Markdown、反引号代码、URL、HTTP header、API path、模型名、品牌名（OpenAI、Gemini、Claude、Anthropic、Google、New API、Bailian、Qwen 等）。
+2. 保留 Markdown、反引号代码、URL、HTTP header、API path、模型名、品牌名（OpenAI、Gemini、Claude、Anthropic、Google、Lychee AI、Bailian、Qwen 等）。
 3. 不要翻译 JSON key、枚举值、代码标识符；只翻译自然语言说明和 tag 显示名称。
 4. 语气正式、技术准确。
 5. ${target.extraInstruction}

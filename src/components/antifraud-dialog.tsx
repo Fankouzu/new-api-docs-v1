@@ -22,11 +22,11 @@ const i18nContent: Record<
   }
 > = {
   zh: {
-    title: '关于打击假冒 New API 官方及侵权行为的严正声明',
+    title: '关于打击假冒 Lychee AI 官方及侵权行为的严正声明',
     sections: [
       {
         heading: '第一：官方绝未公开发售接口，谨防受骗！',
-        body: <>New API 为纯粹的开源项目，我司<B>从未授权任何机构或个人开展代理或销售</B>。凡在外打着&ldquo;New API 官方 / 合作方 / 自营&rdquo;旗号售卖 API 额度或中转服务的，<B>100% 均为假冒李鬼</B>，请广大用户务必擦亮眼睛！</>,
+        body: <>Lychee AI 为纯粹的开源项目，我司<B>从未授权任何机构或个人开展代理或销售</B>。凡在外打着&ldquo;Lychee AI 官方 / 合作方 / 自营&rdquo;旗号售卖 API 额度或中转服务的，<B>100% 均为假冒李鬼</B>，请广大用户务必擦亮眼睛！</>,
       },
       {
         heading: '第二：开源不等于弃权，法务已持续监控取证！',
@@ -41,11 +41,11 @@ const i18nContent: Record<
     buttonCountdown: (s) => `请阅读以上声明 (${s}s)`,
   },
   en: {
-    title: 'Official Statement Against Counterfeit New API Services & Infringement',
+    title: 'Official Statement Against Counterfeit Lychee AI Services & Infringement',
     sections: [
       {
         heading: 'We have NEVER publicly sold API access — beware of scams!',
-        body: <>New API is a purely open-source project. We have <B>never authorized any organization or individual to act as an agent or reseller</B>. Anyone selling API quotas or relay services under the name &ldquo;New API Official / Partner / Self-operated&rdquo; is <B>100% fraudulent</B>.</>,
+        body: <>Lychee AI is a purely open-source project. We have <B>never authorized any organization or individual to act as an agent or reseller</B>. Anyone selling API quotas or relay services under the name &ldquo;Lychee AI Official / Partner / Self-operated&rdquo; is <B>100% fraudulent</B>.</>,
       },
       {
         heading: 'Open source does not mean waiving rights — legal action is ongoing!',
@@ -60,11 +60,11 @@ const i18nContent: Record<
     buttonCountdown: (s) => `Please read the statement above (${s}s)`,
   },
   ja: {
-    title: 'New API の偽造サービスおよび権利侵害に対する公式声明',
+    title: 'Lychee AI の偽造サービスおよび権利侵害に対する公式声明',
     sections: [
       {
         heading: '公式は API を一切販売していません — 詐欺にご注意ください！',
-        body: <>New API は純粋なオープンソースプロジェクトです。<B>いかなる機関や個人にも代理販売を許可したことはありません</B>。「New API 公式 / パートナー / 自営」を名乗り API クォータや中継サービスを販売するものは、<B>100% 偽物です</B>。</>,
+        body: <>Lychee AI は純粋なオープンソースプロジェクトです。<B>いかなる機関や個人にも代理販売を許可したことはありません</B>。「Lychee AI 公式 / パートナー / 自営」を名乗り API クォータや中継サービスを販売するものは、<B>100% 偽物です</B>。</>,
       },
       {
         heading: 'オープンソースは権利放棄ではありません — 法的措置を継続中！',
@@ -80,11 +80,11 @@ const i18nContent: Record<
   },
   ru: {
     title:
-      'Официальное заявление против поддельных сервисов New API и нарушений прав',
+      'Официальное заявление против поддельных сервисов Lychee AI и нарушений прав',
     sections: [
       {
         heading: 'Мы никогда публично не продавали доступ к API — остерегайтесь мошенников!',
-        body: <>New API является полностью открытым проектом. Мы <B>никогда не уполномочивали какие-либо организации или частных лиц выступать агентами или продавцами</B>. Любые лица, продающие квоты API или relay-сервисы под вывеской &ldquo;New API Official / Partner / Self-operated&rdquo;, являются <B>100% мошенниками</B>.</>,
+        body: <>Lychee AI является полностью открытым проектом. Мы <B>никогда не уполномочивали какие-либо организации или частных лиц выступать агентами или продавцами</B>. Любые лица, продающие квоты API или relay-сервисы под вывеской &ldquo;Lychee AI Official / Partner / Self-operated&rdquo;, являются <B>100% мошенниками</B>.</>,
       },
       {
         heading: 'Открытый исходный код не означает отказ от прав — юридические действия продолжаются!',

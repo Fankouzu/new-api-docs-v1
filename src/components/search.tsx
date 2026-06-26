@@ -40,11 +40,11 @@ function Header() {
         <p className="text-fd-muted-foreground text-xs">
           Powered by{' '}
           <a
-            href="https://www.newapi.ai"
+            href="https://lizh.ai"
             target="_blank"
             rel="noreferrer noopener"
           >
-            New API
+            Lychee AI
           </a>
         </p>
       </div>
@@ -247,7 +247,7 @@ function Input(props: ComponentProps<'textarea'>) {
 
 const roleName: Record<string, string> = {
   user: 'you',
-  assistant: 'New API Docs',
+  assistant: 'Lychee AI Docs',
 };
 
 function Message({

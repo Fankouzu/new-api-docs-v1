@@ -13,7 +13,7 @@ description: OpenClaw チュートリアル — OpenClawのインストール、
   - GitHub：[https://github.com/openclaw/openclaw](https://github.com/openclaw/openclaw)
 </Callout>
 
-OpenClaw は完全にオープンソースであり、[OpenClaw の GitHub リポジトリ](https://github.com/openclaw/openclaw)でソースコードを閲覧したり、Issueを提出したり、貢献したりできます。このチュートリアルでは、OpenClaw のインストール、設定、および New API との連携の完全な手順を説明します。
+OpenClaw は完全にオープンソースであり、[OpenClaw の GitHub リポジトリ](https://github.com/openclaw/openclaw)でソースコードを閲覧したり、Issueを提出したり、貢献したりできます。このチュートリアルでは、OpenClaw のインストール、設定、および Lychee AI との連携の完全な手順を説明します。
 
 ## 🌟 主要機能
 
@@ -42,12 +42,12 @@ OpenClaw は完全にオープンソースであり、[OpenClaw の GitHub リ�
 
 <Callout type="info" title="準備情報">
   - Node.js 22 以降のバージョン
-  - 利用可能な New API アドレス（通常 `/v1` で終わる）
-  - 利用可能な New API API Key
-  - ご自身でデプロイした New API を使用するか、サービスプロバイダーが合法的なアップストリーム認証とコンプライアンス義務を持つ New API サービスであることを確認してください。出所の不明な API アドレスやキーを本番環境に接続しないでください。
+  - 利用可能な Lychee AI アドレス（通常 `/v1` で終わる）
+  - 利用可能な Lychee AI API Key
+  - ご自身でデプロイした Lychee AI を使用するか、サービスプロバイダーが合法的なアップストリーム認証とコンプライアンス義務を持つ Lychee AI サービスであることを確認してください。出所の不明な API アドレスやキーを本番環境に接続しないでください。
 </Callout>
 
-New API を導入する前に、OpenClaw の公式推奨手順に従って Gateway と Control UI を起動しておくことをお勧めします。これにより、後で問題が発生した場合に、OpenClaw 自体が起動していないのか、モデルプロバイダーの設定が誤っているのかを区別しやすくなります。
+Lychee AI を導入する前に、OpenClaw の公式推奨手順に従って Gateway と Control UI を起動しておくことをお勧めします。これにより、後で問題が発生した場合に、OpenClaw 自体が起動していないのか、モデルプロバイダーの設定が誤っているのかを区別しやすくなります。
 
 ### 1. OpenClawのインストール（macOS/Linux）
 
@@ -63,7 +63,7 @@ curl -fsSL https://openclaw.ai/install.sh | bash
 openclaw onboard --install-daemon
 ```
 
-このウィザードは、基本的な認証、Gateway の設定、およびオプションのチャネル初期化を完了します。ここでの目標は、まず OpenClaw を起動し、後でデフォルトモデルを New API に切り替えることです。
+このウィザードは、基本的な認証、Gateway の設定、およびオプションのチャネル初期化を完了します。ここでの目標は、まず OpenClaw を起動し、後でデフォルトモデルを Lychee AI に切り替えることです。
 
 ### 3. GatewayとControl UIの確認
 
@@ -93,19 +93,19 @@ OpenClaw の設定ファイルは通常 `~/.openclaw/openclaw.json` にありま
 
 ## 🚀 New APIをモデルプロバイダーとして使用する
 
-OpenClaw は、`models.providers` を介してカスタムまたは OpenAI 互換インターフェースのモデルゲートウェイを接続することをサポートしています。New API の場合、最も一般的な方法は、それをカスタムプロバイダーとして設定に追加し、デフォルトモデルを `newapi/モデルID` に指定することです。
+OpenClaw は、`models.providers` を介してカスタムまたは OpenAI 互換インターフェースのモデルゲートウェイを接続することをサポートしています。Lychee AI の場合、最も一般的な方法は、それをカスタムプロバイダーとして設定に追加し、デフォルトモデルを `newapi/モデルID` に指定することです。
 
 ### 連携の考え方
 
 1.  `models.providers` の下に `newapi` プロバイダーを宣言します。
-2.  `baseUrl` を New API アドレスに指定し、`/v1` が含まれていることを確認します。
+2.  `baseUrl` を Lychee AI アドレスに指定し、`/v1` が含まれていることを確認します。
 3.  `api` を `openai-completions` に設定します。
 4.  `models` に OpenClaw で使用したいモデルIDをリストします。
 5.  `agents.defaults.model.primary` でデフォルトモデルを `newapi/...` に切り替えます。
 
 ### 推奨される方法：環境変数でAPIキーを保存する
 
-まず、現在のシェル、サービス環境、または OpenClaw が読み取れる `.env` に New API キーを提供します。
+まず、現在のシェル、サービス環境、または OpenClaw が読み取れる `.env` に Lychee AI キーを提供します。
 
 ```bash
 export NEWAPI_API_KEY="sk-your-newapi-key"
@@ -145,17 +145,17 @@ export NEWAPI_API_KEY="sk-your-newapi-key"
 }
 ```
 
-これはそのままコピーする必要がある完全な設定ではありませんが、New API を連携する上で最も重要な部分です。`provider`、モデルID、およびデフォルトモデルの参照が正しく対応していれば、OpenClaw は New API を介して公開されているモデルリソースを呼び出すことができます。
+これはそのままコピーする必要がある完全な設定ではありませんが、Lychee AI を連携する上で最も重要な部分です。`provider`、モデルID、およびデフォルトモデルの参照が正しく対応していれば、OpenClaw は Lychee AI を介して公開されているモデルリソースを呼び出すことができます。
 
 ### 主要な設定項目
 
 | 設定項目 | 説明 |
 | --- | --- |
 | `models.mode` | `merge` に設定することをお勧めします。これにより、OpenClaw の組み込みプロバイダーを保持しつつ、`newapi` を追加できます。 |
-| `models.providers.newapi.baseUrl` | New API のアドレス。通常 `/v1` を含める必要があります。 |
-| `models.providers.newapi.apiKey` | New API キー。`${NEWAPI_API_KEY}` を介して注入することをお勧めします。 |
-| `models.providers.newapi.api` | New API のような OpenAI 互換ゲートウェイの場合、`openai-completions` を使用します。 |
-| `models.providers.newapi.models` | ここにリストされているモデルIDは、New API が実際に公開しているモデル名と一致している必要があります。 |
+| `models.providers.newapi.baseUrl` | Lychee AI のアドレス。通常 `/v1` を含める必要があります。 |
+| `models.providers.newapi.apiKey` | Lychee AI キー。`${NEWAPI_API_KEY}` を介して注入することをお勧めします。 |
+| `models.providers.newapi.api` | Lychee AI のような OpenAI 互換ゲートウェイの場合、`openai-completions` を使用します。 |
+| `models.providers.newapi.models` | ここにリストされているモデルIDは、Lychee AI が実際に公開しているモデル名と一致している必要があります。 |
 | `agents.defaults.model.primary` | デフォルトのプライマリモデル。形式は `provider/model-id` である必要があります。 |
 | `agents.defaults.model.fallbacks` | フォールバックモデルのリスト。プライマリモデルが失敗した場合に自動的に切り替わります。 |
 | `agents.defaults.models` | オプション。モデルにエイリアスを付けるために使用し、UI やセッションで参照しやすくします。 |

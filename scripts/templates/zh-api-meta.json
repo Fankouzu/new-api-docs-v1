@@ -1,6 +1,6 @@
 {
   "title": "API 参考",
-  "description": "New API 接口文档",
+  "description": "Lychee AI 接口文档",
   "icon": "Code",
   "pages": ["index", "ai-model", "management", "apps"]
 }

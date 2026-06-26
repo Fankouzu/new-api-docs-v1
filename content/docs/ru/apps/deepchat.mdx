@@ -1,0 +1,55 @@
+---
+title: DeepChat — Полнофункциональный клиент AI Agent
+description: Учебник DeepChat — подключение полнофункционального клиента AI Agent к New API и импорт конфигурации DeepChat одним щелчком через DeepLink.
+---
+
+<Callout type="info" title="Параметры настроек чата">
+  В консоли New API, в разделе «Системные настройки» → «Настройки чата», можно добавить следующие быстрые параметры для быстрой подстановки конфигурации DeepChat на странице управления токенами:
+</Callout>
+
+    ```json
+    { "DeepChat": "deepchat://provider/install?v=1&data={deepchatConfig}" }
+    ```
+
+<Callout type="info">
+  DeepChat — это открытый, кроссплатформенный, коммерчески-дружественный полнофункциональный клиент AI Agent. Он поддерживает облачные и локальные модели, вызов инструментов MCP, Skills, ACP, интеграцию с Agent и удаленное управление. Подходит для пользователей, которым необходимо управлять несколькими провайдерами и продвинутыми AI‑агентами в едином интерфейсе.
+</Callout>
+
+- Официальный сайт: [https://deepchat.thinkinai.xyz](https://deepchat.thinkinai.xyz)
+- Репозиторий GitHub: [https://github.com/ThinkInAIXYZ/deepchat](https://github.com/ThinkInAIXYZ/deepchat)
+- Ссылка для скачивания: [https://deepchat.thinkinai.xyz/#/download](https://deepchat.thinkinai.xyz/#/download)
+
+## Способы подключения к New API
+
+### Способ 1: импорт одним щелчком
+
+1. В боковом меню консоли New API выберите «Управление токенами» и найдите нужный токен.
+   <img src="/assets/deepchat/1-Enter-API-key.png" alt="Переход в управление токенами" width="240" />
+
+2. В действиях с токеном выберите **DeepChat**
+   <img src="/assets/deepchat/2-API-key-deepchat.png" alt="Выберите DeepChat" width="360" />
+
+3. Браузер запустит DeepChat, подтвердите открытие приложения
+   ![Открыть DeepChat](/assets/deepchat/3-open-deepchat.png)
+
+4. В окне предварительного просмотра импорта провайдера DeepChat проверьте конфигурацию
+   ![Подтверждение конфигурации DeepChat](/assets/deepchat/4-deepchat-ok.png)
+
+5. Откройте список моделей и выберите модель New API для начала работы
+   ![Открыть список моделей](/assets/deepchat/5-open-models.png)
+
+### Способ 2: ручной импорт
+
+1. В консоли New API скопируйте API‑ключ и адрес сайта
+   ![Руководство по ручной настройке New API](/assets/deepchat/7-new-api-manual-guidance.png)
+
+2. В настройках DeepChat добавьте или отредактируйте провайдер New API, укажите адрес API и API‑ключ
+   ![Руководство по ручной настройке DeepChat](/assets/deepchat/6-deepchat-manual-guidance.png)
+
+3. Откройте список моделей и выберите модель New API для начала работы
+   ![Открыть список моделей](/assets/deepchat/5-open-models.png)
+
+## Связанные ссылки
+
+- [Репозиторий DeepChat на GitHub](https://github.com/ThinkInAIXYZ/deepchat)
+- [Страница загрузки DeepChat](https://deepchatai.cn/#/download)

@@ -1,0 +1,226 @@
+---
+title: Справочник API
+description: Полная документация по API New API
+---
+
+import { Card, Cards } from 'fumadocs-ui/components/card';
+import {
+  List,
+  MessageSquare,
+  FileText,
+  Database,
+  Search,
+  ShieldCheck,
+  Headphones,
+  Radio,
+  Image,
+  Video,
+  FileQuestion,
+  Server,
+  SlidersHorizontal,
+  UserCheck,
+  Users,
+  KeyRound,
+  Link2,
+  Network,
+  Blocks,
+  Key,
+  Ticket,
+  CreditCard,
+  ScrollText,
+  ChartBar,
+  ListTodo,
+  FolderKanban,
+  Store,
+  ShieldAlert,
+} from 'lucide-react';
+
+## Обзор
+
+New API предоставляет полный набор RESTful API-интерфейсов, разделённых на две категории: **Интерфейсы моделей AI** и **Интерфейсы управления**. С помощью этих интерфейсов вы можете выполнять вызовы AI-функций и управлять системой.
+
+<Callout title="Online-отладка">
+  Вы можете посетить <a href="https://apifox.newapi.ai/">тренировочную площадку Apifox</a> для онлайн-тестирования и отладки API-интерфейсов, или просмотреть документацию ниже.
+</Callout>
+
+## Интерфейсы моделей AI
+
+Интерфейсы моделей AI предоставляют вызовы различных AI-функций и совместимы с форматом API OpenAI.
+
+<Cards>
+  <Card
+    icon={<List />}
+    title="Список моделей"
+    description="Получить список доступных моделей."
+    href="/ru/docs/ai-model/models/list/listmodels"
+  />
+  <Card
+    icon={<MessageSquare />}
+    title="Чат"
+    description="Интерфейс завершения диалога."
+    href="/ru/docs/ai-model/chat/openai/createchatcompletion"
+  />
+  <Card
+    icon={<FileText />}
+    title="Завершение"
+    description="Интерфейс классического текстового завершения."
+    href="/ru/docs/ai-model/completions/createcompletion"
+  />
+  <Card
+    icon={<Database />}
+    title="Встраивание"
+    description="Интерфейс генерации векторов текстовых встраиваний."
+    href="/ru/docs/ai-model/embeddings/createembedding"
+  />
+  <Card
+    icon={<Search />}
+    title="Переранжирование"
+    description="Интерфейс переранжирования документов."
+    href="/ru/docs/ai-model/rerank/creatererank"
+  />
+  <Card
+    icon={<ShieldCheck />}
+    title="Модерация"
+    description="Интерфейс проверки безопасности контента. Интерфейс проверки безопасности контента — один из инструментов обеспечения соответствия требованиям, не заменяет собственные обязательства развёртывающей стороны по обеспечению безопасности и требования вышестоящей политики в отношении контента. При предоставлении услуг для широкой публики должны быть созданы механизмы жалоб на злоупотребления, аудита журналов и обработки инцидентов."
+    href="/ru/docs/ai-model/moderations/createmoderation"
+  />
+  <Card
+    icon={<Headphones />}
+    title="Аудио"
+    description="Интерфейсы распознавания речи и синтеза речи."
+    href="/ru/docs/ai-model/audio/openai/createspeech"
+  />
+  <Card
+    icon={<Radio />}
+    title="Реальное время (голос)"
+    description="Интерфейс потокового аудио в реальном времени."
+    href="/ru/docs/ai-model/realtime/createrealtimesession"
+  />
+  <Card
+    icon={<Image />}
+    title="Изображения"
+    description="Интерфейс генерации изображений AI."
+    href="/ru/docs/ai-model/images/openai/post-v1-images-generations"
+  />
+  <Card
+    icon={<Video />}
+    title="Видео"
+    description="Интерфейс генерации видео AI."
+    href="/ru/docs/ai-model/videos/sora/createvideo"
+  />
+  <Card
+    icon={<FileQuestion />}
+    title="Не реализовано"
+    description="Заглушка, пока не реализована."
+    href="/ru/docs/ai-model/unimplemented/files/listfiles"
+  />
+</Cards>
+
+## Интерфейсы управления
+
+Интерфейсы управления используются для настройки системы, управления пользователями, бизнес-администрирования и других внутренних операций.
+
+<Cards>
+  <Card
+    icon={<Server />}
+    title="Система"
+    description="Интерфейсы информации и состояния системы."
+    href="/ru/docs/management/system/status-get"
+  />
+  <Card
+    icon={<SlidersHorizontal />}
+    title="Настройки системы"
+    description="Интерфейс управления конфигурацией системы."
+    href="/ru/docs/management/system-settings/option-get"
+  />
+  <Card
+    icon={<UserCheck />}
+    title="Аутентификация пользователя"
+    description="Интерфейсы входа, регистрации, управления паролями пользователей."
+    href="/ru/docs/management/user-auth/user-login-post"
+  />
+  <Card
+    icon={<Users />}
+    title="Управление пользователями"
+    description="Интерфейс управления информацией о пользователях."
+    href="/ru/docs/management/user-management/user-self-get"
+  />
+  <Card
+    icon={<KeyRound />}
+    title="Двухфакторная аутентификация"
+    description="Интерфейс двухфакторной аутентификации (2FA)."
+    href="/ru/docs/management/two-factor-auth/user-2fa-status-get"
+  />
+  <Card
+    icon={<Link2 />}
+    title="OAuth"
+    description="Интерфейс стороннего входа через OAuth."
+    href="/ru/docs/management/oauth/oauth-github-get"
+  />
+  <Card
+    icon={<Network />}
+    title="Управление каналами"
+    description="Интерфейс управления конфигурацией API-каналов."
+    href="/ru/docs/management/channel-management/channel-get"
+  />
+  <Card
+    icon={<Blocks />}
+    title="Управление моделями"
+    description="Интерфейс управления конфигурацией моделей."
+    href="/ru/docs/management/model-management/models-get"
+  />
+  <Card
+    icon={<Key />}
+    title="Управление токенами"
+    description="Интерфейс управления API-токенами."
+    href="/ru/docs/management/token-management/token-get"
+  />
+  <Card
+    icon={<Ticket />}
+    title="Коды активации"
+    description="Интерфейс управления кодами активации."
+    href="/ru/docs/management/redemption/redemption-get"
+  />
+  <Card
+    icon={<CreditCard />}
+    title="Оплата"
+    description="Интерфейсы оплаты и пополнения баланса."
+    href="/ru/docs/management/payment/user-topup-info-get"
+  />
+  <Card
+    icon={<ScrollText />}
+    title="Журналы"
+    description="Интерфейс запроса журналов использования."
+    href="/ru/docs/management/logs/log-get"
+  />
+  <Card
+    icon={<ChartBar />}
+    title="Статистика"
+    description="Интерфейс статистики данных."
+    href="/ru/docs/management/statistics/data-get"
+  />
+  <Card
+    icon={<ListTodo />}
+    title="Задачи"
+    description="Интерфейс управления асинхронными задачами."
+    href="/ru/docs/management/tasks/task-get"
+  />
+  <Card
+    icon={<FolderKanban />}
+    title="Группы"
+    description="Интерфейс управления группами пользователей."
+    href="/ru/docs/management/groups/group-get"
+  />
+  <Card
+    icon={<Store />}
+    title="Поставщики"
+    description="Интерфейс управления поставщиками."
+    href="/ru/docs/management/vendors/vendors-get"
+  />
+  <Card
+    icon={<ShieldAlert />}
+    title="Проверка безопасности"
+    description="Интерфейсы, связанные с проверкой безопасности."
+    href="/ru/docs/management/security-verification/verify-status-get"
+  />
+</Cards>

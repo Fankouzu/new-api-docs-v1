@@ -1,6 +1,6 @@
 /**
  * Documentation Translation Script
- * Automatically translates Chinese markdown documents to English and Japanese using OpenAI API
+ * Automatically translates Chinese markdown documents to English, Japanese, and Russian using OpenAI API
  */
 
 import * as fs from 'fs';
@@ -23,20 +23,44 @@ const MAX_WORKERS = parseInt(process.env.MAX_WORKERS || '3', 10);
 const FORCE_TRANSLATE = process.env.FORCE_TRANSLATE?.toLowerCase() === 'true';
 const INCREMENTAL_TRANSLATE =
   process.env.INCREMENTAL_TRANSLATE?.toLowerCase() !== 'false';
+const TARGET_LANGUAGES = (process.env.TARGET_LANGUAGES || '')
+  .split(',')
+  .map((lang) => lang.trim())
+  .filter(Boolean);
 
 const LANGUAGES = {
   en: { name: 'English', nativeName: '英文', dir: 'en' },
   ja: { name: 'Japanese', nativeName: '日文', dir: 'ja' },
+  ru: { name: 'Russian', nativeName: '俄文', dir: 'ru' },
 } as const;
 
+const ACTIVE_LANGUAGES = Object.fromEntries(
+  Object.entries(LANGUAGES).filter(([langCode]) => {
+    if (TARGET_LANGUAGES.length === 0) return true;
+    return TARGET_LANGUAGES.includes(langCode);
+  })
+) as Partial<typeof LANGUAGES>;
+
+if (TARGET_LANGUAGES.length > 0) {
+  const unknownLanguages = TARGET_LANGUAGES.filter(
+    (langCode) => !(langCode in LANGUAGES)
+  );
+
+  if (unknownLanguages.length > 0) {
+    throw new Error(
+      `Unsupported TARGET_LANGUAGES value(s): ${unknownLanguages.join(', ')}`
+    );
+  }
+}
+
 const GLOSSARY = `
-| 中文 | English | 说明 | Description |
-|------|---------|------|-------------|
-| 倍率 | Ratio | 用于计算价格的乘数因子 | Multiplier factor used for price calculation |
-| 令牌 | Token | API访问凭证，也指模型处理的文本单元 | API access credentials or text units processed by models |
-| 渠道 | Channel | API服务提供商的接入通道 | Access channel for API service providers |
-| 分组 | Group | 用户或令牌的分类，影响价格倍率 | Classification of users or tokens, affecting price ratios |
-| 额度 | Quota | 用户可用的服务额度 | Available service quota for users |
+| 中文 | English | Русский | 说明 | Description |
+|------|---------|---------|------|-------------|
+| 倍率 | Ratio | Коэффициент | 用于计算价格的乘数因子 | Multiplier factor used for price calculation |
+| 令牌 | Token | Токен | API访问凭证，也指模型处理的文本单元 | API access credentials or text units processed by models |
+| 渠道 | Channel | Канал | API服务提供商的接入通道 | Access channel for API service providers |
+| 分组 | Group | Группа | 用户或令牌的分类，影响价格倍率 | Classification of users or tokens, affecting price ratios |
+| 额度 | Quota | Квота | 用户可用的服务额度 | Available service quota for users |
 `;
 
 // ============================================================================
@@ -307,7 +331,9 @@ function detectManualTranslations(): Set<string> {
     });
 
     const changedFiles = output.trim().split('\n').filter(Boolean);
-    const languageDirs = Object.values(LANGUAGES).map((l) => `/${l.dir}/`);
+    const languageDirs = Object.values(ACTIVE_LANGUAGES).map(
+      (l) => `/${l.dir}/`
+    );
 
     for (const filePath of changedFiles) {
       if (languageDirs.some((dir) => filePath.includes(dir))) {
@@ -450,7 +476,7 @@ async function translateFile(
     console.error(
       `${prefix} ✗ Failed to read file: ${(error as Error).message}`
     );
-    result.failed = Object.keys(LANGUAGES).length;
+    result.failed = Object.keys(ACTIVE_LANGUAGES).length;
     return result;
   }
 
@@ -460,7 +486,7 @@ async function translateFile(
 
   if (relPath.startsWith('..')) {
     console.error(`${prefix} ✗ File is not in zh directory`);
-    result.failed = Object.keys(LANGUAGES).length;
+    result.failed = Object.keys(ACTIVE_LANGUAGES).length;
     return result;
   }
 
@@ -473,7 +499,7 @@ async function translateFile(
 
   // Check if any target translation is missing
   const missingTranslations: string[] = [];
-  for (const [langCode, langInfo] of Object.entries(LANGUAGES)) {
+  for (const [langCode, langInfo] of Object.entries(ACTIVE_LANGUAGES)) {
     const targetFile = path.join(DOCS_DIR, langInfo.dir, relPath);
     if (!fs.existsSync(targetFile)) {
       missingTranslations.push(langInfo.nativeName);
@@ -490,7 +516,7 @@ async function translateFile(
     console.log(
       `${prefix} ⏭  No changes and all translations exist, skipping...`
     );
-    result.skipped = Object.keys(LANGUAGES).length;
+    result.skipped = Object.keys(ACTIVE_LANGUAGES).length;
     return result;
   }
 
@@ -502,7 +528,7 @@ async function translateFile(
   }
 
   // Translate to each target language
-  for (const [langCode, langInfo] of Object.entries(LANGUAGES)) {
+  for (const [langCode, langInfo] of Object.entries(ACTIVE_LANGUAGES)) {
     const targetFile = path.join(DOCS_DIR, langInfo.dir, relPath);
 
     // Check manual translation
@@ -670,7 +696,9 @@ async function translateDocs(specificPaths?: string[]) {
 
   if (specificPaths && specificPaths.length > 0) {
     filesToTranslate = [];
-    const languageDirs = Object.values(LANGUAGES).map((l) => `/${l.dir}/`);
+    const languageDirs = Object.values(ACTIVE_LANGUAGES).map(
+      (l) => `/${l.dir}/`
+    );
 
     for (const inputPath of specificPaths) {
       const resolvedPath = path.resolve(inputPath);
@@ -722,7 +750,7 @@ async function translateDocs(specificPaths?: string[]) {
   console.log(`   Model: ${OPENAI_MODEL}`);
   console.log(`   API: ${OPENAI_BASE_URL}`);
   console.log(
-    `   Languages: ${Object.values(LANGUAGES)
+    `   Languages: ${Object.values(ACTIVE_LANGUAGES)
       .map((l) => l.nativeName)
       .join(', ')}`
   );

@@ -35,6 +35,18 @@ const { provider } = defineI18nUI(i18n, {
       previousPage: '前のページ',
       tocNoHeadings: '見出しがありません',
     },
+    ru: {
+      displayName: 'Русский',
+      search: 'Поиск по документации',
+      searchNoResult: 'Ничего не найдено',
+      toc: 'Содержание',
+      lastUpdate: 'Последнее обновление',
+      chooseTheme: 'Выбрать тему',
+      chooseLanguage: 'Выбрать язык',
+      nextPage: 'Следующая страница',
+      previousPage: 'Предыдущая страница',
+      tocNoHeadings: 'Заголовки отсутствуют',
+    },
   },
 });
 
@@ -58,6 +70,12 @@ const titleMap: Record<
     template: '%s | New API',
     description:
       'New API のモデルエンドポイント、管理エンドポイント、AI アプリ連携の API リファレンス。',
+  },
+  ru: {
+    default: 'Справочник API New API',
+    template: '%s | New API',
+    description:
+      'Справочник API для модельных и административных интерфейсов New API, а также поддерживаемых интеграций AI-приложений.',
   },
 };
 
@@ -97,6 +115,7 @@ export async function generateMetadata({
         en: '/en/docs',
         zh: '/zh/docs',
         ja: '/ja/docs',
+        ru: '/ru/docs',
       },
     },
     openGraph: {

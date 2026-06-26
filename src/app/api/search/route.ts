@@ -14,5 +14,6 @@ export const { GET } = createFromSource(source, {
       components: { tokenizer: createJapaneseTokenizer() },
       search: { threshold: 0, tolerance: 0 },
     },
+    ru: { language: 'russian' },
   },
 });

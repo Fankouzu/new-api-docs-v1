@@ -1,0 +1,425 @@
+---
+title: Claude Code
+description: Учебное пособие по Claude Code — подключение терминального помощника от Anthropic к New API. Поддержка понимания кода, многфайлового редактирования, интеграция с VS Code и JetBrains IDE.
+---
+
+<Callout type="info" title="О проекте">
+  Высвободите всю мощь Claude прямо в вашем терминале. Мгновенно находите в миллионах строк кода. Превращайте задачи, занимающие часы, в одну команду. Ваши инструменты, ваш рабочий процесс, ваш код — эволюционируйте со скоростью мысли.
+
+  - Официальный сайт: [https://www.anthropic.com/claude-code](https://www.anthropic.com/claude-code)
+</Callout>
+
+## Демонстрация
+
+![introduce-01.webp](/assets/claude_code/introduce-01.webp)
+
+![introduce-02.webp](/assets/claude_code/introduce-02.webp)
+
+### Возможности
+
+| **Категория функций** | **Особенность**                                                                 |
+| --------------------- | ------------------------------------------------------------------------------- |
+| **Понимание кода**    | Глубокий анализ кодовой базы с использованием интеллектуального поиска для понимания структуры проекта и зависимостей |
+|                       | Автоматическое создание высокоуровневого обзора кода для быстрого понимания кодовой базы пользователем |
+| **Редактирование кода** | Поддержка совместного редактирования нескольких файлов для сложных изменений кода |
+|                       | Предложение практически применимых решений, соответствующих шаблонам и архитектуре проекта |
+| **Интеграция**        | Возможность запуска непосредственно в терминале без переключения контекста    |
+|                       | Бесшовная интеграция с VS Code и JetBrains IDE без необходимости копирования и вставки |
+| **Генерация и оптимизация кода** | Автоматическая генерация кода, создание тестов, исправление ошибок, поддержка полного цикла от идеи до коммита |
+|                       | Оптимизация для генерации и понимания кода в сочетании с передовыми моделями, такими как Claude Opus 4 |
+| **Безопасность и гибкость** | Изменения требуют явного разрешения пользователя, более безопасная работа с файлами и командами |
+|                       | Адаптация к правилам оформления кода пользователя, поддержка пользовательской конфигурации |
+| **Интеграция инструментов** | Поддержка интеграции с GitHub, GitLab и другими инструментами для автоматизации рабочих процессов |
+|                       | Интеграция с тестовыми наборами и системами сборки, расширение существующих инструментов разработки |
+| **Кроссплатформенность и расширение** | Поддержка Windows, macOS, Linux                                       |
+|                       | Возможность запуска в SDK или GitHub Actions, гибкая адаптация под разные потребности |
+| **Основные сценарии использования** | Знакомство и понимание кодовой базы, быстрое введение новых участников |
+|                       | Исправление и оптимизация кода, от анализа проблемы до отправки PR               |
+|                       | Рефакторинг и реализация новых функций в проекте                                |
+| **Отзывы пользователей** | Повышение повседневной эффективности разработки, экономия времени на рутинных задачах |
+|                       | Отличная производительность в сложных многошаговых задачах, расширение возможностей разработки |
+
+## Настройка AI-модели
+
+### Инструкция для Windows
+
+#### 1. Установка Node.js
+
+Для работы Claude Code требуется среда Node.js.
+
+<Callout type="info" title="Шаги по установке Node.js">
+  - Откройте браузер и перейдите на https://nodejs.org/
+  - Нажмите «LTS» для загрузки (рекомендуется долгосрочная поддерживаемая версия)
+  - После загрузки дважды щелкните файл .msi
+  - Следуйте инструкциям мастера установки, оставляя настройки по умолчанию
+</Callout>
+
+<Callout type="warn" title="Примечания для Windows">
+  - Рекомендуется использовать PowerShell вместо CMD
+  - При возникновении проблем с правами доступа попробуйте запустить от имени администратора
+  - Некоторые антивирусы могут ложно срабатывать, добавьте в белый список
+</Callout>
+
+![windows-img-01.webp](/assets/claude_code/windows-img-01.webp)
+
+![windows-img-02.webp](/assets/claude_code/windows-img-02.webp)
+
+![windows-img-03.webp](/assets/claude_code/windows-img-03.webp)
+
+![windows-img-04.webp](/assets/claude_code/windows-img-04.webp)
+
+![windows-img-05.webp](/assets/claude_code/windows-img-05.webp)
+
+<Callout type="info" title="Проверка установки">
+  После установки откройте PowerShell или CMD и введите следующие команды:
+
+  ```bash
+  node --version
+  npm --version
+  ```
+
+  Если отображается номер версии, установка прошла успешно.
+</Callout>
+
+#### 2. Установка Git Bash
+
+<Callout type="warn" title="Примечания для Windows">
+  В среде Windows для установки Claude Code необходимо использовать Git Bash. После установки переменные среды и использование Claude Code выполняются в обычном PowerShell или CMD.
+</Callout>
+
+<Callout type="info" title="Загрузка и установка Git для Windows">
+  - Перейдите на https://git-scm.com/downloads/win
+  - Нажмите «Download for Windows», чтобы загрузить установочный пакет
+  - Запустите загруженный .exe файл
+  - В процессе установки оставьте настройки по умолчанию, нажимайте «Next» до завершения
+</Callout>
+
+![windows-img-06.webp](/assets/claude_code/windows-img-06.webp)
+
+![windows-img-07.webp](/assets/claude_code/windows-img-07.webp)
+
+![windows-img-08.webp](/assets/claude_code/windows-img-08.webp)
+
+<Callout type="info" title="Проверка установки Git Bash">
+  После установки откройте Git Bash и введите команду:
+
+  ```bash
+  git --version
+  ```
+
+  Если отображается номер версии, установка прошла успешно.
+</Callout>
+
+#### 3. Установка Claude Code
+
+<Callout type="info" title="Установка Claude Code">
+  Откройте PowerShell и выполните следующую команду:
+
+  ```bash
+  npm install -g @anthropic-ai/claude-code
+  ```
+
+  Эта команда загрузит и установит последнюю версию Claude Code из официального репозитория npm.
+</Callout>
+
+![windows-img-09.webp](/assets/claude_code/windows-img-09.webp)
+
+<Callout type="info" title="Добавьте ~/.local/bin в PATH (только если требуется)">
+  ```powershell
+  [Environment]::SetEnvironmentVariable('Path', ([Environment]::GetEnvironmentVariable('Path','User') + ";$HOME\.local\bin"), 'User')
+  ```
+</Callout>
+
+<Callout type="info" title="Проверка установки Claude Code">
+  После установки введите команду:
+
+  ```bash
+  claude --version
+  ```
+
+  Если отображается номер версии, поздравляем! Claude Code успешно установлен.
+</Callout>
+
+#### 4. Настройка переменных среды
+
+<Callout type="info" title="Команда для быстрой настройки (Windows)">
+  Для подключения Claude Code к вашему прокси-сервису необходимо установить несколько переменных среды:
+</Callout>
+
+```powershell
+iex (irm 'https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.ps1')
+```
+
+![windows-configure](/assets/claude_code/windows_configure.png)
+
+#### 5. Начало работы с Claude Code
+
+Теперь вы можете начать использовать Claude Code!
+
+<Callout type="info" title="Запуск Claude Code">
+  Откройте PowerShell и запустите Claude Code:
+
+  ```bash
+  claude
+  ```
+
+  Для использования в конкретном проекте:
+
+  ```bash
+  # Перейдите в каталог вашего проекта
+  cd C:\путь\к\вашему\проекту
+
+  # Запустите Claude Code
+  claude
+  ```
+</Callout>
+
+![windows-img-11.webp](/assets/claude_code/windows-img-11.webp)
+
+![windows-img-12.webp](/assets/claude_code/windows-img-12.webp)
+
+![windows-img-13.webp](/assets/claude_code/windows-img-13.webp)
+
+![windows-img-14.webp](/assets/claude_code/windows-img-14.webp)
+
+![windows-img-15.webp](/assets/claude_code/windows-img-15.webp)
+
+<Callout type="info" title="Выбор модели">
+  Введите команду:
+
+  ```bash
+  /model
+  ```
+
+  Нажмите Enter, выберите модель, обычно достаточно оставить настройки по умолчанию.
+</Callout>
+
+![windows-img-16.webp](/assets/claude_code/windows-img-16.webp)
+
+![windows-img-17.webp](/assets/claude_code/windows-img-17.webp)
+
+> Примечание: после изменения переменной среды `ANTHROPIC_BASE_URL` все модели (включая официальные предустановленные) будут использовать пользовательскую точку входа, а не официальную учетную запись.
+
+### Инструкция для macOS
+
+#### 1. Установка Claude Code CLI
+
+Откройте терминал
+
+![macos-img-01.webp](/assets/claude_code/macos-img-01.webp)
+
+<Callout type="info" title="Установка Claude Code">
+  Откройте терминал и выполните следующую команду:
+
+  ```bash
+  curl -fsSL https://claude.ai/install.sh | bash
+  ```
+
+  По желанию: после появления подсказки выполните предложенную команду
+
+  ```bash
+  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+  ```
+</Callout>
+
+![macos-img-02.webp](/assets/claude_code/macos-img-02.webp)
+
+#### 2. Настройка переменных среды
+
+Для подключения Claude Code к стороннему прокси-сервису необходимо установить переменные среды:
+
+<Callout type="info" title="Быстрая настройка переменных среды Claude Code">
+  Введите команду:
+
+  ```bash
+  curl -fsSL https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.sh | bash
+  ```
+</Callout>
+
+![macos-configure](/assets/claude_code/macos_configure.png)
+
+<Callout type="info" title="Проверка установки Claude Code">
+  После установки введите команду:
+
+  ```bash
+  claude --version
+  ```
+
+  Если отображается номер версии, поздравляем! Claude Code успешно установлен.
+</Callout>
+
+#### 3. Начало работы с Claude Code
+
+Теперь вы можете начать использовать Claude Code!
+
+<Callout type="info" title="Запуск Claude Code">
+  Запустите Claude Code напрямую:
+
+  ```bash
+  claude
+  ```
+
+  Для использования в конкретном проекте:
+
+  ```bash
+  # Перейдите в каталог вашего проекта
+  cd /путь/к/вашему/проекту
+
+  # Запустите Claude Code
+  claude
+  ```
+</Callout>
+
+![macos-img-04.webp](/assets/claude_code/macos-img-04.webp)
+
+![macos-img-05.webp](/assets/claude_code/macos-img-05.webp)
+
+![macos-img-06.webp](/assets/claude_code/macos-img-06.webp)
+
+![macos-img-07.webp](/assets/claude_code/macos-img-07.webp)
+
+![macos-img-08.webp](/assets/claude_code/macos-img-08.webp)
+
+<Callout type="info" title="Выбор модели (опционально)">
+  Введите команду:
+
+  ```bash
+  /model
+  ```
+
+  Нажмите Enter, выберите официальную модель, обычно достаточно оставить модель по умолчанию.
+</Callout>
+
+![macos-img-09.webp](/assets/claude_code/macos-img-09.webp)
+
+![macos-img-10.webp](/assets/claude_code/macos-img-10.webp)
+
+![macos-img-11.webp](/assets/claude_code/macos-img-11.webp)
+
+> Примечание: после изменения переменной среды `ANTHROPIC_BASE_URL` все модели (включая официальные предустановленные) будут использовать пользовательскую точку входа, а не официальную учетную запись.
+
+#### 4. Решение распространенных проблем на macOS
+
+<Callout type="info" title="Блокировка macOS из-за настроек безопасности">
+  Если система блокирует запуск Claude Code:
+
+  - Откройте «Системные настройки» → «Безопасность и конфиденциальность»
+  - Нажмите «Всё равно открыть» или «Разрешить»
+  - Или в терминале выполните: `sudo spctl --master-disable`
+</Callout>
+
+### Инструкция для Linux
+
+#### 1. Установка Claude Code
+
+![linux-img-01.webp](/assets/claude_code/linux-img-01.webp)
+
+<Callout type="info" title="Установка Claude Code">
+  Откройте терминал и выполните следующую команду:
+
+  ```bash
+  curl -fsSL https://claude.ai/install.sh | bash
+  ```
+
+  Если возникнут проблемы с правами доступа, используйте sudo:
+
+  ```bash
+  sudo curl -fsSL https://claude.ai/install.sh | bash
+  ```
+</Callout>
+
+![linux-img-03.webp](/assets/claude_code/linux-img-03.webp)
+
+<Callout type="info" title="Проверка установки Claude Code">
+  После установки введите команду:
+
+  ```bash
+  claude --version
+  ```
+
+  Если отображается номер версии, поздравляем! Claude Code успешно установлен.
+</Callout>
+
+#### 2. Настройка переменных среды
+
+Для подключения Claude Code к вашему прокси-сервису необходимо установить две переменные среды:
+
+<Callout type="info" title="Быстрое изменение переменных среды">
+  Введите команду:
+
+  ```bash
+  curl -fsSL https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.sh | bash
+  ```
+</Callout>
+
+![macos-configure](/assets/claude_code/macos_configure.png)
+
+#### 3. Начало работы с Claude Code
+
+Теперь вы можете начать использовать Claude Code!
+
+<Callout type="info" title="Запуск Claude Code">
+  Запустите Claude Code напрямую:
+
+  ```bash
+  claude
+  ```
+
+  Для использования в конкретном проекте:
+
+  ```bash
+  # Перейдите в каталог вашего проекта
+  cd /путь/к/вашему/проекту
+
+  # Запустите Claude Code
+  claude
+  ```
+</Callout>
+
+![linux-img-03.webp](/assets/claude_code/linux-img-03.webp)
+
+![linux-img-04.webp](/assets/claude_code/linux-img-04.webp)
+
+![linux-img-05.webp](/assets/claude_code/linux-img-05.webp)
+
+<Callout type="info" title="Выбор модели">
+  Введите команду:
+
+  ```bash
+  /model
+  ```
+
+  Нажмите Enter, выберите официальную модель, обычно достаточно оставить модель по умолчанию.
+</Callout>
+
+![linux-img-06.webp](/assets/claude_code/linux-img-06.webp)
+
+![linux-img-07.webp](/assets/claude_code/linux-img-07.webp)
+
+![linux-img-08.webp](/assets/claude_code/linux-img-08.webp)
+
+![linux-img-09.webp](/assets/claude_code/linux-img-09.webp)
+
+> Примечание: после изменения переменной среды `ANTHROPIC_BASE_URL` все модели (включая официальные предустановленные) будут использовать пользовательскую точку входа, а не официальную учетную запись.
+
+#### 4. Решение распространенных проблем на Linux
+
+<Callout type="info" title="Отсутствуют зависимости">
+  Некоторые дистрибутивы Linux требуют установки дополнительных зависимостей:
+
+  ```bash
+  # Ubuntu/Debian
+  sudo apt install build-essential
+
+  # CentOS/RHEL
+  sudo dnf groupinstall "Development Tools"
+  ```
+</Callout>
+
+<Callout type="info" title="Переменные среды не действуют">
+  Проверьте следующее:
+
+  - Убедитесь, что вы изменили правильный конфигурационный файл (`.bashrc` или `.zshrc`)
+  - Перезапустите терминал или выполните `source ~/.bashrc`
+  - Проверьте настройку: `echo $ANTHROPIC_BASE_URL`
+</Callout>

@@ -47,6 +47,15 @@ const translations = {
     openInClaude: 'Claudeで開く',
     openInT3Chat: 'T3 Chatで開く',
   },
+  ru: {
+    copyMarkdown: 'Копировать Markdown',
+    open: 'Открыть',
+    openInGitHub: 'Открыть в GitHub',
+    openInSciraAI: 'Открыть в Scira AI',
+    openInChatGPT: 'Открыть в ChatGPT',
+    openInClaude: 'Открыть в Claude',
+    openInT3Chat: 'Открыть в T3 Chat',
+  },
 };
 
 export function LLMCopyButton({

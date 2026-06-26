@@ -1,0 +1,11 @@
+{
+  "title": "Справочник API",
+  "description": "Документация New API",
+  "icon": "Code",
+  "pages": [
+    "index",
+    "ai-model",
+    "management",
+    "apps"
+  ]
+}

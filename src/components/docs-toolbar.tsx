@@ -10,6 +10,7 @@ const homeLabels = {
   en: 'Back to lizh.ai',
   zh: '返回 lizh.ai',
   ja: 'lizh.ai に戻る',
+  ru: 'Вернуться на lizh.ai',
 } as const;
 
 export function DocsSidebarFooter({ lang }: { lang: string }) {

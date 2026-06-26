@@ -1,0 +1,113 @@
+---
+title: AI-приложения
+description: Поддерживаемые AI-приложения и решения для интеграции
+---
+
+import { Card, Cards } from 'fumadocs-ui/components/card';
+import {
+  Cherry,
+  Sparkles,
+  Terminal,
+  BookOpen,
+  MessageCircle,
+  Languages,
+  Bot,
+  Settings,
+} from 'lucide-react';
+
+## Обзор
+
+New API совместим с множеством популярных AI-приложений и инструментов. Ниже приведен список проверенных приложений и руководство по их настройке.
+
+## Поддерживаемые приложения
+
+<Cards>
+  <Card
+    icon={<Sparkles />}
+    title="AionUi"
+    description="Бесплатный открытый Cowork с поддержкой множества моделей, управления файлами и предварительного просмотра в реальном времени."
+    href="/ru/docs/apps/aionui"
+  />
+  <Card
+    icon={<Settings />}
+    title="CC Switch"
+    description="Поддерживает заполнение одним кликом, после нажатия New API открывается окно для настройки Claude, Codex, Gemini, основной модели и других моделей."
+    href="/ru/docs/apps/cc-switch"
+  />
+  <Card
+    icon={<Cherry />}
+    title="Cherry Studio"
+    description="Мощный клиент AI-ассистента с поддержкой многомодельного диалога."
+    href="/ru/docs/apps/cherry-studio"
+  />
+  <Card
+    icon={<Bot />}
+    title="DeepChat"
+    description="Полнофункциональный клиент AI-агента с открытым исходным кодом."
+    href="/ru/docs/apps/deepchat"
+  />
+  <Card
+    icon={<Bot />}
+    title="Memoh"
+    description="Платформа контейнеризированных AI-агентов, каждый бот работает в отдельном контейнере, поддерживает долгосрочную память и многоканальный доступ."
+    href="/ru/docs/apps/memoh"
+  />
+  <Card
+    icon={<Bot />}
+    title="OpenClaw"
+    description="Самостоятельно размещаемая платформа AI-ассистента — установите OpenClaw, подключитесь к New API, поддерживает управление AI-агентами через несколько каналов: Feishu, Discord, Slack и другие."
+    href="/ru/docs/apps/openclaw"
+  />
+  <Card
+    icon={<BookOpen />}
+    title="Fluent Read"
+    description="Интеллектуальный помощник для чтения и перевода на базе AI."
+    href="/ru/docs/apps/fluent-read"
+  />
+  <Card
+    icon={<MessageCircle />}
+    title="LangBot"
+    description="Фреймворк чат-ботов на основе больших языковых моделей."
+    href="/ru/docs/apps/langbot"
+  />
+  <Card
+    icon={<Languages />}
+    title="Luna Translator"
+    description="Инструмент для перевода игр и документов в реальном времени."
+    href="/ru/docs/apps/luna-translator"
+  />
+  <Card
+    icon={<Bot />}
+    title="AstrBot"
+    description="Открытая универсальная платформа чат-ботов агентов."
+    href="/ru/docs/apps/astrbot"
+  />
+  <Card
+    icon={<Terminal />}
+    title="Claude Code"
+    description="Интеграция с редактором кода на базе Anthropic Claude."
+    href="/ru/docs/apps/claude-code"
+  />
+  <Card
+    icon={<Terminal />}
+    title="Codex CLI"
+    description="Инструмент AI-помощника для кода с интерфейсом командной строки."
+    href="/ru/docs/apps/codex-cli"
+  />
+  <Card
+    icon={<Bot />}
+    title="Factory Droid CLI"
+    description="Инструмент AI-агента для автоматизации рабочих процессов."
+    href="/ru/docs/apps/factory-droid-cli"
+  />
+</Cards>
+
+## Руководство по интеграции
+
+Большинству приложений для подключения к New API требуется только настроить следующую информацию:
+
+1. **Адрес API**: адрес вашего сервиса New API
+2. **Ключ API**: токен, сгенерированный в консоли New API
+3. **Название модели**: выберите нужную модель
+
+Подробные шаги настройки смотрите в документации каждого приложения.

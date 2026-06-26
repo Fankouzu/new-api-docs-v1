@@ -72,6 +72,16 @@ const translations = {
     placeholder: 'フィードバックを残してください...',
     submit: '送信',
   },
+  ru: {
+    question: 'Насколько полезна эта инструкция?',
+    good: 'Полезно',
+    bad: 'Не помогло',
+    thanks: 'Спасибо за отзыв!',
+    viewOnGitHub: 'Посмотреть на GitHub',
+    submitAgain: 'Отправить снова',
+    placeholder: 'Оставьте отзыв...',
+    submit: 'Отправить',
+  },
 };
 
 export function Feedback({ lang, onRateAction }: FeedbackProps) {

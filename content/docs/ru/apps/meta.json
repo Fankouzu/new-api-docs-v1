@@ -1,0 +1,21 @@
+{
+  "title": "AI-приложения",
+  "description": "Поддерживаемые AI-приложения и интеграции",
+  "icon": "Sparkles",
+  "pages": [
+    "index",
+    "aionui",
+    "cc-switch",
+    "cherry-studio",
+    "deepchat",
+    "memoh",
+    "fluent-read",
+    "openclaw",
+    "langbot",
+    "astrbot",
+    "luna-translator",
+    "claude-code",
+    "codex-cli",
+    "factory-droid-cli"
+  ]
+}

@@ -195,7 +195,7 @@ async function generate() {
   const slugOverrides = await loadTagSlugOverrides();
 
   // Clean old generated docs (all locales) to keep the output absolutely clean
-  const locales = ['zh', 'en', 'ja'];
+  const locales = ['zh', 'en', 'ja', 'ru'];
   await Promise.all(
     locales.flatMap((locale) => [
       rm(`./content/docs/${locale}/ai-model`, {

@@ -2,7 +2,6 @@
   "title": "AI Applications",
   "description": "Supported AI applications and integrations",
   "icon": "Sparkles",
-  "root": true,
   "pages": [
     "index",
     "aionui",

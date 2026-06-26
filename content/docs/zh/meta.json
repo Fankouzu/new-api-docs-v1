@@ -1,4 +1,6 @@
 {
-  "title": "文档",
-  "pages": ["guide", "installation", "api", "apps", "skills", "support", "business", "legal"]
+  "title": "API 参考",
+  "description": "New API 接口文档",
+  "icon": "Code",
+  "pages": ["index", "ai-model", "management", "apps"]
 }

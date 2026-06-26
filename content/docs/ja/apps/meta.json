@@ -2,7 +2,6 @@
   "title": "AIアプリケーション",
   "description": "対応AIアプリケーションと統合",
   "icon": "Sparkles",
-  "root": true,
   "pages": [
     "index",
     "aionui",

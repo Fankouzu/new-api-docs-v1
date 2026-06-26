@@ -2,7 +2,6 @@
   "title": "AI 应用",
   "description": "支持的AI应用和集成",
   "icon": "Sparkles",
-  "root": true,
   "pages": [
     "index",
     "aionui",

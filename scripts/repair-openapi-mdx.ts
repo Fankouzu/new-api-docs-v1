@@ -8,7 +8,7 @@
  *
  * This script:
  * - Builds an index of all JSON files under `openapi/generated/` (recursive) by basename.
- * - Scans `content/docs/{en,ja}/api/` (recursive) MDX files for `document={"...json"}` paths.
+ * - Scans `content/docs/{en,ja}/` (recursive) MDX files for `document={"...json"}` paths.
  * - If a referenced JSON doesn't exist, it rewrites it to the unique matching JSON path by basename.
  */
 
@@ -77,7 +77,7 @@ async function pathExists(relPosix: string): Promise<boolean> {
 }
 
 async function repairLocale(locale: Locale, index: Map<string, string[]>) {
-  const root = path.join(process.cwd(), 'content', 'docs', locale, 'api');
+  const root = path.join(process.cwd(), 'content', 'docs', locale);
   const mdxFiles = await walkFiles(root, (p) =>
     p.toLowerCase().endsWith('.mdx')
   );

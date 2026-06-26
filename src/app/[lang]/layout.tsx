@@ -43,22 +43,21 @@ const titleMap: Record<
   { default: string; template: string; description: string }
 > = {
   en: {
-    default: 'New API - The Foundation of Your AI Universe',
+    default: 'New API API Reference',
     template: '%s | New API',
     description:
-      'Connect all AI providers, manage your AI assets, and build the future on a unified infrastructure platform. Deploy in minutes, scale effortlessly.',
+      'API reference for New API model endpoints, management endpoints, and supported AI application integrations.',
   },
   zh: {
-    default: 'New API - AI 基座',
+    default: 'New API API 参考',
     template: '%s | New API',
-    description:
-      '承载所有 AI 应用，管理你的数字资产，连接未来的统一基础设施平台。快速部署，轻松扩展。',
+    description: 'New API 模型接口、管理接口与 AI 应用接入的 API 参考文档。',
   },
   ja: {
-    default: 'New API - あなたの AI ユニバースの基盤',
+    default: 'New API APIリファレンス',
     template: '%s | New API',
     description:
-      'すべての AI プロバイダーを接続し、AI アセットを管理し、統一されたインフラストラクチャプラットフォームで未来を構築。数分でデプロイ、簡単にスケール。',
+      'New API のモデルエンドポイント、管理エンドポイント、AI アプリ連携の API リファレンス。',
   },
 };
 
@@ -95,9 +94,9 @@ export async function generateMetadata({
     creator: 'New API Team',
     alternates: {
       languages: {
-        en: '/en',
-        zh: '/zh',
-        ja: '/ja',
+        en: '/en/docs',
+        zh: '/zh/docs',
+        ja: '/ja/docs',
       },
     },
     openGraph: {

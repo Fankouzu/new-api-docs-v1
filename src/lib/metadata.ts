@@ -6,13 +6,13 @@ export function createMetadata(override: Metadata): Metadata {
     icons: {
       icon: '/favicon.ico',
       shortcut: '/favicon.ico',
-      apple: '/assets/logo.png',
+      apple: '/assets/auth_logo.png',
     },
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
       url: 'https://www.newapi.ai',
-      images: '/assets/logo.png',
+      images: '/assets/auth_logo.png',
       siteName: 'New API',
       type: 'website',
       ...override.openGraph,
@@ -21,7 +21,7 @@ export function createMetadata(override: Metadata): Metadata {
       card: 'summary_large_image',
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      images: '/assets/logo.png',
+      images: '/assets/auth_logo.png',
       ...override.twitter,
     },
   };

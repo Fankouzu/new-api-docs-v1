@@ -1,4 +1,6 @@
 {
-  "title": "ドキュメント",
-  "pages": ["guide", "installation", "api", "apps", "skills", "support", "business"]
+  "title": "APIリファレンス",
+  "description": "New API の完全なインターフェースドキュメント",
+  "icon": "Code",
+  "pages": ["index", "ai-model", "management", "apps"]
 }

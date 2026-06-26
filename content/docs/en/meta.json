@@ -1,4 +1,6 @@
 {
-  "title": "Documentation",
-  "pages": ["guide", "installation", "api", "apps", "skills", "support", "business"]
+  "title": "API Reference",
+  "description": "New API Complete API Documentation",
+  "icon": "Code",
+  "pages": ["index", "ai-model", "management", "apps"]
 }

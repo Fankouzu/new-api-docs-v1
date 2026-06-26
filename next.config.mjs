@@ -37,6 +37,20 @@ const config = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/:lang(en|zh|ja)/docs/api',
+        destination: '/:lang/docs',
+        permanent: true,
+      },
+      {
+        source: '/:lang(en|zh|ja)/docs/api/:path*',
+        destination: '/:lang/docs/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       {

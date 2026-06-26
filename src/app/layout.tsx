@@ -1,9 +1,11 @@
 import type { Viewport, Metadata } from 'next';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { siteIcons } from '@/lib/metadata';
 import './global.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.newapi.ai'),
+  icons: siteIcons,
   other: {
     charset: 'utf-8',
   },

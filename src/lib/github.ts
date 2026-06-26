@@ -132,14 +132,14 @@ export async function onRateAction(
     };
   } = await octokit.graphql(
     `
-          query($query: String!) {
-            search(type: DISCUSSION, query: $query, first: 1) {
+          query($searchQuery: String!) {
+            search(type: DISCUSSION, query: $searchQuery, first: 1) {
               nodes {
                 ... on Discussion { id, url }
               }
             }
           }`,
-    { query: `${title} in:title repo:${owner}/${repo} author:@me` }
+    { searchQuery: `${title} in:title repo:${owner}/${repo} author:@me` }
   );
 
   if (discussion) {

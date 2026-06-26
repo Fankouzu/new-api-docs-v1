@@ -14,7 +14,7 @@ import { LLMCopyButton, ViewOptions } from '@/components/page-actions';
 import { onRateAction } from '@/lib/github';
 
 // GitHub repository info for source links
-const owner = 'QuantumNous';
+const owner = 'Fankouzu';
 const repo = 'new-api-docs-v1';
 const branch = 'main';
 

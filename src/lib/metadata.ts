@@ -1,13 +1,19 @@
 import type { Metadata } from 'next';
 
+export const siteIcons: Metadata['icons'] = {
+  icon: [
+    { url: '/favicon-32x32.png?v=2', sizes: '32x32', type: 'image/png' },
+    { url: '/favicon-16x16.png?v=2', sizes: '16x16', type: 'image/png' },
+    { url: '/favicon.ico?v=2', sizes: 'any' },
+  ],
+  shortcut: '/favicon.ico',
+  apple: '/apple-touch-icon.png?v=2',
+};
+
 export function createMetadata(override: Metadata): Metadata {
   return {
     ...override,
-    icons: {
-      icon: '/favicon.ico',
-      shortcut: '/favicon.ico',
-      apple: '/assets/auth_logo.png',
-    },
+    icons: siteIcons,
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,

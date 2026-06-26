@@ -2,8 +2,9 @@ import { App, Octokit } from 'octokit';
 import type { ActionResponse, Feedback } from '@/components/feedback';
 
 // GitHub repository info
-export const owner = 'QuantumNous';
-export const repo = 'new-api-docs-v1';
+const [owner = 'Fankouzu', repo = 'new-api-docs-v1'] = (
+  process.env.SOURCE_REPO || 'Fankouzu/new-api-docs-v1'
+).split('/');
 export const DocsCategory = 'Docs Feedback'; // GitHub Discussion
 
 let instance: Octokit | undefined;
@@ -71,16 +72,19 @@ async function getFeedbackDestination(): Promise<RepositoryInfo | null> {
     repository,
   }: {
     repository: RepositoryInfo;
-  } = await octokit.graphql(`
-  query {
-    repository(owner: "${owner}", name: "${repo}") {
+  } = await octokit.graphql(
+    `
+  query($owner: String!, $repo: String!) {
+    repository(owner: $owner, name: $repo) {
       id
       discussionCategories(first: 25) {
         nodes { id name }
       }
     }
   }
-`);
+`,
+    { owner, repo }
+  );
 
   return (cachedDestination = repository);
 }
@@ -126,31 +130,45 @@ export async function onRateAction(
     search: {
       nodes: { id: string; url: string }[];
     };
-  } = await octokit.graphql(`
-          query {
-            search(type: DISCUSSION, query: ${JSON.stringify(`${title} in:title repo:${owner}/${repo} author:@me`)}, first: 1) {
+  } = await octokit.graphql(
+    `
+          query($query: String!) {
+            search(type: DISCUSSION, query: $query, first: 1) {
               nodes {
                 ... on Discussion { id, url }
               }
             }
-          }`);
+          }`,
+    { query: `${title} in:title repo:${owner}/${repo} author:@me` }
+  );
 
   if (discussion) {
-    await octokit.graphql(`
-            mutation {
-              addDiscussionComment(input: { body: ${JSON.stringify(body)}, discussionId: "${discussion.id}" }) {
+    await octokit.graphql(
+      `
+            mutation($body: String!, $discussionId: ID!) {
+              addDiscussionComment(input: { body: $body, discussionId: $discussionId }) {
                 comment { id }
               }
-            }`);
+            }`,
+      { body, discussionId: discussion.id }
+    );
   } else {
     const result: {
       createDiscussion: { discussion: { id: string; url: string } };
-    } = await octokit.graphql(`
-            mutation {
-              createDiscussion(input: { repositoryId: "${destination.id}", categoryId: "${category!.id}", body: ${JSON.stringify(body)}, title: ${JSON.stringify(title)} }) {
+    } = await octokit.graphql(
+      `
+            mutation($repositoryId: ID!, $categoryId: ID!, $body: String!, $title: String!) {
+              createDiscussion(input: { repositoryId: $repositoryId, categoryId: $categoryId, body: $body, title: $title }) {
                 discussion { id, url }
               }
-            }`);
+            }`,
+      {
+        repositoryId: destination.id,
+        categoryId: category!.id,
+        body,
+        title,
+      }
+    );
 
     discussion = result.createDiscussion.discussion;
   }

@@ -1,6 +1,7 @@
 import { source } from '@/lib/source';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { baseOptions } from '@/lib/layout.shared';
+import { DocsNavigationFeedback } from '@/components/docs-navigation-feedback';
 import { DocsSidebarFooter } from '@/components/docs-toolbar';
 // AI feature temporarily disabled
 // import { AISearchTrigger } from '@/components/search';
@@ -38,6 +39,7 @@ export default async function Layout({
         footer: <DocsSidebarFooter lang={lang} />,
       }}
     >
+      <DocsNavigationFeedback />
       {children}
       {/* AI feature temporarily disabled */}
       {/* <AISearchTrigger /> */}

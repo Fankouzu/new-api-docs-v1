@@ -1,7 +1,7 @@
 import { source } from '@/lib/source';
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { baseOptions } from '@/lib/layout.shared';
-import { DocsToolbar } from '@/components/docs-toolbar';
+import { DocsSidebarFooter } from '@/components/docs-toolbar';
 // AI feature temporarily disabled
 // import { AISearchTrigger } from '@/components/search';
 import 'katex/dist/katex.min.css';
@@ -35,9 +35,9 @@ export default async function Layout({
       sidebar={{
         defaultOpenLevel: 0,
         tabs: false,
+        footer: <DocsSidebarFooter lang={lang} />,
       }}
     >
-      <DocsToolbar lang={lang} />
       {children}
       {/* AI feature temporarily disabled */}
       {/* <AISearchTrigger /> */}

@@ -58,22 +58,6 @@ body {
     'calt' 1;
 }
 
-.docs-floating-toolbar {
-  top: calc(var(--fd-banner-height) + var(--fd-nav-height));
-  inset-inline-start: calc(var(--fd-sidebar-width) + var(--fd-layout-offset));
-  inset-inline-end: max(
-    var(--fd-layout-offset),
-    calc(50vw - var(--fd-sidebar-width) / 2 - var(--fd-page-width) / 2)
-  );
-}
-
-@media (max-width: 767px) {
-  .docs-floating-toolbar {
-    inset-inline-start: 0;
-    inset-inline-end: 0;
-  }
-}
-
 /* Homepage card enhanced styles */
 [data-card] {
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);

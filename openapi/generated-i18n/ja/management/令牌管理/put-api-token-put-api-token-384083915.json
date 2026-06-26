@@ -1,0 +1,42 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "トークンの更新",
+    "version": "1.0.0",
+    "description": "🔐 ログインが必要（User権限）"
+  },
+  "tags": [
+    {
+      "name": "トークン管理"
+    }
+  ],
+  "paths": {
+    "/api/token/": {
+      "put": {
+        "tags": [
+          "トークン管理"
+        ],
+        "summary": "トークンの更新",
+        "description": "🔐 ログインが必要（User権限）",
+        "operationId": "put-api-token",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Unresolved $ref: #/definitions/224188812"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

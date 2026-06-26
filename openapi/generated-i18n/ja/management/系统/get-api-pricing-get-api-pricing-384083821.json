@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "価格情報の取得",
+    "version": "1.0.0",
+    "description": "🔓 認証不要（オプションログイン）"
+  },
+  "tags": [
+    {
+      "name": "システム"
+    }
+  ],
+  "paths": {
+    "/api/pricing": {
+      "get": {
+        "tags": [
+          "システム"
+        ],
+        "summary": "価格情報の取得",
+        "description": "🔓 認証不要（オプションログイン）",
+        "operationId": "get-api-pricing",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

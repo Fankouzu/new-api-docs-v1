@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Upstream Multiplier",
+    "version": "1.0.0",
+    "description": "👑 Requires super admin privilege (Root)"
+  },
+  "tags": [
+    {
+      "name": "System Settings"
+    }
+  ],
+  "paths": {
+    "/api/ratio_sync/fetch": {
+      "post": {
+        "tags": [
+          "System Settings"
+        ],
+        "summary": "Get Upstream Multiplier",
+        "description": "👑 Requires super admin privilege (Root)",
+        "operationId": "post-api-ratio-sync-fetch",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

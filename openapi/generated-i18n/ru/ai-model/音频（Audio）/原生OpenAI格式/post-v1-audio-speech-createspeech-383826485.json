@@ -1,0 +1,117 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Текст в речь",
+    "version": "1.0.0",
+    "description": "Преобразование текста в аудио"
+  },
+  "tags": [
+    {
+      "name": "Аудио (Audio) / нативный формат OpenAI"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Аутентификация с помощью Bearer Token.\nФормат: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/audio/speech": {
+      "post": {
+        "tags": [
+          "Аудио (Audio) / нативный формат OpenAI"
+        ],
+        "summary": "Текст в речь",
+        "description": "Преобразование текста в аудио",
+        "operationId": "createspeech",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "model",
+                  "input",
+                  "voice"
+                ],
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "examples": [
+                      "tts-1"
+                    ]
+                  },
+                  "input": {
+                    "type": "string",
+                    "description": "Текст для преобразования",
+                    "maxLength": 4096
+                  },
+                  "voice": {
+                    "type": "string",
+                    "enum": [
+                      "alloy",
+                      "echo",
+                      "fable",
+                      "onyx",
+                      "nova",
+                      "shimmer"
+                    ]
+                  },
+                  "response_format": {
+                    "type": "string",
+                    "enum": [
+                      "mp3",
+                      "opus",
+                      "aac",
+                      "flac",
+                      "wav",
+                      "pcm"
+                    ],
+                    "default": "mp3"
+                  },
+                  "speed": {
+                    "type": "number",
+                    "minimum": 0.25,
+                    "maximum": 4,
+                    "default": 1
+                  }
+                },
+                "x-apifox-orders": [
+                  "model",
+                  "input",
+                  "voice",
+                  "response_format",
+                  "speed"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Аудио успешно сгенерировано",
+            "content": {
+              "audio/mpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

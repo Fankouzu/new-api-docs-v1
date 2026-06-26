@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Passkeyの削除",
+    "version": "1.0.0",
+    "description": "🔐 ログインが必要（User権限）"
+  },
+  "tags": [
+    {
+      "name": "ユーザー管理"
+    }
+  ],
+  "paths": {
+    "/api/user/passkey": {
+      "delete": {
+        "tags": [
+          "ユーザー管理"
+        ],
+        "summary": "Passkeyの削除",
+        "description": "🔐 ログインが必要（User権限）",
+        "operationId": "delete-api-user-passkey",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

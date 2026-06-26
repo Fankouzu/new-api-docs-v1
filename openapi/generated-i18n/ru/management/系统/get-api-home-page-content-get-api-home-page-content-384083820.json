@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить содержимое главной страницы",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "Система"
+    }
+  ],
+  "paths": {
+    "/api/home_page_content": {
+      "get": {
+        "tags": [
+          "Система"
+        ],
+        "summary": "Получить содержимое главной страницы",
+        "description": "🔓 Без аутентификации",
+        "operationId": "get-api-home-page-content",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

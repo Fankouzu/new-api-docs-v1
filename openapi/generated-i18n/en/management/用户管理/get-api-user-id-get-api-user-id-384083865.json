@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Specified User",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/{id}": {
+      "get": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Get Specified User",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "get-api-user-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Сброс пароля",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "Вход и регистрация пользователя"
+    }
+  ],
+  "paths": {
+    "/api/user/reset": {
+      "post": {
+        "tags": [
+          "Вход и регистрация пользователя"
+        ],
+        "summary": "Сброс пароля",
+        "description": "🔓 Без аутентификации",
+        "operationId": "post-api-user-reset",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "token": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "email",
+                  "token",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

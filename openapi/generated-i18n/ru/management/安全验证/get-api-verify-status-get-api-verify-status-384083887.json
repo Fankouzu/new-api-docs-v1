@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получение статуса верификации",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Проверка безопасности"
+    }
+  ],
+  "paths": {
+    "/api/verify/status": {
+      "get": {
+        "tags": [
+          "Проверка безопасности"
+        ],
+        "summary": "Получение статуса верификации",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "get-api-verify-status",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

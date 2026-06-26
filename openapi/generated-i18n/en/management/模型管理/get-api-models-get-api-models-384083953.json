@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get All Model Metadata",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Model Management"
+    }
+  ],
+  "paths": {
+    "/api/models/": {
+      "get": {
+        "tags": [
+          "Model Management"
+        ],
+        "summary": "Get All Model Metadata",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "get-api-models",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

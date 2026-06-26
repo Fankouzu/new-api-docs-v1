@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить пригласительный код",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Управление пользователями"
+    }
+  ],
+  "paths": {
+    "/api/user/aff": {
+      "get": {
+        "tags": [
+          "Управление пользователями"
+        ],
+        "summary": "Получить пригласительный код",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "get-api-user-aff",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

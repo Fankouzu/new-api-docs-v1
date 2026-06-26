@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Поиск токенов",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Управление токенами"
+    }
+  ],
+  "paths": {
+    "/api/token/search": {
+      "get": {
+        "tags": [
+          "Управление токенами"
+        ],
+        "summary": "Поиск токенов",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "get-api-token-search",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

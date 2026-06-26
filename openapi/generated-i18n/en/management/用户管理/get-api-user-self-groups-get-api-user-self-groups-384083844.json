@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Current User Group",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/self/groups": {
+      "get": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Get Current User Group",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "get-api-user-self-groups",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

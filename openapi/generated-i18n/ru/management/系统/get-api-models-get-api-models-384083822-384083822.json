@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить список моделей",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Система"
+    }
+  ],
+  "paths": {
+    "/api/models": {
+      "get": {
+        "tags": [
+          "Система"
+        ],
+        "summary": "Получить список моделей",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "get-api-models-384083822",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

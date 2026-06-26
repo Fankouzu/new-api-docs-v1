@@ -1,0 +1,149 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Пересортировка документов",
+    "version": "1.0.0",
+    "description": "Пересортировать список документов по релевантности на основе запроса"
+  },
+  "tags": [
+    {
+      "name": "Переранжирование (Rerank)"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Аутентификация с помощью Bearer Token.\nФормат: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/rerank": {
+      "post": {
+        "tags": [
+          "Переранжирование (Rerank)"
+        ],
+        "summary": "Пересортировка документов",
+        "description": "Пересортировать список документов по релевантности на основе запроса",
+        "operationId": "creatererank",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "model",
+                  "query",
+                  "documents"
+                ],
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "examples": [
+                      "rerank-english-v2.0"
+                    ]
+                  },
+                  "query": {
+                    "type": "string",
+                    "description": "Запросить текст"
+                  },
+                  "documents": {
+                    "type": "array",
+                    "items": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {},
+                          "x-apifox-orders": []
+                        }
+                      ]
+                    },
+                    "description": "Список документов для переранжирования"
+                  },
+                  "top_n": {
+                    "type": "integer",
+                    "description": "Вернуть первые N результатов"
+                  },
+                  "return_documents": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                },
+                "x-apifox-orders": [
+                  "model",
+                  "query",
+                  "documents",
+                  "top_n",
+                  "return_documents"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Пересортировка успешно выполнена",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "index": {
+                            "type": "integer"
+                          },
+                          "relevance_score": {
+                            "type": "number"
+                          },
+                          "document": {
+                            "type": "object",
+                            "properties": {},
+                            "x-apifox-orders": []
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "index",
+                          "relevance_score",
+                          "document"
+                        ]
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "id",
+                    "results",
+                    "meta"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

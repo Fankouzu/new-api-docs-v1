@@ -1,0 +1,54 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить использование токенов",
+    "version": "1.0.0",
+    "description": "🔑 Требуется аутентификация по токену (TokenAuth)"
+  },
+  "tags": [
+    {
+      "name": "Управление токенами"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Аутентификация с помощью Bearer Token.\nФормат: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/api/usage/token/": {
+      "get": {
+        "tags": [
+          "Управление токенами"
+        ],
+        "summary": "Получить использование токенов",
+        "description": "🔑 Требуется аутентификация по токену (TokenAuth)",
+        "operationId": "get-api-usage-token",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

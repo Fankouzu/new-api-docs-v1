@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Search models",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Model Management"
+    }
+  ],
+  "paths": {
+    "/api/models/search": {
+      "get": {
+        "tags": [
+          "Model Management"
+        ],
+        "summary": "Search models",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "get-api-models-search",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

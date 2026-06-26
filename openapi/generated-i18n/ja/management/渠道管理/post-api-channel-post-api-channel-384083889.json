@@ -1,0 +1,59 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "チャネルを追加",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "チャネル管理"
+    }
+  ],
+  "paths": {
+    "/api/channel/": {
+      "post": {
+        "tags": [
+          "チャネル管理"
+        ],
+        "summary": "チャネルを追加",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "post-api-channel",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "single",
+                      "batch",
+                      "multi_to_single"
+                    ]
+                  },
+                  "channel": {
+                    "type": "object",
+                    "description": "Unresolved $ref: #/definitions/224188811"
+                  }
+                },
+                "x-apifox-orders": [
+                  "mode",
+                  "channel"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

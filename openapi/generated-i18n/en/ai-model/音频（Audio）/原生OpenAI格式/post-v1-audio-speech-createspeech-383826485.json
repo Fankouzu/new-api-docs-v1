@@ -1,0 +1,117 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Text-to-speech",
+    "version": "1.0.0",
+    "description": "Convert text to audio"
+  },
+  "tags": [
+    {
+      "name": "Audio / Native OpenAI Format"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Use Bearer Token authentication.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/audio/speech": {
+      "post": {
+        "tags": [
+          "Audio / Native OpenAI Format"
+        ],
+        "summary": "Text-to-speech",
+        "description": "Convert text to audio",
+        "operationId": "createspeech",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "model",
+                  "input",
+                  "voice"
+                ],
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "examples": [
+                      "tts-1"
+                    ]
+                  },
+                  "input": {
+                    "type": "string",
+                    "description": "Text to convert",
+                    "maxLength": 4096
+                  },
+                  "voice": {
+                    "type": "string",
+                    "enum": [
+                      "alloy",
+                      "echo",
+                      "fable",
+                      "onyx",
+                      "nova",
+                      "shimmer"
+                    ]
+                  },
+                  "response_format": {
+                    "type": "string",
+                    "enum": [
+                      "mp3",
+                      "opus",
+                      "aac",
+                      "flac",
+                      "wav",
+                      "pcm"
+                    ],
+                    "default": "mp3"
+                  },
+                  "speed": {
+                    "type": "number",
+                    "minimum": 0.25,
+                    "maximum": 4,
+                    "default": 1
+                  }
+                },
+                "x-apifox-orders": [
+                  "model",
+                  "input",
+                  "voice",
+                  "response_format",
+                  "speed"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully generated audio",
+            "content": {
+              "audio/mpeg": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

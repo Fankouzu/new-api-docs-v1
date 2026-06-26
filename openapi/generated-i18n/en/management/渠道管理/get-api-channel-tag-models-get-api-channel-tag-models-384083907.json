@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Tag Models",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Channel Management"
+    }
+  ],
+  "paths": {
+    "/api/channel/tag/models": {
+      "get": {
+        "tags": [
+          "Channel Management"
+        ],
+        "summary": "Get Tag Models",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "get-api-channel-tag-models",
+        "parameters": [
+          {
+            "name": "tag",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

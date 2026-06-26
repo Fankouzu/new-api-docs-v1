@@ -1,0 +1,42 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Create User",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/": {
+      "post": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Create User",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "post-api-user",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Unresolved $ref: #/definitions/224188810"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить информацию о пополнении",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Пополнение баланса"
+    }
+  ],
+  "paths": {
+    "/api/user/topup/info": {
+      "get": {
+        "tags": [
+          "Пополнение баланса"
+        ],
+        "summary": "Получить информацию о пополнении",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "get-api-user-topup-info",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

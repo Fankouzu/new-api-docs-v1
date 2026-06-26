@@ -1,0 +1,49 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Включить тегированный канал",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление каналами"
+    }
+  ],
+  "paths": {
+    "/api/channel/tag/enabled": {
+      "post": {
+        "tags": [
+          "Управление каналами"
+        ],
+        "summary": "Включить тегированный канал",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "post-api-channel-tag-enabled",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tag": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "tag"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

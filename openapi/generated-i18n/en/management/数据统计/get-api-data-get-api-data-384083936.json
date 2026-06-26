@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get All Quota Data",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Data statistics"
+    }
+  ],
+  "paths": {
+    "/api/data/": {
+      "get": {
+        "tags": [
+          "Data statistics"
+        ],
+        "summary": "Get All Quota Data",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "get-api-data",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

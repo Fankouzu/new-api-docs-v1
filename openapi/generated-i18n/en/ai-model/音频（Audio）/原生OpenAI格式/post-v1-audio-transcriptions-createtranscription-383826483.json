@@ -1,0 +1,118 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Audio Transcription",
+    "version": "1.0.0",
+    "description": "Convert audio to text"
+  },
+  "tags": [
+    {
+      "name": "Audio / Native OpenAI Format"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Use Bearer Token authentication.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/audio/transcriptions": {
+      "post": {
+        "tags": [
+          "Audio / Native OpenAI Format"
+        ],
+        "summary": "Audio Transcription",
+        "description": "Convert audio to text",
+        "operationId": "createtranscription",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Audio File"
+                  },
+                  "model": {
+                    "type": "string",
+                    "examples": [
+                      "whisper-1"
+                    ]
+                  },
+                  "language": {
+                    "type": "string",
+                    "description": "ISO-639-1 language code"
+                  },
+                  "prompt": {
+                    "type": "string"
+                  },
+                  "response_format": {
+                    "type": "string",
+                    "enum": [
+                      "json",
+                      "text",
+                      "srt",
+                      "verbose_json",
+                      "vtt"
+                    ],
+                    "default": "json"
+                  },
+                  "temperature": {
+                    "type": "number"
+                  },
+                  "timestamp_granularities": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "word",
+                        "segment"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "file",
+                  "model"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully transcribed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "text"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

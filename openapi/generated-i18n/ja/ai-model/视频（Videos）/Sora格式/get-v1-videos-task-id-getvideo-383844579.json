@@ -1,0 +1,151 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ビデオタスクステータスを取得する",
+    "version": "1.0.0",
+    "description": "OpenAI互換のビデオタスク状態確認インターフェース。\n\nビデオタスクの詳細な状態情報を返します。\n"
+  },
+  "tags": [
+    {
+      "name": "ビデオ（Videos）/Sora形式"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Bearer Token認証を使用します。\n形式: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/videos/{task_id}": {
+      "get": {
+        "tags": [
+          "ビデオ（Videos）/Sora形式"
+        ],
+        "summary": "ビデオタスクステータスを取得する",
+        "description": "OpenAI互換のビデオタスク状態確認インターフェース。\n\nビデオタスクの詳細な状態情報を返します。\n",
+        "operationId": "getvideo",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "description": "ビデオタスクID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "動画タスク状態の取得に成功しました",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string"
+                    },
+                    "model": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "progress": {
+                      "type": "integer"
+                    },
+                    "created_at": {
+                      "type": "integer"
+                    },
+                    "seconds": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "object",
+                    "model",
+                    "status",
+                    "progress",
+                    "created_at",
+                    "seconds"
+                  ],
+                  "x-apifox-orders": [
+                    "id",
+                    "object",
+                    "model",
+                    "status",
+                    "progress",
+                    "created_at",
+                    "seconds"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "タスクが存在しません",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "エラーメッセージ"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "エラータイプ"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "関連パラメータ"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "エラーコード"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

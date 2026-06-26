@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить конфигурацию множителей",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "Система"
+    }
+  ],
+  "paths": {
+    "/api/ratio_config": {
+      "get": {
+        "tags": [
+          "Система"
+        ],
+        "summary": "Получить конфигурацию множителей",
+        "description": "🔓 Без аутентификации",
+        "operationId": "get-api-ratio-config",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

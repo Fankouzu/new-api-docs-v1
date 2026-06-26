@@ -1,0 +1,80 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "すべてのチャネルを取得する",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "チャネル管理"
+    }
+  ],
+  "paths": {
+    "/api/channel/": {
+      "get": {
+        "tags": [
+          "チャネル管理"
+        ],
+        "summary": "すべてのチャネルを取得する",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "get-api-channel",
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "id_sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "tag_mode",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Stripe Webhook",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required (Webhook callback)"
+  },
+  "tags": [
+    {
+      "name": "Recharge"
+    }
+  ],
+  "paths": {
+    "/api/stripe/webhook": {
+      "post": {
+        "tags": [
+          "Recharge"
+        ],
+        "summary": "Stripe Webhook",
+        "description": "🔓 No authentication required (Webhook callback)",
+        "operationId": "post-api-stripe-webhook",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

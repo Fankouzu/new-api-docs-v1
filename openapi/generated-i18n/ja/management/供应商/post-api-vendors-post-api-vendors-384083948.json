@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ベンダの作成",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "ベンダ"
+    }
+  ],
+  "paths": {
+    "/api/vendors/": {
+      "post": {
+        "tags": [
+          "ベンダ"
+        ],
+        "summary": "ベンダの作成",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "post-api-vendors",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

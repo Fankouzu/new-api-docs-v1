@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить указанный токен",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Управление токенами"
+    }
+  ],
+  "paths": {
+    "/api/token/{id}": {
+      "get": {
+        "tags": [
+          "Управление токенами"
+        ],
+        "summary": "Получить указанный токен",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "get-api-token-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

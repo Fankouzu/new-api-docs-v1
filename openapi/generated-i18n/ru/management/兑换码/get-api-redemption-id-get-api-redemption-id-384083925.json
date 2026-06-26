@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить указанный код активации",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Код активации"
+    }
+  ],
+  "paths": {
+    "/api/redemption/{id}": {
+      "get": {
+        "tags": [
+          "Код активации"
+        ],
+        "summary": "Получить указанный код активации",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-redemption-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

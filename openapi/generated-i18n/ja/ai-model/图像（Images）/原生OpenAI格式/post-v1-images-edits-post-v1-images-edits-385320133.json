@@ -1,0 +1,126 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "画像編集",
+    "version": "1.0.0",
+    "description": "元の画像とプロンプトを指定して、画像の編集または拡張を作成します。\n\n"
+  },
+  "tags": [
+    {
+      "name": "画像（Images）/ネイティブOpenAI形式"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "paths": {
+    "/v1/images/edits/": {
+      "post": {
+        "tags": [
+          "画像（Images）/ネイティブOpenAI形式"
+        ],
+        "summary": "画像編集",
+        "description": "元の画像とプロンプトを指定して、画像の編集または拡張を作成します。\n\n",
+        "operationId": "post-v1-images-edits",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "description": "編集する画像。有効なPNGファイルで、4MB未満、正方形である必要があります。マスクが提供されない場合、画像は透明度を持ち、マスクとして使用されます。",
+                    "type": "string",
+                    "format": "binary",
+                    "examples": [
+                      "cmMtdXBsb2FkLTE2ODc4MzMzNDc3NTEtMjA=/31225951_59371037e9_small.png"
+                    ]
+                  },
+                  "mask": {
+                    "description": "追加画像。完全に透明な領域（例：アルファ値がゼロの領域）は、imageが編集されるべき位置を示します。有効なPNGファイルで、4MB未満、かつ元のimageと同じサイズである必要があります。",
+                    "type": "string",
+                    "format": "binary",
+                    "examples": [
+                      []
+                    ]
+                  },
+                  "prompt": {
+                    "description": "必要な画像のテキスト説明。最大長は 1000 文字です。",
+                    "type": "string",
+                    "examples": [
+                      "A cute baby sea otter wearing a beret."
+                    ]
+                  },
+                  "n": {
+                    "description": "生成する画像数。1から10の間でなければなりません。",
+                    "type": "string",
+                    "examples": [
+                      "1"
+                    ]
+                  },
+                  "size": {
+                    "description": "画像を生成するサイズ。`256x256`、`512x512`、`1024x1024`のいずれかである必要があります。",
+                    "type": "string",
+                    "examples": [
+                      "1024x1024"
+                    ]
+                  },
+                  "response_format": {
+                    "description": "生成された画像が返される形式。`url`または`b64_json`である必要があります。",
+                    "type": "string",
+                    "examples": [
+                      "url"
+                    ]
+                  },
+                  "user": {
+                    "description": "エンドユーザーを一意に識別する識別子で、OpenAIが不正使用の監視と検出を支援します。[詳細はこちら](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids)。",
+                    "type": "string",
+                    "examples": [
+                      ""
+                    ]
+                  },
+                  "model": {
+                    "type": "string",
+                    "examples": [
+                      "dall-e-2"
+                    ]
+                  }
+                },
+                "required": [
+                  "image",
+                  "prompt"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Creem Webhook",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required (Webhook callback)"
+  },
+  "tags": [
+    {
+      "name": "Recharge"
+    }
+  ],
+  "paths": {
+    "/api/creem/webhook": {
+      "post": {
+        "tags": [
+          "Recharge"
+        ],
+        "summary": "Creem Webhook",
+        "description": "🔓 No authentication required (Webhook callback)",
+        "operationId": "post-api-creem-webhook",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

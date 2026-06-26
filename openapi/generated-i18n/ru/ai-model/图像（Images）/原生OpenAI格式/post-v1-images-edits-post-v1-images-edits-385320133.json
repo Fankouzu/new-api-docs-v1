@@ -1,0 +1,126 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Редактирование изображения",
+    "version": "1.0.0",
+    "description": "Создание редактирования или расширения изображения на основе исходного изображения и подсказки.\n\n"
+  },
+  "tags": [
+    {
+      "name": "Изображения (Images)/Собственный формат OpenAI"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "paths": {
+    "/v1/images/edits/": {
+      "post": {
+        "tags": [
+          "Изображения (Images)/Собственный формат OpenAI"
+        ],
+        "summary": "Редактирование изображения",
+        "description": "Создание редактирования или расширения изображения на основе исходного изображения и подсказки.\n\n",
+        "operationId": "post-v1-images-edits",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "description": "Изображение для редактирования. Должно быть в формате PNG, размером менее 4 МБ и квадратным. Если маска не указана, изображение должно иметь прозрачность, которая будет использоваться в качестве маски.",
+                    "type": "string",
+                    "format": "binary",
+                    "examples": [
+                      "cmMtdXBsb2FkLTE2ODc4MzMzNDc3NTEtMjA=/31225951_59371037e9_small.png"
+                    ]
+                  },
+                  "mask": {
+                    "description": "Дополнительное изображение, полностью прозрачные области которого (например, области с альфа-каналом равным нулю) указывают, где следует редактировать image. Должно быть в формате PNG, размером менее 4 МБ и иметь те же размеры, что и исходное image.",
+                    "type": "string",
+                    "format": "binary",
+                    "examples": [
+                      []
+                    ]
+                  },
+                  "prompt": {
+                    "description": "Текстовое описание требуемого изображения. Максимальная длина - 1000 символов.",
+                    "type": "string",
+                    "examples": [
+                      "A cute baby sea otter wearing a beret."
+                    ]
+                  },
+                  "n": {
+                    "description": "Количество генерируемых изображений. Должно быть от 1 до 10.",
+                    "type": "string",
+                    "examples": [
+                      "1"
+                    ]
+                  },
+                  "size": {
+                    "description": "Размер генерируемого изображения. Должен быть одним из `256x256`, `512x512` или `1024x1024`.",
+                    "type": "string",
+                    "examples": [
+                      "1024x1024"
+                    ]
+                  },
+                  "response_format": {
+                    "description": "Формат возвращаемого сгенерированного изображения. Должен быть `url` или `b64_json`.",
+                    "type": "string",
+                    "examples": [
+                      "url"
+                    ]
+                  },
+                  "user": {
+                    "description": "Уникальный идентификатор вашего конечного пользователя, который помогает OpenAI отслеживать и выявлять злоупотребления. [Узнать больше](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).",
+                    "type": "string",
+                    "examples": [
+                      ""
+                    ]
+                  },
+                  "model": {
+                    "type": "string",
+                    "examples": [
+                      "dall-e-2"
+                    ]
+                  }
+                },
+                "required": [
+                  "image",
+                  "prompt"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

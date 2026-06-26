@@ -1,0 +1,166 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Native OpenAI Format",
+    "version": "1.0.0",
+    "description": "Convert text to vector embeddings"
+  },
+  "tags": [
+    {
+      "name": "Embeddings (Embeddings)"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Use Bearer Token authentication.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/embeddings": {
+      "post": {
+        "tags": [
+          "Embeddings (Embeddings)"
+        ],
+        "summary": "Native OpenAI Format",
+        "description": "Convert text to vector embeddings",
+        "operationId": "createembedding",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "model",
+                  "input"
+                ],
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "examples": [
+                      "text-embedding-ada-002"
+                    ]
+                  },
+                  "input": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    ],
+                    "description": "Text to Embed"
+                  },
+                  "encoding_format": {
+                    "type": "string",
+                    "enum": [
+                      "float",
+                      "base64"
+                    ],
+                    "default": "float"
+                  },
+                  "dimensions": {
+                    "type": "integer",
+                    "description": "Output Vector Dimension"
+                  }
+                },
+                "x-apifox-orders": [
+                  "model",
+                  "input",
+                  "encoding_format",
+                  "dimensions"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created embeddings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "object": {
+                      "type": "string",
+                      "examples": [
+                        "list"
+                      ]
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "object": {
+                            "type": "string",
+                            "examples": [
+                              "embedding"
+                            ]
+                          },
+                          "index": {
+                            "type": "integer"
+                          },
+                          "embedding": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            }
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "object",
+                          "index",
+                          "embedding"
+                        ]
+                      }
+                    },
+                    "model": {
+                      "type": "string"
+                    },
+                    "usage": {
+                      "type": "object",
+                      "properties": {
+                        "prompt_tokens": {
+                          "type": "integer"
+                        },
+                        "total_tokens": {
+                          "type": "integer"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "prompt_tokens",
+                        "total_tokens"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "object",
+                    "data",
+                    "model",
+                    "usage"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

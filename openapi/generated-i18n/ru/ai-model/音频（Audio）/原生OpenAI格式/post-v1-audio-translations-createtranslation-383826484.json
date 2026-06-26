@@ -1,0 +1,92 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Перевод аудио",
+    "version": "1.0.0",
+    "description": "Перевод аудио в английский текст"
+  },
+  "tags": [
+    {
+      "name": "Аудио (Audio) / нативный формат OpenAI"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Аутентификация с помощью Bearer Token.\nФормат: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/audio/translations": {
+      "post": {
+        "tags": [
+          "Аудио (Audio) / нативный формат OpenAI"
+        ],
+        "summary": "Перевод аудио",
+        "description": "Перевод аудио в английский текст",
+        "operationId": "createtranslation",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "model": {
+                    "type": "string"
+                  },
+                  "prompt": {
+                    "type": "string"
+                  },
+                  "response_format": {
+                    "type": "string"
+                  },
+                  "temperature": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "file",
+                  "model"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Перевод успешно выполнен",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "text"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "チャネルキーを取得する",
+    "version": "1.0.0",
+    "description": "👑 スーパー管理者権限（Root）+ セキュリティ認証が必要"
+  },
+  "tags": [
+    {
+      "name": "チャネル管理"
+    }
+  ],
+  "paths": {
+    "/api/channel/{id}/key": {
+      "post": {
+        "tags": [
+          "チャネル管理"
+        ],
+        "summary": "チャネルキーを取得する",
+        "description": "👑 スーパー管理者権限（Root）+ セキュリティ認証が必要",
+        "operationId": "post-api-channel-id-key",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

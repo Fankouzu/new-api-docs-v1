@@ -1,0 +1,61 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Редактирование каналов тегов",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление каналами"
+    }
+  ],
+  "paths": {
+    "/api/channel/tag": {
+      "put": {
+        "tags": [
+          "Управление каналами"
+        ],
+        "summary": "Редактирование каналов тегов",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "put-api-channel-tag",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tag": {
+                    "type": "string"
+                  },
+                  "new_tag": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  }
+                },
+                "x-apifox-orders": [
+                  "tag",
+                  "new_tag",
+                  "priority",
+                  "weight"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

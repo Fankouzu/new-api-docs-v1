@@ -1,0 +1,101 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Native Gemini Format",
+    "version": "1.0.0",
+    "description": "Return available model list in Gemini API format"
+  },
+  "tags": [
+    {
+      "name": "Models / List Models"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Use Bearer Token authentication.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1beta/models": {
+      "get": {
+        "tags": [
+          "Models / List Models"
+        ],
+        "summary": "Native Gemini Format",
+        "description": "Return available model list in Gemini API format",
+        "operationId": "listmodelsgemini",
+        "parameters": [],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved model list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "models": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "examples": [
+                              "models/gemini-pro"
+                            ]
+                          },
+                          "version": {
+                            "type": "string"
+                          },
+                          "displayName": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "inputTokenLimit": {
+                            "type": "integer"
+                          },
+                          "outputTokenLimit": {
+                            "type": "integer"
+                          },
+                          "supportedGenerationMethods": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "name",
+                          "version",
+                          "displayName",
+                          "description",
+                          "inputTokenLimit",
+                          "outputTokenLimit",
+                          "supportedGenerationMethods"
+                        ]
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "models"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

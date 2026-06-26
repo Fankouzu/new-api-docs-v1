@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Delete Invalid Redemption Code",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Redemption code"
+    }
+  ],
+  "paths": {
+    "/api/redemption/invalid": {
+      "delete": {
+        "tags": [
+          "Redemption code"
+        ],
+        "summary": "Delete Invalid Redemption Code",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "delete-api-redemption-invalid",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

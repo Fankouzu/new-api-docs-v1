@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Stripe Webhook",
+    "version": "1.0.0",
+    "description": "🔓 認証不要（Webhookコールバック）"
+  },
+  "tags": [
+    {
+      "name": "チャージ"
+    }
+  ],
+  "paths": {
+    "/api/stripe/webhook": {
+      "post": {
+        "tags": [
+          "チャージ"
+        ],
+        "summary": "Stripe Webhook",
+        "description": "🔓 認証不要（Webhookコールバック）",
+        "operationId": "post-api-stripe-webhook",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

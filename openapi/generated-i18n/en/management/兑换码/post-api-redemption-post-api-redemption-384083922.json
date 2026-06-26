@@ -1,0 +1,42 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Create redemption code",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Redemption code"
+    }
+  ],
+  "paths": {
+    "/api/redemption/": {
+      "post": {
+        "tags": [
+          "Redemption code"
+        ],
+        "summary": "Create redemption code",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "post-api-redemption",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Unresolved $ref: #/definitions/224188813"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

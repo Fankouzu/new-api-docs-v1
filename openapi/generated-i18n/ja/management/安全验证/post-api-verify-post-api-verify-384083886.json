@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "汎用セキュリティ検証",
+    "version": "1.0.0",
+    "description": "🔐 ログインが必要（User権限）"
+  },
+  "tags": [
+    {
+      "name": "セキュリティ検証"
+    }
+  ],
+  "paths": {
+    "/api/verify": {
+      "post": {
+        "tags": [
+          "セキュリティ検証"
+        ],
+        "summary": "汎用セキュリティ検証",
+        "description": "🔐 ログインが必要（User権限）",
+        "operationId": "post-api-verify",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

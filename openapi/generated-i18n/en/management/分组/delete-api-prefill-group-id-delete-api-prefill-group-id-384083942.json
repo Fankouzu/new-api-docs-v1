@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Delete Prefilled Group",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Group"
+    }
+  ],
+  "paths": {
+    "/api/prefill_group/{id}": {
+      "delete": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Delete Prefilled Group",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "delete-api-prefill-group-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

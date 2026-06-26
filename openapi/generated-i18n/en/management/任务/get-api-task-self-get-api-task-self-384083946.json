@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Personal Tasks",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "Task"
+    }
+  ],
+  "paths": {
+    "/api/task/self": {
+      "get": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "Get Personal Tasks",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "get-api-task-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

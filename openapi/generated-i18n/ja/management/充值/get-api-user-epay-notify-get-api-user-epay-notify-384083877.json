@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Epayコールバック",
+    "version": "1.0.0",
+    "description": "🔓 認証不要（支払いコールバック）"
+  },
+  "tags": [
+    {
+      "name": "チャージ"
+    }
+  ],
+  "paths": {
+    "/api/user/epay/notify": {
+      "get": {
+        "tags": [
+          "チャージ"
+        ],
+        "summary": "Epayコールバック",
+        "description": "🔓 認証不要（支払いコールバック）",
+        "operationId": "get-api-user-epay-notify",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

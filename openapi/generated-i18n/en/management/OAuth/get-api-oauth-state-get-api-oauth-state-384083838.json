@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Generate OAuth State",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/state": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Generate OAuth State",
+        "description": "🔓 No authentication required",
+        "operationId": "get-api-oauth-state",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "モデルリストを取得する",
+    "version": "1.0.0",
+    "description": "🔐 ログインが必要（User権限）"
+  },
+  "tags": [
+    {
+      "name": "システム"
+    }
+  ],
+  "paths": {
+    "/api/models": {
+      "get": {
+        "tags": [
+          "システム"
+        ],
+        "summary": "モデルリストを取得する",
+        "description": "🔐 ログインが必要（User権限）",
+        "operationId": "get-api-models-384083822",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

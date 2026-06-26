@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get All Providers",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Provider"
+    }
+  ],
+  "paths": {
+    "/api/vendors/": {
+      "get": {
+        "tags": [
+          "Provider"
+        ],
+        "summary": "Get All Providers",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "get-api-vendors",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

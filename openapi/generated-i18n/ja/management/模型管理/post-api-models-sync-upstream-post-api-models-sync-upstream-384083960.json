@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "上流モデルの同期",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "モデル管理"
+    }
+  ],
+  "paths": {
+    "/api/models/sync_upstream": {
+      "post": {
+        "tags": [
+          "モデル管理"
+        ],
+        "summary": "上流モデルの同期",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "post-api-models-sync-upstream",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

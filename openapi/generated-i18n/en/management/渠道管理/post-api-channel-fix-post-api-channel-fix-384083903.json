@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Fix channel capability",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Channel Management"
+    }
+  ],
+  "paths": {
+    "/api/channel/fix": {
+      "post": {
+        "tags": [
+          "Channel Management"
+        ],
+        "summary": "Fix channel capability",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "post-api-channel-fix",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Поиск кодов активации",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Код активации"
+    }
+  ],
+  "paths": {
+    "/api/redemption/search": {
+      "get": {
+        "tags": [
+          "Код активации"
+        ],
+        "summary": "Поиск кодов активации",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-redemption-search",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

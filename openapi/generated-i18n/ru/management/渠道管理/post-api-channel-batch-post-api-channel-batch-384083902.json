@@ -1,0 +1,52 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Массовое удаление каналов",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление каналами"
+    }
+  ],
+  "paths": {
+    "/api/channel/batch": {
+      "post": {
+        "tags": [
+          "Управление каналами"
+        ],
+        "summary": "Массовое удаление каналов",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "post-api-channel-batch",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "ids"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

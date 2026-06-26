@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Discord OAuth login",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required (OAuth callback)"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/discord": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Discord OAuth login",
+        "description": "🔓 No authentication required (OAuth callback)",
+        "operationId": "get-api-oauth-discord",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

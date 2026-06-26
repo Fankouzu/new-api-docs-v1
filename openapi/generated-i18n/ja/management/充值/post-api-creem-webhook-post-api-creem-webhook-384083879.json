@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Creem Webhook",
+    "version": "1.0.0",
+    "description": "🔓 認証不要（Webhookコールバック）"
+  },
+  "tags": [
+    {
+      "name": "チャージ"
+    }
+  ],
+  "paths": {
+    "/api/creem/webhook": {
+      "post": {
+        "tags": [
+          "チャージ"
+        ],
+        "summary": "Creem Webhook",
+        "description": "🔓 認証不要（Webhookコールバック）",
+        "operationId": "post-api-creem-webhook",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

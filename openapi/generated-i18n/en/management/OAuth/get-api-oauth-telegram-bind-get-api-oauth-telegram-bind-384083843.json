@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Bind Telegram",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/telegram/bind": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Bind Telegram",
+        "description": "🔓 No authentication required",
+        "operationId": "get-api-oauth-telegram-bind",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

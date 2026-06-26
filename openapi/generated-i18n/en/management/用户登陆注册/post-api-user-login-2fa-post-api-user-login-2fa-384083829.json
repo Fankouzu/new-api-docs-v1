@@ -1,0 +1,49 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Two-factor authentication login",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required (login flow)"
+  },
+  "tags": [
+    {
+      "name": "User login and registration"
+    }
+  ],
+  "paths": {
+    "/api/user/login/2fa": {
+      "post": {
+        "tags": [
+          "User login and registration"
+        ],
+        "summary": "Two-factor authentication login",
+        "description": "🔓 No authentication required (login flow)",
+        "operationId": "post-api-user-login-2fa",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "code"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

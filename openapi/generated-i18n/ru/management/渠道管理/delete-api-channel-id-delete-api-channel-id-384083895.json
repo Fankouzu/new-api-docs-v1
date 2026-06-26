@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Удаление канала",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление каналами"
+    }
+  ],
+  "paths": {
+    "/api/channel/{id}": {
+      "delete": {
+        "tags": [
+          "Управление каналами"
+        ],
+        "summary": "Удаление канала",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "delete-api-channel-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

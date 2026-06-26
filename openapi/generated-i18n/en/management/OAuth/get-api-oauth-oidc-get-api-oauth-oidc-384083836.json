@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OIDC login",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required (OAuth callback)"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/oidc": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "OIDC login",
+        "description": "🔓 No authentication required (OAuth callback)",
+        "operationId": "get-api-oauth-oidc",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить записи пополнения пользователя",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Пополнение баланса"
+    }
+  ],
+  "paths": {
+    "/api/user/topup/self": {
+      "get": {
+        "tags": [
+          "Пополнение баланса"
+        ],
+        "summary": "Получить записи пополнения пользователя",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "get-api-user-topup-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

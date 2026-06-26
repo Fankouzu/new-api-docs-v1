@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Epay callback",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required (payment callback)"
+  },
+  "tags": [
+    {
+      "name": "Recharge"
+    }
+  ],
+  "paths": {
+    "/api/user/epay/notify": {
+      "get": {
+        "tags": [
+          "Recharge"
+        ],
+        "summary": "Epay callback",
+        "description": "🔓 No authentication required (payment callback)",
+        "operationId": "get-api-user-epay-notify",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

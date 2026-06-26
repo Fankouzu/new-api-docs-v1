@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить все задачи",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Задача"
+    }
+  ],
+  "paths": {
+    "/api/task/": {
+      "get": {
+        "tags": [
+          "Задача"
+        ],
+        "summary": "Получить все задачи",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-task",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

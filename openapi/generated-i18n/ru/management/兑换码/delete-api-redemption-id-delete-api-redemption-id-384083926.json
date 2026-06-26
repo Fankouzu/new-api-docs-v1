@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Удаление подарочного кода",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Код активации"
+    }
+  ],
+  "paths": {
+    "/api/redemption/{id}": {
+      "delete": {
+        "tags": [
+          "Код активации"
+        ],
+        "summary": "Удаление подарочного кода",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "delete-api-redemption-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

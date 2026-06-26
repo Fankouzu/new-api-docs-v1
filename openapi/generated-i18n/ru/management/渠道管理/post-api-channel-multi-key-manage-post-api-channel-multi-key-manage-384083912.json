@@ -1,0 +1,66 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Управление несколькими ключами",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление каналами"
+    }
+  ],
+  "paths": {
+    "/api/channel/multi_key/manage": {
+      "post": {
+        "tags": [
+          "Управление каналами"
+        ],
+        "summary": "Управление несколькими ключами",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "post-api-channel-multi-key-manage",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "channel_id": {
+                    "type": "integer"
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "get_key_status",
+                      "disable_key",
+                      "enable_key",
+                      "delete_key",
+                      "delete_disabled_keys",
+                      "enable_all_keys",
+                      "disable_all_keys"
+                    ]
+                  },
+                  "key_index": {
+                    "type": "integer"
+                  }
+                },
+                "x-apifox-orders": [
+                  "channel_id",
+                  "action",
+                  "key_index"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

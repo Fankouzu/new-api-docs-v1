@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить статус Uptime Kuma",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "Система"
+    }
+  ],
+  "paths": {
+    "/api/uptime/status": {
+      "get": {
+        "tags": [
+          "Система"
+        ],
+        "summary": "Получить статус Uptime Kuma",
+        "description": "🔓 Без аутентификации",
+        "operationId": "get-api-uptime-status",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

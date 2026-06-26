@@ -1,0 +1,151 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить статус задачи видео ",
+    "version": "1.0.0",
+    "description": "Интерфейс запроса статуса видео задачи, совместимый с OpenAI.\n\nВозвращает подробную информацию о статусе видео задачи.\n"
+  },
+  "tags": [
+    {
+      "name": "Видео (Videos)/формат Sora"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Аутентификация с помощью Bearer Token.\nФормат: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/videos/{task_id}": {
+      "get": {
+        "tags": [
+          "Видео (Videos)/формат Sora"
+        ],
+        "summary": "Получить статус задачи видео ",
+        "description": "Интерфейс запроса статуса видео задачи, совместимый с OpenAI.\n\nВозвращает подробную информацию о статусе видео задачи.\n",
+        "operationId": "getvideo",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "description": "ID задачи видео",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Статус видео задачи успешно получен",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string"
+                    },
+                    "model": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "progress": {
+                      "type": "integer"
+                    },
+                    "created_at": {
+                      "type": "integer"
+                    },
+                    "seconds": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "object",
+                    "model",
+                    "status",
+                    "progress",
+                    "created_at",
+                    "seconds"
+                  ],
+                  "x-apifox-orders": [
+                    "id",
+                    "object",
+                    "model",
+                    "status",
+                    "progress",
+                    "created_at",
+                    "seconds"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Задача не существует",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Сообщение об ошибке"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Тип ошибки"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Соответствующие параметры"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Код ошибки"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

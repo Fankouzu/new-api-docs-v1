@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить все группы",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Группировка"
+    }
+  ],
+  "paths": {
+    "/api/group/": {
+      "get": {
+        "tags": [
+          "Группировка"
+        ],
+        "summary": "Получить все группы",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-group",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

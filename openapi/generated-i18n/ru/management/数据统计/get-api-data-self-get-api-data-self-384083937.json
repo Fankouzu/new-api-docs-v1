@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить данные лимитов",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Статистика"
+    }
+  ],
+  "paths": {
+    "/api/data/self": {
+      "get": {
+        "tags": [
+          "Статистика"
+        ],
+        "summary": "Получить данные лимитов",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "get-api-data-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

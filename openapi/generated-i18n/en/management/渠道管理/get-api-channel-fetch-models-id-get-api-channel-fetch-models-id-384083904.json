@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Upstream Model List",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Channel Management"
+    }
+  ],
+  "paths": {
+    "/api/channel/fetch_models/{id}": {
+      "get": {
+        "tags": [
+          "Channel Management"
+        ],
+        "summary": "Get Upstream Model List",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "get-api-channel-fetch-models-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

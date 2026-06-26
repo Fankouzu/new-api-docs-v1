@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить множитель вышестоящего сервиса",
+    "version": "1.0.0",
+    "description": "👑 Требуются права суперадминистратора (Root)"
+  },
+  "tags": [
+    {
+      "name": "Настройки системы"
+    }
+  ],
+  "paths": {
+    "/api/ratio_sync/fetch": {
+      "post": {
+        "tags": [
+          "Настройки системы"
+        ],
+        "summary": "Получить множитель вышестоящего сервиса",
+        "description": "👑 Требуются права суперадминистратора (Root)",
+        "operationId": "post-api-ratio-sync-fetch",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

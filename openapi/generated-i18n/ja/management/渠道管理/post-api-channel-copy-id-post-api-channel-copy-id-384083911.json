@@ -1,0 +1,56 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "チャネルの複製",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "チャネル管理"
+    }
+  ],
+  "paths": {
+    "/api/channel/copy/{id}": {
+      "post": {
+        "tags": [
+          "チャネル管理"
+        ],
+        "summary": "チャネルの複製",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "post-api-channel-copy-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "suffix",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "reset_balance",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

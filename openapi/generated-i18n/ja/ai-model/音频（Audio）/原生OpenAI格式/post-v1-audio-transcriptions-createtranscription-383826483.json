@@ -1,0 +1,118 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "音声文字起こし",
+    "version": "1.0.0",
+    "description": "音声をテキストに変換"
+  },
+  "tags": [
+    {
+      "name": "音声（Audio）/ネイティブOpenAI形式"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Bearer Token認証を使用します。\n形式: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/audio/transcriptions": {
+      "post": {
+        "tags": [
+          "音声（Audio）/ネイティブOpenAI形式"
+        ],
+        "summary": "音声文字起こし",
+        "description": "音声をテキストに変換",
+        "operationId": "createtranscription",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "音声ファイル"
+                  },
+                  "model": {
+                    "type": "string",
+                    "examples": [
+                      "whisper-1"
+                    ]
+                  },
+                  "language": {
+                    "type": "string",
+                    "description": "ISO-639-1 言語コード"
+                  },
+                  "prompt": {
+                    "type": "string"
+                  },
+                  "response_format": {
+                    "type": "string",
+                    "enum": [
+                      "json",
+                      "text",
+                      "srt",
+                      "verbose_json",
+                      "vtt"
+                    ],
+                    "default": "json"
+                  },
+                  "temperature": {
+                    "type": "number"
+                  },
+                  "timestamp_granularities": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "word",
+                        "segment"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "file",
+                  "model"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "文字起こしに成功しました",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "text"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Транскрипция аудио",
+    "version": "1.0.0",
+    "description": "Преобразование аудио в текст"
+  },
+  "tags": [
+    {
+      "name": "Аудио (Audio) / нативный формат OpenAI"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Аутентификация с помощью Bearer Token.\nФормат: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/audio/transcriptions": {
+      "post": {
+        "tags": [
+          "Аудио (Audio) / нативный формат OpenAI"
+        ],
+        "summary": "Транскрипция аудио",
+        "description": "Преобразование аудио в текст",
+        "operationId": "createtranscription",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Аудиофайл"
+                  },
+                  "model": {
+                    "type": "string",
+                    "examples": [
+                      "whisper-1"
+                    ]
+                  },
+                  "language": {
+                    "type": "string",
+                    "description": "Код языка ISO-639-1"
+                  },
+                  "prompt": {
+                    "type": "string"
+                  },
+                  "response_format": {
+                    "type": "string",
+                    "enum": [
+                      "json",
+                      "text",
+                      "srt",
+                      "verbose_json",
+                      "vtt"
+                    ],
+                    "default": "json"
+                  },
+                  "temperature": {
+                    "type": "number"
+                  },
+                  "timestamp_granularities": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "word",
+                        "segment"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "file",
+                  "model"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Транскрипция успешно выполнена",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "text"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

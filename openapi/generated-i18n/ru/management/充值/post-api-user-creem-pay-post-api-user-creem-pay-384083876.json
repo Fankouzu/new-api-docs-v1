@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Инициировать платеж Creem",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Пополнение баланса"
+    }
+  ],
+  "paths": {
+    "/api/user/creem/pay": {
+      "post": {
+        "tags": [
+          "Пополнение баланса"
+        ],
+        "summary": "Инициировать платеж Creem",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "post-api-user-creem-pay",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

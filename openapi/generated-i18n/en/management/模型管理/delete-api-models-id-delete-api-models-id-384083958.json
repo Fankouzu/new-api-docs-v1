@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Delete Model",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Model Management"
+    }
+  ],
+  "paths": {
+    "/api/models/{id}": {
+      "delete": {
+        "tags": [
+          "Model Management"
+        ],
+        "summary": "Delete Model",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "delete-api-models-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

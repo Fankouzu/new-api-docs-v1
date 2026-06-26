@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Выход пользователя из системы",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "Вход и регистрация пользователя"
+    }
+  ],
+  "paths": {
+    "/api/user/logout": {
+      "get": {
+        "tags": [
+          "Вход и регистрация пользователя"
+        ],
+        "summary": "Выход пользователя из системы",
+        "description": "🔓 Без аутентификации",
+        "operationId": "get-api-user-logout",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

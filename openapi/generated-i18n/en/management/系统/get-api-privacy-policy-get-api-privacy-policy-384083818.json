@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Privacy Policy",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required"
+  },
+  "tags": [
+    {
+      "name": "System"
+    }
+  ],
+  "paths": {
+    "/api/privacy-policy": {
+      "get": {
+        "tags": [
+          "System"
+        ],
+        "summary": "Get Privacy Policy",
+        "description": "🔓 No authentication required",
+        "operationId": "get-api-privacy-policy",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить все данные о лимитах",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Статистика"
+    }
+  ],
+  "paths": {
+    "/api/data/": {
+      "get": {
+        "tags": [
+          "Статистика"
+        ],
+        "summary": "Получить все данные о лимитах",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-data",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

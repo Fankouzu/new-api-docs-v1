@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "個人タスクの取得",
+    "version": "1.0.0",
+    "description": "🔐 ログインが必要（User権限）"
+  },
+  "tags": [
+    {
+      "name": "タスク"
+    }
+  ],
+  "paths": {
+    "/api/task/self": {
+      "get": {
+        "tags": [
+          "タスク"
+        ],
+        "summary": "個人タスクの取得",
+        "description": "🔐 ログインが必要（User権限）",
+        "operationId": "get-api-task-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

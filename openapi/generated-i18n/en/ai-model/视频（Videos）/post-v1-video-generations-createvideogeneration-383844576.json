@@ -1,0 +1,232 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Create Video Generation Task",
+    "version": "1.0.0",
+    "description": "Submit a video generation task, supporting text-to-video and image-to-video.\n\nReturns a task ID, which can be used to query the task status via GET endpoint.\n"
+  },
+  "tags": [
+    {
+      "name": "Videos"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Use Bearer Token authentication.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/video/generations": {
+      "post": {
+        "tags": [
+          "Videos"
+        ],
+        "summary": "Create Video Generation Task",
+        "description": "Submit a video generation task, supporting text-to-video and image-to-video.\n\nReturns a task ID, which can be used to query the task status via GET endpoint.\n",
+        "operationId": "createvideogeneration",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Video generation request",
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "description": "Model/Style ID",
+                    "examples": [
+                      "kling-v1"
+                    ]
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "description": "Text description prompt",
+                    "examples": [
+                      "The astronaut stood up and walked away"
+                    ]
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "Image Input (URL or Base64)",
+                    "examples": [
+                      "https://example.com/image.jpg"
+                    ]
+                  },
+                  "duration": {
+                    "type": "number",
+                    "description": "Video duration (seconds)",
+                    "examples": [
+                      5
+                    ]
+                  },
+                  "width": {
+                    "type": "integer",
+                    "description": "Video width",
+                    "examples": [
+                      1280
+                    ]
+                  },
+                  "height": {
+                    "type": "integer",
+                    "description": "Video height",
+                    "examples": [
+                      720
+                    ]
+                  },
+                  "fps": {
+                    "type": "integer",
+                    "description": "Video frame rate",
+                    "examples": [
+                      30
+                    ]
+                  },
+                  "seed": {
+                    "type": "integer",
+                    "description": "Random Seed",
+                    "examples": [
+                      20231234
+                    ]
+                  },
+                  "n": {
+                    "type": "integer",
+                    "description": "Video generation count",
+                    "examples": [
+                      1
+                    ]
+                  },
+                  "response_format": {
+                    "type": "string",
+                    "description": "Response Format",
+                    "examples": [
+                      "url"
+                    ]
+                  },
+                  "user": {
+                    "type": "string",
+                    "description": "User identifier",
+                    "examples": [
+                      "user-1234"
+                    ]
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "description": "Extended parameters (e.g., negative_prompt, style, quality_level, etc.)",
+                    "additionalProperties": true,
+                    "properties": {},
+                    "x-apifox-orders": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "model",
+                  "prompt",
+                  "image",
+                  "duration",
+                  "width",
+                  "height",
+                  "fps",
+                  "seed",
+                  "n",
+                  "response_format",
+                  "user",
+                  "metadata"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created video generation task",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Video generation task submission response",
+                  "properties": {
+                    "task_id": {
+                      "type": "string",
+                      "description": "Task ID",
+                      "examples": [
+                        "abcd1234efgh"
+                      ]
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "Task status",
+                      "examples": [
+                        "queued"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "task_id",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request Parameter Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Error Message"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Error Type"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Related parameters"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Error Code"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

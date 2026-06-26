@@ -1,0 +1,176 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Jimeng動画生成",
+    "version": "1.0.0",
+    "description": "Jimeng公式API形式の動画生成インターフェース。\n\nActionパラメータで操作タイプを指定できます：\n- `CVSync2AsyncSubmitTask`: 動画生成タスクを送信\n- `CVSync2AsyncGetResult`: タスク結果を取得\n\nクエリパラメータでActionとVersionを指定する必要があります。\n"
+  },
+  "tags": [
+    {
+      "name": "ビデオ（Videos）/Jimeng形式"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Bearer Token認証を使用します。\n形式: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/jimeng/": {
+      "post": {
+        "tags": [
+          "ビデオ（Videos）/Jimeng形式"
+        ],
+        "summary": "Jimeng動画生成",
+        "description": "Jimeng公式API形式の動画生成インターフェース。\n\nActionパラメータで操作タイプを指定できます：\n- `CVSync2AsyncSubmitTask`: 動画生成タスクを送信\n- `CVSync2AsyncGetResult`: タスク結果を取得\n\nクエリパラメータでActionとVersionを指定する必要があります。\n",
+        "operationId": "createjimengvideo",
+        "parameters": [
+          {
+            "name": "Action",
+            "in": "query",
+            "required": true,
+            "description": "API 操作タイプ",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "CVSync2AsyncSubmitTask",
+                "CVSync2AsyncGetResult"
+              ]
+            }
+          },
+          {
+            "name": "Version",
+            "in": "query",
+            "required": true,
+            "description": "API バージョン",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Jimeng公式APIリクエスト形式",
+                "properties": {
+                  "req_key": {
+                    "type": "string",
+                    "description": "リクエストタイプ識別子"
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "description": "テキスト説明"
+                  },
+                  "binary_data_base64": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Base64 エンコードされた画像データ"
+                  }
+                },
+                "x-apifox-orders": [
+                  "req_key",
+                  "prompt",
+                  "binary_data_base64"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "リクエストの処理に成功しました",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "description": "レスポンスコード"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "レスポンスメッセージ"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "レスポンスデータ",
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "リクエストパラメータエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "エラーメッセージ"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "エラータイプ"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "関連パラメータ"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "エラーコード"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

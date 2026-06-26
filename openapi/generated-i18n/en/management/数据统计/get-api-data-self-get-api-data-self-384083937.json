@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Personal Quota Data",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "Data statistics"
+    }
+  ],
+  "paths": {
+    "/api/data/self": {
+      "get": {
+        "tags": [
+          "Data statistics"
+        ],
+        "summary": "Get Personal Quota Data",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "get-api-data-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

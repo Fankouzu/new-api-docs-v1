@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get System Options",
+    "version": "1.0.0",
+    "description": "👑 Requires super admin privilege (Root)"
+  },
+  "tags": [
+    {
+      "name": "System Settings"
+    }
+  ],
+  "paths": {
+    "/api/option/": {
+      "get": {
+        "tags": [
+          "System Settings"
+        ],
+        "summary": "Get System Options",
+        "description": "👑 Requires super admin privilege (Root)",
+        "operationId": "get-api-option",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

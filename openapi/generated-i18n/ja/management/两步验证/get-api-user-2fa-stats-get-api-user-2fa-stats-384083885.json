@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "2FA統計の取得",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "二要素認証"
+    }
+  ],
+  "paths": {
+    "/api/user/2fa/stats": {
+      "get": {
+        "tags": [
+          "二要素認証"
+        ],
+        "summary": "2FA統計の取得",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "get-api-user-2fa-stats",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить политику конфиденциальности",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "Система"
+    }
+  ],
+  "paths": {
+    "/api/privacy-policy": {
+      "get": {
+        "tags": [
+          "Система"
+        ],
+        "summary": "Получить политику конфиденциальности",
+        "description": "🔓 Без аутентификации",
+        "operationId": "get-api-privacy-policy",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Поиск моделей",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление моделями"
+    }
+  ],
+  "paths": {
+    "/api/models/search": {
+      "get": {
+        "tags": [
+          "Управление моделями"
+        ],
+        "summary": "Поиск моделей",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-models-search",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

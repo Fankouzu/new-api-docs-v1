@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Общая проверка безопасности",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Проверка безопасности"
+    }
+  ],
+  "paths": {
+    "/api/verify": {
+      "post": {
+        "tags": [
+          "Проверка безопасности"
+        ],
+        "summary": "Общая проверка безопасности",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "post-api-verify",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

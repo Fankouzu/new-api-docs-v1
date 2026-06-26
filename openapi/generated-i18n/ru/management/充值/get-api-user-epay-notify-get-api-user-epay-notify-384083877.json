@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Обратный вызов Epay",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации (обратный вызов оплаты)"
+  },
+  "tags": [
+    {
+      "name": "Пополнение баланса"
+    }
+  ],
+  "paths": {
+    "/api/user/epay/notify": {
+      "get": {
+        "tags": [
+          "Пополнение баланса"
+        ],
+        "summary": "Обратный вызов Epay",
+        "description": "🔓 Без аутентификации (обратный вызов оплаты)",
+        "operationId": "get-api-user-epay-notify",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

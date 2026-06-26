@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Update Pre-filled Group",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Group"
+    }
+  ],
+  "paths": {
+    "/api/prefill_group/": {
+      "put": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Update Pre-filled Group",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "put-api-prefill-group",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

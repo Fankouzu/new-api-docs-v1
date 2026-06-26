@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "GitHub OAuth login",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required (OAuth callback)"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/github": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "GitHub OAuth login",
+        "description": "🔓 No authentication required (OAuth callback)",
+        "operationId": "get-api-oauth-github",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

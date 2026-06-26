@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "General Security Verification",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "Security verification"
+    }
+  ],
+  "paths": {
+    "/api/verify": {
+      "post": {
+        "tags": [
+          "Security verification"
+        ],
+        "summary": "General Security Verification",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "post-api-verify",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

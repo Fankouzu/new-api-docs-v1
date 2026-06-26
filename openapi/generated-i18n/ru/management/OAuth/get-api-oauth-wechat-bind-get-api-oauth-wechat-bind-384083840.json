@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Привязка WeChat",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/wechat/bind": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Привязка WeChat",
+        "description": "🔓 Без аутентификации",
+        "operationId": "get-api-oauth-wechat-bind",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

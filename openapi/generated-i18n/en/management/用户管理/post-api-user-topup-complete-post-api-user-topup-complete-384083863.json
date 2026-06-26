@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Admin completes recharge",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/topup/complete": {
+      "post": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Admin completes recharge",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "post-api-user-topup-complete",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

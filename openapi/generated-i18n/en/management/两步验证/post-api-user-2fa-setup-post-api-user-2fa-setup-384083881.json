@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Set up 2FA",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "Two-factor authentication"
+    }
+  ],
+  "paths": {
+    "/api/user/2fa/setup": {
+      "post": {
+        "tags": [
+          "Two-factor authentication"
+        ],
+        "summary": "Set up 2FA",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "post-api-user-2fa-setup",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

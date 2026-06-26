@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Passkey Status",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/passkey": {
+      "get": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Get Passkey Status",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "get-api-user-passkey",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

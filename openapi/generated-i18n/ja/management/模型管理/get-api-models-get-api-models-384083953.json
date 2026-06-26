@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "すべてのモデルメタデータを取得する",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "モデル管理"
+    }
+  ],
+  "paths": {
+    "/api/models/": {
+      "get": {
+        "tags": [
+          "モデル管理"
+        ],
+        "summary": "すべてのモデルメタデータを取得する",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "get-api-models",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ログ統計を取得する",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "ログ"
+    }
+  ],
+  "paths": {
+    "/api/log/stat": {
+      "get": {
+        "tags": [
+          "ログ"
+        ],
+        "summary": "ログ統計を取得する",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "get-api-log-stat",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

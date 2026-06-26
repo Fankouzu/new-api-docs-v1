@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Migrate Console Settings",
+    "version": "1.0.0",
+    "description": "👑 Requires super admin privilege (Root)"
+  },
+  "tags": [
+    {
+      "name": "System Settings"
+    }
+  ],
+  "paths": {
+    "/api/option/migrate_console_setting": {
+      "post": {
+        "tags": [
+          "System Settings"
+        ],
+        "summary": "Migrate Console Settings",
+        "description": "👑 Requires super admin privilege (Root)",
+        "operationId": "post-api-option-migrate-console-setting",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Specified Token",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "Token management"
+    }
+  ],
+  "paths": {
+    "/api/token/{id}": {
+      "get": {
+        "tags": [
+          "Token management"
+        ],
+        "summary": "Get Specified Token",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "get-api-token-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

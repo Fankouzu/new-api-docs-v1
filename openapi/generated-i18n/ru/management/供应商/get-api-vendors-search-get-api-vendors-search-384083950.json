@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Поиск поставщиков",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Поставщик"
+    }
+  ],
+  "paths": {
+    "/api/vendors/search": {
+      "get": {
+        "tags": [
+          "Поставщик"
+        ],
+        "summary": "Поиск поставщиков",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-vendors-search",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Creem支払いを開始",
+    "version": "1.0.0",
+    "description": "🔐 ログインが必要（User権限）"
+  },
+  "tags": [
+    {
+      "name": "チャージ"
+    }
+  ],
+  "paths": {
+    "/api/user/creem/pay": {
+      "post": {
+        "tags": [
+          "チャージ"
+        ],
+        "summary": "Creem支払いを開始",
+        "description": "🔐 ログインが必要（User権限）",
+        "operationId": "post-api-user-creem-pay",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

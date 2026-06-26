@@ -1,0 +1,311 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Формат Responses",
+    "version": "1.0.0",
+    "description": "OpenAI Responses API для создания ответов модели.\nПоддерживает многораундовые диалоги, вызов инструментов, вывод и другие функции."
+  },
+  "tags": [
+    {
+      "name": "Чат (Chat)/родной формат OpenAI"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Аутентификация с помощью Bearer Token.\nФормат: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/responses": {
+      "post": {
+        "tags": [
+          "Чат (Chat)/родной формат OpenAI"
+        ],
+        "summary": "Формат Responses",
+        "description": "OpenAI Responses API для создания ответов модели.\nПоддерживает многораундовые диалоги, вызов инструментов, вывод и другие функции.",
+        "operationId": "createresponse",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "model"
+                ],
+                "properties": {
+                  "model": {
+                    "type": "string"
+                  },
+                  "input": {
+                    "description": "Входное содержимое, может быть строкой или массивом сообщений",
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {},
+                          "x-apifox-orders": []
+                        }
+                      }
+                    ]
+                  },
+                  "instructions": {
+                    "type": "string"
+                  },
+                  "max_output_tokens": {
+                    "type": "integer"
+                  },
+                  "temperature": {
+                    "type": "number"
+                  },
+                  "top_p": {
+                    "type": "number"
+                  },
+                  "stream": {
+                    "type": "boolean"
+                  },
+                  "tools": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "tool_choice": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "object",
+                        "properties": {},
+                        "x-apifox-orders": []
+                      }
+                    ]
+                  },
+                  "reasoning": {
+                    "type": "object",
+                    "properties": {
+                      "effort": {
+                        "type": "string",
+                        "enum": [
+                          "low",
+                          "medium",
+                          "high"
+                        ]
+                      },
+                      "summary": {
+                        "type": "string"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "effort",
+                      "summary"
+                    ]
+                  },
+                  "previous_response_id": {
+                    "type": "string"
+                  },
+                  "truncation": {
+                    "type": "string",
+                    "enum": [
+                      "auto",
+                      "disabled"
+                    ]
+                  }
+                },
+                "x-apifox-orders": [
+                  "model",
+                  "input",
+                  "instructions",
+                  "max_output_tokens",
+                  "temperature",
+                  "top_p",
+                  "stream",
+                  "tools",
+                  "tool_choice",
+                  "reasoning",
+                  "previous_response_id",
+                  "truncation"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно создан ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string",
+                      "examples": [
+                        "response"
+                      ]
+                    },
+                    "created_at": {
+                      "type": "integer"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "completed",
+                        "failed",
+                        "in_progress",
+                        "incomplete"
+                      ]
+                    },
+                    "model": {
+                      "type": "string"
+                    },
+                    "output": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "role": {
+                            "type": "string"
+                          },
+                          "content": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              },
+                              "x-apifox-orders": [
+                                "type",
+                                "text"
+                              ]
+                            }
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "type",
+                          "id",
+                          "status",
+                          "role",
+                          "content"
+                        ]
+                      }
+                    },
+                    "usage": {
+                      "type": "object",
+                      "properties": {
+                        "prompt_tokens": {
+                          "type": "integer",
+                          "description": "Количество токенов промпта"
+                        },
+                        "completion_tokens": {
+                          "type": "integer",
+                          "description": "Количество токенов завершения"
+                        },
+                        "total_tokens": {
+                          "type": "integer",
+                          "description": "Общее количество токенов"
+                        },
+                        "prompt_tokens_details": {
+                          "type": "object",
+                          "properties": {
+                            "cached_tokens": {
+                              "type": "integer"
+                            },
+                            "text_tokens": {
+                              "type": "integer"
+                            },
+                            "audio_tokens": {
+                              "type": "integer"
+                            },
+                            "image_tokens": {
+                              "type": "integer"
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "cached_tokens",
+                            "text_tokens",
+                            "audio_tokens",
+                            "image_tokens"
+                          ]
+                        },
+                        "completion_tokens_details": {
+                          "type": "object",
+                          "properties": {
+                            "text_tokens": {
+                              "type": "integer"
+                            },
+                            "audio_tokens": {
+                              "type": "integer"
+                            },
+                            "reasoning_tokens": {
+                              "type": "integer"
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "text_tokens",
+                            "audio_tokens",
+                            "reasoning_tokens"
+                          ]
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "prompt_tokens",
+                        "completion_tokens",
+                        "total_tokens",
+                        "prompt_tokens_details",
+                        "completion_tokens_details"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "id",
+                    "object",
+                    "created_at",
+                    "status",
+                    "model",
+                    "output",
+                    "usage"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

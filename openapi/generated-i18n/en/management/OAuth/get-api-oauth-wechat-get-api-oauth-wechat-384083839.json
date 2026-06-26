@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "WeChat OAuth login",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required (OAuth callback)"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/wechat": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "WeChat OAuth login",
+        "description": "🔓 No authentication required (OAuth callback)",
+        "operationId": "get-api-oauth-wechat",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "チャネル機能の修正",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "チャネル管理"
+    }
+  ],
+  "paths": {
+    "/api/channel/fix": {
+      "post": {
+        "tags": [
+          "チャネル管理"
+        ],
+        "summary": "チャネル機能の修正",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "post-api-channel-fix",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

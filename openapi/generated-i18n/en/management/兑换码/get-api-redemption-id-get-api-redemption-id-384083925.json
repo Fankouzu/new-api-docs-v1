@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Specified Redemption Code",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Redemption code"
+    }
+  ],
+  "paths": {
+    "/api/redemption/{id}": {
+      "get": {
+        "tags": [
+          "Redemption code"
+        ],
+        "summary": "Get Specified Redemption Code",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "get-api-redemption-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

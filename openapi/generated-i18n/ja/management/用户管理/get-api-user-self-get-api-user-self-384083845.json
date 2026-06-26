@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "現在のユーザー情報の取得",
+    "version": "1.0.0",
+    "description": "🔐 ログインが必要（User権限）"
+  },
+  "tags": [
+    {
+      "name": "ユーザー管理"
+    }
+  ],
+  "paths": {
+    "/api/user/self": {
+      "get": {
+        "tags": [
+          "ユーザー管理"
+        ],
+        "summary": "現在のユーザー情報の取得",
+        "description": "🔐 ログインが必要（User権限）",
+        "operationId": "get-api-user-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

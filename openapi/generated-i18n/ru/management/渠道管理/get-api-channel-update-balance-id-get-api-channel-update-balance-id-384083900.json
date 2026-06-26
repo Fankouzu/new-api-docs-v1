@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Обновить баланс указанного канала",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление каналами"
+    }
+  ],
+  "paths": {
+    "/api/channel/update_balance/{id}": {
+      "get": {
+        "tags": [
+          "Управление каналами"
+        ],
+        "summary": "Обновить баланс указанного канала",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-channel-update-balance-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Passkeyログインの開始",
+    "version": "1.0.0",
+    "description": "🔓 認証不要"
+  },
+  "tags": [
+    {
+      "name": "ユーザーログイン・登録"
+    }
+  ],
+  "paths": {
+    "/api/user/passkey/login/begin": {
+      "post": {
+        "tags": [
+          "ユーザーログイン・登録"
+        ],
+        "summary": "Passkeyログインの開始",
+        "description": "🔓 認証不要",
+        "operationId": "post-api-user-passkey-login-begin",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

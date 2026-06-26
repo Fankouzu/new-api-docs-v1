@@ -1,0 +1,191 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ネイティブOpenAI形式",
+    "version": "1.0.0",
+    "description": "現在利用可能なモデルリストを取得します。\n\nリクエストヘッダーに基づいて自動的に返却形式を識別します：\n- `x-api-key` および `anthropic-version` ヘッダーを含む場合、Anthropic形式で返却\n- `x-goog-api-key` ヘッダーまたは `key` クエリパラメータを含む場合、Gemini形式で返却\n- それ以外の場合はOpenAI形式で返却"
+  },
+  "tags": [
+    {
+      "name": "モデル（Models）/モデル一覧"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Bearer Token認証を使用します。\n形式: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/models": {
+      "get": {
+        "tags": [
+          "モデル（Models）/モデル一覧"
+        ],
+        "summary": "ネイティブOpenAI形式",
+        "description": "現在利用可能なモデルリストを取得します。\n\nリクエストヘッダーに基づいて自動的に返却形式を識別します：\n- `x-api-key` および `anthropic-version` ヘッダーを含む場合、Anthropic形式で返却\n- `x-goog-api-key` ヘッダーまたは `key` クエリパラメータを含む場合、Gemini形式で返却\n- それ以外の場合はOpenAI形式で返却",
+        "operationId": "listmodels",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "required": false,
+            "description": "Google API Key (Gemini形式用)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "description": "Anthropic API Key (Claude形式用)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "anthropic-version",
+            "in": "header",
+            "required": false,
+            "description": "Anthropic API バージョン",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "2023-06-01"
+              ]
+            }
+          },
+          {
+            "name": "x-goog-api-key",
+            "in": "header",
+            "required": false,
+            "description": "Google API Key (Gemini形式用)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "モデルリストの取得に成功しました",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "object": {
+                      "type": "string",
+                      "examples": [
+                        "list"
+                      ]
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "モデル ID",
+                            "examples": [
+                              "gpt-4"
+                            ]
+                          },
+                          "object": {
+                            "type": "string",
+                            "description": "オブジェクトタイプ",
+                            "examples": [
+                              "model"
+                            ]
+                          },
+                          "created": {
+                            "type": "integer",
+                            "description": "作成タイムスタンプ"
+                          },
+                          "owned_by": {
+                            "type": "string",
+                            "description": "モデル所有者",
+                            "examples": [
+                              "openai"
+                            ]
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "id",
+                          "object",
+                          "created",
+                          "owned_by"
+                        ]
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "object",
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "認証失敗",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "エラーメッセージ"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "エラータイプ"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "関連パラメータ"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "エラーコード"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

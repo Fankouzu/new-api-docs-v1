@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "供应商を更新",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "ベンダ"
+    }
+  ],
+  "paths": {
+    "/api/vendors/": {
+      "put": {
+        "tags": [
+          "ベンダ"
+        ],
+        "summary": "供应商を更新",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "put-api-vendors",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

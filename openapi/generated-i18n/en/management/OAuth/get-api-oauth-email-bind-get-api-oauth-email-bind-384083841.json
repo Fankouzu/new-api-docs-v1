@@ -1,0 +1,48 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Bind Email",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/email/bind": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Bind Email",
+        "description": "🔓 No authentication required",
+        "operationId": "get-api-oauth-email-bind",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

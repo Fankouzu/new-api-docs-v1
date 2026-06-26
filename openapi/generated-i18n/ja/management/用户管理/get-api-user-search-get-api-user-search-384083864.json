@@ -1,0 +1,48 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ユーザの検索",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "ユーザー管理"
+    }
+  ],
+  "paths": {
+    "/api/user/search": {
+      "get": {
+        "tags": [
+          "ユーザー管理"
+        ],
+        "summary": "ユーザの検索",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "get-api-user-search",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "group",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

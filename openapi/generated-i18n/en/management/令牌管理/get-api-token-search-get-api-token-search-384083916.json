@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Search tokens",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "Token management"
+    }
+  ],
+  "paths": {
+    "/api/token/search": {
+      "get": {
+        "tags": [
+          "Token management"
+        ],
+        "summary": "Search tokens",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "get-api-token-search",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

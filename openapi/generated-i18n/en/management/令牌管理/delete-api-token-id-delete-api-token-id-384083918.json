@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Delete Token",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "Token management"
+    }
+  ],
+  "paths": {
+    "/api/token/{id}": {
+      "delete": {
+        "tags": [
+          "Token management"
+        ],
+        "summary": "Delete Token",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "delete-api-token-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

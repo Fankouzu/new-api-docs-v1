@@ -1,0 +1,48 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "メールアドレスバインド",
+    "version": "1.0.0",
+    "description": "🔓 認証不要"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/email/bind": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "メールアドレスバインド",
+        "description": "🔓 認証不要",
+        "operationId": "get-api-oauth-email-bind",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

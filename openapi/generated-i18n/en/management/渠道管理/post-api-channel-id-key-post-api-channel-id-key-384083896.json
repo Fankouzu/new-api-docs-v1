@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Channel Key",
+    "version": "1.0.0",
+    "description": "👑 Requires super admin privilege (Root) + security verification"
+  },
+  "tags": [
+    {
+      "name": "Channel Management"
+    }
+  ],
+  "paths": {
+    "/api/channel/{id}/key": {
+      "post": {
+        "tags": [
+          "Channel Management"
+        ],
+        "summary": "Get Channel Key",
+        "description": "👑 Requires super admin privilege (Root) + security verification",
+        "operationId": "post-api-channel-id-key",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "事前入力グループを取得する",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "グループ"
+    }
+  ],
+  "paths": {
+    "/api/prefill_group/": {
+      "get": {
+        "tags": [
+          "グループ"
+        ],
+        "summary": "事前入力グループを取得する",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "get-api-prefill-group",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

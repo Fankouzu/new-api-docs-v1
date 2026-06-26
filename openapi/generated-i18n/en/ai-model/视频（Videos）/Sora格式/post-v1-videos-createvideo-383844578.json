@@ -1,0 +1,302 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Create Video ",
+    "version": "1.0.0",
+    "description": "OpenAI-compatible video generation endpoint.\n\nReference documentation: https://platform.openai.com/docs/api-reference/videos/create\n"
+  },
+  "tags": [
+    {
+      "name": "Videos / Sora format"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Use Bearer Token authentication.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/videos": {
+      "post": {
+        "tags": [
+          "Videos / Sora format"
+        ],
+        "summary": "Create Video ",
+        "description": "OpenAI-compatible video generation endpoint.\n\nReference documentation: https://platform.openai.com/docs/api-reference/videos/create\n",
+        "operationId": "createvideo",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "description": "Video generation request",
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "description": "Model/Style ID",
+                    "examples": [
+                      "kling-v1"
+                    ]
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "description": "Text description prompt",
+                    "examples": [
+                      "The astronaut stood up and walked away"
+                    ]
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "Image Input (URL or Base64)",
+                    "examples": [
+                      "https://example.com/image.jpg"
+                    ]
+                  },
+                  "duration": {
+                    "type": "number",
+                    "description": "Video duration (seconds)",
+                    "examples": [
+                      5
+                    ]
+                  },
+                  "width": {
+                    "type": "integer",
+                    "description": "Video width",
+                    "examples": [
+                      1280
+                    ]
+                  },
+                  "height": {
+                    "type": "integer",
+                    "description": "Video height",
+                    "examples": [
+                      720
+                    ]
+                  },
+                  "fps": {
+                    "type": "integer",
+                    "description": "Video frame rate",
+                    "examples": [
+                      30
+                    ]
+                  },
+                  "seed": {
+                    "type": "integer",
+                    "description": "Random Seed",
+                    "examples": [
+                      20231234
+                    ]
+                  },
+                  "n": {
+                    "type": "integer",
+                    "description": "Video generation count",
+                    "examples": [
+                      1
+                    ]
+                  },
+                  "response_format": {
+                    "type": "string",
+                    "description": "Response Format",
+                    "examples": [
+                      "url"
+                    ]
+                  },
+                  "user": {
+                    "type": "string",
+                    "description": "User identifier",
+                    "examples": [
+                      "user-1234"
+                    ]
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "description": "Extended parameters (e.g., negative_prompt, style, quality_level, etc.)",
+                    "additionalProperties": true,
+                    "properties": {},
+                    "x-apifox-orders": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "model",
+                  "prompt",
+                  "image",
+                  "duration",
+                  "width",
+                  "height",
+                  "fps",
+                  "seed",
+                  "n",
+                  "response_format",
+                  "user",
+                  "metadata"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created video task",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Video ID"
+                    },
+                    "object": {
+                      "type": "string",
+                      "description": "Object type"
+                    },
+                    "model": {
+                      "type": "string",
+                      "description": "Model used"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "Task status"
+                    },
+                    "progress": {
+                      "type": "integer",
+                      "description": "Progress Percentage"
+                    },
+                    "created_at": {
+                      "type": "integer",
+                      "description": "Create Timestamp"
+                    },
+                    "seconds": {
+                      "type": "string",
+                      "description": "Video duration"
+                    },
+                    "completed_at": {
+                      "type": "integer",
+                      "description": "Completion timestamp"
+                    },
+                    "expires_at": {
+                      "type": "integer",
+                      "description": "Expiration Timestamp"
+                    },
+                    "size": {
+                      "type": "string",
+                      "description": "Video dimensions"
+                    },
+                    "error": {
+                      "type": "object",
+                      "description": "OpenAI video error information",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Error Message"
+                        },
+                        "code": {
+                          "type": "string",
+                          "description": "Error Code"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "code"
+                      ]
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "description": "Extra Metadata",
+                      "additionalProperties": true,
+                      "x-apifox-orders": [],
+                      "properties": {}
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "object",
+                    "model",
+                    "status",
+                    "progress",
+                    "created_at",
+                    "seconds"
+                  ],
+                  "x-apifox-orders": [
+                    "id",
+                    "object",
+                    "model",
+                    "status",
+                    "progress",
+                    "created_at",
+                    "seconds",
+                    "completed_at",
+                    "expires_at",
+                    "size",
+                    "error",
+                    "metadata"
+                  ],
+                  "x-apifox-refs": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request Parameter Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Error Message"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Error Type"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Related parameters"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Error Code"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

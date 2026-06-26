@@ -1,0 +1,53 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Вход пользователя в систему",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "Вход и регистрация пользователя"
+    }
+  ],
+  "paths": {
+    "/api/user/login": {
+      "post": {
+        "tags": [
+          "Вход и регистрация пользователя"
+        ],
+        "summary": "Вход пользователя в систему",
+        "description": "🔓 Без аутентификации",
+        "operationId": "post-api-user-login",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "username",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

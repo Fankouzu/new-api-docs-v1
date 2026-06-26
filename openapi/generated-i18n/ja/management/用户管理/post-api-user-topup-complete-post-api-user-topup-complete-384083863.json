@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "管理者がチャージを完了",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "ユーザー管理"
+    }
+  ],
+  "paths": {
+    "/api/user/topup/complete": {
+      "post": {
+        "tags": [
+          "ユーザー管理"
+        ],
+        "summary": "管理者がチャージを完了",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "post-api-user-topup-complete",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Массовое удаление токенов",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Управление токенами"
+    }
+  ],
+  "paths": {
+    "/api/token/batch": {
+      "post": {
+        "tags": [
+          "Управление токенами"
+        ],
+        "summary": "Массовое удаление токенов",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "post-api-token-batch",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "x-apifox-orders": [
+                  "ids"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

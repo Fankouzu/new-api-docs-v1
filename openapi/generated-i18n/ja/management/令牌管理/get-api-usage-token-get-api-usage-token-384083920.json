@@ -1,0 +1,54 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "トークン使用状況の取得",
+    "version": "1.0.0",
+    "description": "🔑 トークン認証（TokenAuth）が必要"
+  },
+  "tags": [
+    {
+      "name": "トークン管理"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Bearer Token認証を使用します。\n形式: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/api/usage/token/": {
+      "get": {
+        "tags": [
+          "トークン管理"
+        ],
+        "summary": "トークン使用状況の取得",
+        "description": "🔑 トークン認証（TokenAuth）が必要",
+        "operationId": "get-api-usage-token",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить статус инициализации",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "Система"
+    }
+  ],
+  "paths": {
+    "/api/setup": {
+      "get": {
+        "tags": [
+          "Система"
+        ],
+        "summary": "Получить статус инициализации",
+        "description": "🔓 Без аутентификации",
+        "operationId": "get-api-setup",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

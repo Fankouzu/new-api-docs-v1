@@ -1,0 +1,90 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "List fine-tuning jobs (not implemented)",
+    "version": "1.0.0",
+    "description": "This endpoint is not yet implemented"
+  },
+  "tags": [
+    {
+      "name": "Not Implemented (Unimplemented) / Fine-tuning"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Use Bearer Token authentication.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/fine-tunes": {
+      "get": {
+        "tags": [
+          "Not Implemented (Unimplemented) / Fine-tuning"
+        ],
+        "summary": "List fine-tuning jobs (not implemented)",
+        "description": "This endpoint is not yet implemented",
+        "operationId": "listfinetunes",
+        "parameters": [],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "501": {
+            "description": "Not Implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Error Message"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Error Type"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Related parameters"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Error Code"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

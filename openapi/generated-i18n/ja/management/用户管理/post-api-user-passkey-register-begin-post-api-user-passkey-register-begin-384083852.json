@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Passkey登録の開始",
+    "version": "1.0.0",
+    "description": "🔐 ログインが必要（User権限）"
+  },
+  "tags": [
+    {
+      "name": "ユーザー管理"
+    }
+  ],
+  "paths": {
+    "/api/user/passkey/register/begin": {
+      "post": {
+        "tags": [
+          "ユーザー管理"
+        ],
+        "summary": "Passkey登録の開始",
+        "description": "🔐 ログインが必要（User権限）",
+        "operationId": "post-api-user-passkey-register-begin",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

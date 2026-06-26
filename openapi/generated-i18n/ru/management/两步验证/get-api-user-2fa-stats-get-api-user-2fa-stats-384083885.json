@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить статистику 2FA",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Двухфакторная аутентификация"
+    }
+  ],
+  "paths": {
+    "/api/user/2fa/stats": {
+      "get": {
+        "tags": [
+          "Двухфакторная аутентификация"
+        ],
+        "summary": "Получить статистику 2FA",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-user-2fa-stats",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

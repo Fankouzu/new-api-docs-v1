@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Сгенерировать OAuth State",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/state": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Сгенерировать OAuth State",
+        "description": "🔓 Без аутентификации",
+        "operationId": "get-api-oauth-state",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

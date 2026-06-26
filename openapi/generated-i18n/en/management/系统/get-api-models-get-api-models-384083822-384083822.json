@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Model List",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "System"
+    }
+  ],
+  "paths": {
+    "/api/models": {
+      "get": {
+        "tags": [
+          "System"
+        ],
+        "summary": "Get Model List",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "get-api-models-384083822",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

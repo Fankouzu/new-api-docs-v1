@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "モデルメタデータを更新",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "モデル管理"
+    }
+  ],
+  "paths": {
+    "/api/models/": {
+      "put": {
+        "tags": [
+          "モデル管理"
+        ],
+        "summary": "モデルメタデータを更新",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "put-api-models",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

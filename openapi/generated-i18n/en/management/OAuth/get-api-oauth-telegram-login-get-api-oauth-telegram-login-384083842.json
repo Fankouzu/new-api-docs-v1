@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Telegram login",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required (OAuth callback)"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/telegram/login": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Telegram login",
+        "description": "🔓 No authentication required (OAuth callback)",
+        "operationId": "get-api-oauth-telegram-login",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

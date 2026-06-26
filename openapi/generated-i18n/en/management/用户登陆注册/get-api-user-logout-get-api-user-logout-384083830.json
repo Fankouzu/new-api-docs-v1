@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "User logout",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required"
+  },
+  "tags": [
+    {
+      "name": "User login and registration"
+    }
+  ],
+  "paths": {
+    "/api/user/logout": {
+      "get": {
+        "tags": [
+          "User login and registration"
+        ],
+        "summary": "User logout",
+        "description": "🔓 No authentication required",
+        "operationId": "get-api-user-logout",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

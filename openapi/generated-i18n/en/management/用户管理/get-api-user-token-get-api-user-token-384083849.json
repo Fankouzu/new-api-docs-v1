@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Generate access token",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/token": {
+      "get": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Generate access token",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "get-api-user-token",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Admin resets user Passkey",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/{id}/reset_passkey": {
+      "delete": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Admin resets user Passkey",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "delete-api-user-id-reset-passkey",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить информацию 'О программе'",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "Система"
+    }
+  ],
+  "paths": {
+    "/api/about": {
+      "get": {
+        "tags": [
+          "Система"
+        ],
+        "summary": "Получить информацию 'О программе'",
+        "description": "🔓 Без аутентификации",
+        "operationId": "get-api-about",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

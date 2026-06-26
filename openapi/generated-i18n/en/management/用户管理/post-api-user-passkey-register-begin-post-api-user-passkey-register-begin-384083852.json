@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Start Passkey registration",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/passkey/register/begin": {
+      "post": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Start Passkey registration",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "post-api-user-passkey-register-begin",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

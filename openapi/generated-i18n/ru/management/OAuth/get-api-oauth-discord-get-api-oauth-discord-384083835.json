@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Вход через Discord OAuth",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации (обратный вызов OAuth)"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/discord": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Вход через Discord OAuth",
+        "description": "🔓 Без аутентификации (обратный вызов OAuth)",
+        "operationId": "get-api-oauth-discord",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

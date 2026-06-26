@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить синхронизируемые каналы",
+    "version": "1.0.0",
+    "description": "👑 Требуются права суперадминистратора (Root)"
+  },
+  "tags": [
+    {
+      "name": "Настройки системы"
+    }
+  ],
+  "paths": {
+    "/api/ratio_sync/channels": {
+      "get": {
+        "tags": [
+          "Настройки системы"
+        ],
+        "summary": "Получить синхронизируемые каналы",
+        "description": "👑 Требуются права суперадминистратора (Root)",
+        "operationId": "get-api-ratio-sync-channels",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить список групп пользователя",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "Вход и регистрация пользователя"
+    }
+  ],
+  "paths": {
+    "/api/user/groups": {
+      "get": {
+        "tags": [
+          "Вход и регистрация пользователя"
+        ],
+        "summary": "Получить список групп пользователя",
+        "description": "🔓 Без аутентификации",
+        "operationId": "get-api-user-groups",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

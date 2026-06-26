@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Вход через Telegram",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации (обратный вызов OAuth)"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/telegram/login": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Вход через Telegram",
+        "description": "🔓 Без аутентификации (обратный вызов OAuth)",
+        "operationId": "get-api-oauth-telegram-login",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

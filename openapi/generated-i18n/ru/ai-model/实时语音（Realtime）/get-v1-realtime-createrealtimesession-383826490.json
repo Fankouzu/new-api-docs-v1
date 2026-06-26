@@ -1,0 +1,106 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Нативный формат OpenAI",
+    "version": "1.0.0",
+    "description": "Установление WebSocket-соединения для диалога в реальном времени.\n\n**Примечание**: Это конечная точка WebSocket, для подключения необходимо использовать протокол WebSocket.\n\nПример URL подключения: `wss://api.example.com/v1/realtime?model=gpt-4o-realtime`\n"
+  },
+  "tags": [
+    {
+      "name": "Голос в реальном времени (Realtime)"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Аутентификация с помощью Bearer Token.\nФормат: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/realtime": {
+      "get": {
+        "tags": [
+          "Голос в реальном времени (Realtime)"
+        ],
+        "summary": "Нативный формат OpenAI",
+        "description": "Установление WebSocket-соединения для диалога в реальном времени.\n\n**Примечание**: Это конечная точка WebSocket, для подключения необходимо использовать протокол WebSocket.\n\nПример URL подключения: `wss://api.example.com/v1/realtime?model=gpt-4o-realtime`\n",
+        "operationId": "createrealtimesession",
+        "parameters": [
+          {
+            "name": "model",
+            "in": "query",
+            "required": false,
+            "description": "Используемая модель",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "gpt-4o-realtime-preview"
+              ]
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "101": {
+            "description": "Переключение протокола WebSocket"
+          },
+          "400": {
+            "description": "Ошибка запроса",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Сообщение об ошибке"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Тип ошибки"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Соответствующие параметры"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Код ошибки"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

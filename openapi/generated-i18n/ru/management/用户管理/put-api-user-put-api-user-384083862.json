@@ -1,0 +1,42 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Обновить пользователя",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление пользователями"
+    }
+  ],
+  "paths": {
+    "/api/user/": {
+      "put": {
+        "tags": [
+          "Управление пользователями"
+        ],
+        "summary": "Обновить пользователя",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "put-api-user",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Unresolved $ref: #/definitions/224188810"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

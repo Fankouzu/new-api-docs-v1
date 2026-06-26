@@ -1,0 +1,42 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ユーザーの作成",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "ユーザー管理"
+    }
+  ],
+  "paths": {
+    "/api/user/": {
+      "post": {
+        "tags": [
+          "ユーザー管理"
+        ],
+        "summary": "ユーザーの作成",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "post-api-user",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Unresolved $ref: #/definitions/224188810"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "個人ログの取得",
+    "version": "1.0.0",
+    "description": "🔐 ログインが必要（User権限）"
+  },
+  "tags": [
+    {
+      "name": "ログ"
+    }
+  ],
+  "paths": {
+    "/api/log/self": {
+      "get": {
+        "tags": [
+          "ログ"
+        ],
+        "summary": "個人ログの取得",
+        "description": "🔐 ログインが必要（User権限）",
+        "operationId": "get-api-log-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

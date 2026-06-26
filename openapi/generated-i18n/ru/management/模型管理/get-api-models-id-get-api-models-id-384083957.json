@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить указанную модель",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление моделями"
+    }
+  ],
+  "paths": {
+    "/api/models/{id}": {
+      "get": {
+        "tags": [
+          "Управление моделями"
+        ],
+        "summary": "Получить указанную модель",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-models-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

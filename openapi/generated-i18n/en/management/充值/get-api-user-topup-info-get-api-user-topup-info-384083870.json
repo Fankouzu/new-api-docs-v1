@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Top-up Information",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "Recharge"
+    }
+  ],
+  "paths": {
+    "/api/user/topup/info": {
+      "get": {
+        "tags": [
+          "Recharge"
+        ],
+        "summary": "Get Top-up Information",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "get-api-user-topup-info",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

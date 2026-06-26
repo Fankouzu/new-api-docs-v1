@@ -1,0 +1,129 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Native OpenAI Format",
+    "version": "1.0.0",
+    "description": "Check text content for violation of usage policies"
+  },
+  "tags": [
+    {
+      "name": "Moderation (Moderations)"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Use Bearer Token authentication.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/moderations": {
+      "post": {
+        "tags": [
+          "Moderation (Moderations)"
+        ],
+        "summary": "Native OpenAI Format",
+        "description": "Check text content for violation of usage policies",
+        "operationId": "createmoderation",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "input"
+                ],
+                "properties": {
+                  "input": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    ]
+                  },
+                  "model": {
+                    "type": "string",
+                    "examples": [
+                      "text-moderation-latest"
+                    ]
+                  }
+                },
+                "x-apifox-orders": [
+                  "input",
+                  "model"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully reviewed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "model": {
+                      "type": "string"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "flagged": {
+                            "type": "boolean"
+                          },
+                          "categories": {
+                            "type": "object",
+                            "properties": {},
+                            "x-apifox-orders": []
+                          },
+                          "category_scores": {
+                            "type": "object",
+                            "properties": {},
+                            "x-apifox-orders": []
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "flagged",
+                          "categories",
+                          "category_scores"
+                        ]
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "id",
+                    "model",
+                    "results"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

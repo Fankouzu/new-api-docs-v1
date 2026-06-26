@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "メール確認コードの送信",
+    "version": "1.0.0",
+    "description": "🔓 認証不要"
+  },
+  "tags": [
+    {
+      "name": "ユーザーログイン・登録"
+    }
+  ],
+  "paths": {
+    "/api/verification": {
+      "get": {
+        "tags": [
+          "ユーザーログイン・登録"
+        ],
+        "summary": "メール確認コードの送信",
+        "description": "🔓 認証不要",
+        "operationId": "get-api-verification",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

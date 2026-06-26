@@ -1,0 +1,65 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "User registration",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required"
+  },
+  "tags": [
+    {
+      "name": "User login and registration"
+    }
+  ],
+  "paths": {
+    "/api/user/register": {
+      "post": {
+        "tags": [
+          "User login and registration"
+        ],
+        "summary": "User registration",
+        "description": "🔓 No authentication required",
+        "operationId": "post-api-user-register",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "verification_code": {
+                    "type": "string"
+                  },
+                  "aff_code": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "username",
+                  "password",
+                  "email",
+                  "verification_code",
+                  "aff_code"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

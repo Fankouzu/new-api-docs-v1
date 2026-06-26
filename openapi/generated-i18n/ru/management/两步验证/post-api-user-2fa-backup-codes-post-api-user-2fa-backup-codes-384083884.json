@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Повторная генерация резервных кодов",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Двухфакторная аутентификация"
+    }
+  ],
+  "paths": {
+    "/api/user/2fa/backup_codes": {
+      "post": {
+        "tags": [
+          "Двухфакторная аутентификация"
+        ],
+        "summary": "Повторная генерация резервных кодов",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "post-api-user-2fa-backup-codes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

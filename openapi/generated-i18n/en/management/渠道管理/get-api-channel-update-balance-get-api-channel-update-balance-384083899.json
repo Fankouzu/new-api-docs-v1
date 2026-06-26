@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Update All Channel Balances",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Channel Management"
+    }
+  ],
+  "paths": {
+    "/api/channel/update_balance": {
+      "get": {
+        "tags": [
+          "Channel Management"
+        ],
+        "summary": "Update All Channel Balances",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "get-api-channel-update-balance",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

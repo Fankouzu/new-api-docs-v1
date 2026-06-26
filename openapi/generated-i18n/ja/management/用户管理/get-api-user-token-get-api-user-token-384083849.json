@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "アクセストークンの生成",
+    "version": "1.0.0",
+    "description": "🔐 ログインが必要（User権限）"
+  },
+  "tags": [
+    {
+      "name": "ユーザー管理"
+    }
+  ],
+  "paths": {
+    "/api/user/token": {
+      "get": {
+        "tags": [
+          "ユーザー管理"
+        ],
+        "summary": "アクセストークンの生成",
+        "description": "🔐 ログインが必要（User権限）",
+        "operationId": "get-api-user-token",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

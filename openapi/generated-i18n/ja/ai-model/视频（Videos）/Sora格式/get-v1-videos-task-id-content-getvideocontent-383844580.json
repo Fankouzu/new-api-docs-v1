@@ -1,0 +1,111 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ビデオコンテンツを取得する",
+    "version": "1.0.0",
+    "description": "完了した動画タスクの動画ファイル内容を取得します。\n\nこのインターフェースはプロキシを介して動画ファイルストリームを返します。"
+  },
+  "tags": [
+    {
+      "name": "ビデオ（Videos）/Sora形式"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Bearer Token認証を使用します。\n形式: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/videos/{task_id}/content": {
+      "get": {
+        "tags": [
+          "ビデオ（Videos）/Sora形式"
+        ],
+        "summary": "ビデオコンテンツを取得する",
+        "description": "完了した動画タスクの動画ファイル内容を取得します。\n\nこのインターフェースはプロキシを介して動画ファイルストリームを返します。",
+        "operationId": "getvideocontent",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "description": "ビデオタスクID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "動画コンテンツの取得に成功しました",
+            "content": {
+              "video/mp4": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "ビデオが存在しないか、未完了です",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "エラーメッセージ"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "エラータイプ"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "関連パラメータ"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "エラーコード"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

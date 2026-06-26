@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить информацию о ценах",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации (опциональный вход)"
+  },
+  "tags": [
+    {
+      "name": "Система"
+    }
+  ],
+  "paths": {
+    "/api/pricing": {
+      "get": {
+        "tags": [
+          "Система"
+        ],
+        "summary": "Получить информацию о ценах",
+        "description": "🔓 Без аутентификации (опциональный вход)",
+        "operationId": "get-api-pricing",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

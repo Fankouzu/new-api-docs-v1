@@ -1,0 +1,232 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Создание задачи генерации видео",
+    "version": "1.0.0",
+    "description": "Отправка задачи генерации видео, поддерживает генерацию из текста и изображения.\n\nВозвращает ID задачи. Статус задачи можно запросить через GET интерфейс.\n"
+  },
+  "tags": [
+    {
+      "name": "Видео (Videos)"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Аутентификация с помощью Bearer Token.\nФормат: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/video/generations": {
+      "post": {
+        "tags": [
+          "Видео (Videos)"
+        ],
+        "summary": "Создание задачи генерации видео",
+        "description": "Отправка задачи генерации видео, поддерживает генерацию из текста и изображения.\n\nВозвращает ID задачи. Статус задачи можно запросить через GET интерфейс.\n",
+        "operationId": "createvideogeneration",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Запрос на генерацию видео",
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "description": "ID модели/стиля",
+                    "examples": [
+                      "kling-v1"
+                    ]
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "description": "Промпт текстового описания",
+                    "examples": [
+                      "Астронавт встал и ушел"
+                    ]
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "Ввод изображения (URL или Base64)",
+                    "examples": [
+                      "https://example.com/image.jpg"
+                    ]
+                  },
+                  "duration": {
+                    "type": "number",
+                    "description": "Длительность видео (сек)",
+                    "examples": [
+                      5
+                    ]
+                  },
+                  "width": {
+                    "type": "integer",
+                    "description": "Ширина видео",
+                    "examples": [
+                      1280
+                    ]
+                  },
+                  "height": {
+                    "type": "integer",
+                    "description": "Высота видео",
+                    "examples": [
+                      720
+                    ]
+                  },
+                  "fps": {
+                    "type": "integer",
+                    "description": "Частота кадров видео",
+                    "examples": [
+                      30
+                    ]
+                  },
+                  "seed": {
+                    "type": "integer",
+                    "description": "Случайное зерно",
+                    "examples": [
+                      20231234
+                    ]
+                  },
+                  "n": {
+                    "type": "integer",
+                    "description": "Количество генерируемых видео",
+                    "examples": [
+                      1
+                    ]
+                  },
+                  "response_format": {
+                    "type": "string",
+                    "description": "Формат ответа",
+                    "examples": [
+                      "url"
+                    ]
+                  },
+                  "user": {
+                    "type": "string",
+                    "description": "Идентификатор пользователя",
+                    "examples": [
+                      "user-1234"
+                    ]
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "description": "Расширенные параметры (например, negative_prompt, style, quality_level и т.д.)",
+                    "additionalProperties": true,
+                    "properties": {},
+                    "x-apifox-orders": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "model",
+                  "prompt",
+                  "image",
+                  "duration",
+                  "width",
+                  "height",
+                  "fps",
+                  "seed",
+                  "n",
+                  "response_format",
+                  "user",
+                  "metadata"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно создана задача генерации видео",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Ответ на отправку задачи генерации видео",
+                  "properties": {
+                    "task_id": {
+                      "type": "string",
+                      "description": "ID задачи",
+                      "examples": [
+                        "abcd1234efgh"
+                      ]
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "Статус задачи",
+                      "examples": [
+                        "queued"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "task_id",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка параметров запроса",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Сообщение об ошибке"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Тип ошибки"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Соответствующие параметры"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Код ошибки"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

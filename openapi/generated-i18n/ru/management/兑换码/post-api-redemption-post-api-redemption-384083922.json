@@ -1,0 +1,42 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Создать код активации",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Код активации"
+    }
+  ],
+  "paths": {
+    "/api/redemption/": {
+      "post": {
+        "tags": [
+          "Код активации"
+        ],
+        "summary": "Создать код активации",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "post-api-redemption",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Unresolved $ref: #/definitions/224188813"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Лимит на преобразование приглашений",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Управление пользователями"
+    }
+  ],
+  "paths": {
+    "/api/user/aff_transfer": {
+      "post": {
+        "tags": [
+          "Управление пользователями"
+        ],
+        "summary": "Лимит на преобразование приглашений",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "post-api-user-aff-transfer",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "quota": {
+                    "type": "integer"
+                  }
+                },
+                "x-apifox-orders": [
+                  "quota"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

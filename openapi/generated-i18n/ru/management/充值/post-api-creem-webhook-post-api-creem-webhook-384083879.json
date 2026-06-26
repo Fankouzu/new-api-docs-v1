@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Creem Webhook",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации (обратный вызов Webhook)"
+  },
+  "tags": [
+    {
+      "name": "Пополнение баланса"
+    }
+  ],
+  "paths": {
+    "/api/creem/webhook": {
+      "post": {
+        "tags": [
+          "Пополнение баланса"
+        ],
+        "summary": "Creem Webhook",
+        "description": "🔓 Без аутентификации (обратный вызов Webhook)",
+        "operationId": "post-api-creem-webhook",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Настройка 2FA",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Двухфакторная аутентификация"
+    }
+  ],
+  "paths": {
+    "/api/user/2fa/setup": {
+      "post": {
+        "tags": [
+          "Двухфакторная аутентификация"
+        ],
+        "summary": "Настройка 2FA",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "post-api-user-2fa-setup",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

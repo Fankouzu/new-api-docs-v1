@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get All Tasks",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Task"
+    }
+  ],
+  "paths": {
+    "/api/task/": {
+      "get": {
+        "tags": [
+          "Task"
+        ],
+        "summary": "Get All Tasks",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "get-api-task",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

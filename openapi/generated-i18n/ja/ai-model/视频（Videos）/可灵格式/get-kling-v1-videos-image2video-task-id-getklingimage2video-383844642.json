@@ -1,0 +1,221 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Klingの画像から動画生成タスクのステータスを取得",
+    "version": "1.0.0",
+    "description": "Kling 画像生成ビデオタスクのステータスと結果を照会します。"
+  },
+  "tags": [
+    {
+      "name": "ビデオ（Videos）/Kling形式"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Bearer Token認証を使用します。\n形式: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/kling/v1/videos/image2video/{task_id}": {
+      "get": {
+        "tags": [
+          "ビデオ（Videos）/Kling形式"
+        ],
+        "summary": "Klingの画像から動画生成タスクのステータスを取得",
+        "description": "Kling 画像生成ビデオタスクのステータスと結果を照会します。",
+        "operationId": "getklingimage2video",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "description": "タスクID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "タスク状態の取得に成功しました",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ビデオタスク状態照会応答",
+                  "properties": {
+                    "task_id": {
+                      "type": "string",
+                      "description": "タスクID",
+                      "examples": [
+                        "abcd1234efgh"
+                      ]
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "タスク状態",
+                      "enum": [
+                        "queued",
+                        "in_progress",
+                        "completed",
+                        "failed"
+                      ],
+                      "examples": [
+                        "completed"
+                      ]
+                    },
+                    "url": {
+                      "type": "string",
+                      "description": "ビデオリソースURL（成功時）",
+                      "examples": [
+                        "https://example.com/video.mp4"
+                      ]
+                    },
+                    "format": {
+                      "type": "string",
+                      "description": "ビデオ形式",
+                      "examples": [
+                        "mp4"
+                      ]
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "description": "ビデオタスクメタデータ",
+                      "properties": {
+                        "duration": {
+                          "type": "number",
+                          "description": "実際に生成された動画の長さ",
+                          "examples": [
+                            5
+                          ]
+                        },
+                        "fps": {
+                          "type": "integer",
+                          "description": "実際のフレームレート",
+                          "examples": [
+                            30
+                          ]
+                        },
+                        "width": {
+                          "type": "integer",
+                          "description": "実際の幅",
+                          "examples": [
+                            1280
+                          ]
+                        },
+                        "height": {
+                          "type": "integer",
+                          "description": "実際の高さ",
+                          "examples": [
+                            720
+                          ]
+                        },
+                        "seed": {
+                          "type": "integer",
+                          "description": "使用されたランダムシード",
+                          "examples": [
+                            20231234
+                          ]
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "duration",
+                        "fps",
+                        "width",
+                        "height",
+                        "seed"
+                      ]
+                    },
+                    "error": {
+                      "type": "object",
+                      "description": "ビデオタスクエラー情報",
+                      "properties": {
+                        "code": {
+                          "type": "integer",
+                          "description": "エラーコード"
+                        },
+                        "message": {
+                          "type": "string",
+                          "description": "エラーメッセージ"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "task_id",
+                    "status",
+                    "url",
+                    "format",
+                    "metadata",
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "タスクが存在しません",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "エラーメッセージ"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "エラータイプ"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "関連パラメータ"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "エラーコード"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

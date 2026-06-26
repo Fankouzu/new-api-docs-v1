@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Тестировать все каналы",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление каналами"
+    }
+  ],
+  "paths": {
+    "/api/channel/test": {
+      "get": {
+        "tags": [
+          "Управление каналами"
+        ],
+        "summary": "Тестировать все каналы",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-channel-test",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

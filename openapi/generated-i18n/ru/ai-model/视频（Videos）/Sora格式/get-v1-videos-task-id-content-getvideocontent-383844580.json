@@ -1,0 +1,111 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить содержимое видео",
+    "version": "1.0.0",
+    "description": "Получить содержимое видеофайла для завершенных видеозадач.\n\nЭтот API проксирует поток видеофайла.\n"
+  },
+  "tags": [
+    {
+      "name": "Видео (Videos)/формат Sora"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Аутентификация с помощью Bearer Token.\nФормат: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/videos/{task_id}/content": {
+      "get": {
+        "tags": [
+          "Видео (Videos)/формат Sora"
+        ],
+        "summary": "Получить содержимое видео",
+        "description": "Получить содержимое видеофайла для завершенных видеозадач.\n\nЭтот API проксирует поток видеофайла.\n",
+        "operationId": "getvideocontent",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "description": "ID задачи видео",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Содержимое видео успешно получено",
+            "content": {
+              "video/mp4": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Видео не существует или не завершено",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Сообщение об ошибке"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Тип ошибки"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Соответствующие параметры"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Код ошибки"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

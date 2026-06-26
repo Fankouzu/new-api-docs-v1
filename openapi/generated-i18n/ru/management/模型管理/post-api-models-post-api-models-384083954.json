@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Метаданные модели создания",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление моделями"
+    }
+  ],
+  "paths": {
+    "/api/models/": {
+      "post": {
+        "tags": [
+          "Управление моделями"
+        ],
+        "summary": "Метаданные модели создания",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "post-api-models",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

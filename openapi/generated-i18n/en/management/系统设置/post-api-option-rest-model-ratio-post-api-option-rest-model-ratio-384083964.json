@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Reset Model Multiplier",
+    "version": "1.0.0",
+    "description": "👑 Requires super admin privilege (Root)"
+  },
+  "tags": [
+    {
+      "name": "System Settings"
+    }
+  ],
+  "paths": {
+    "/api/option/rest_model_ratio": {
+      "post": {
+        "tags": [
+          "System Settings"
+        ],
+        "summary": "Reset Model Multiplier",
+        "description": "👑 Requires super admin privilege (Root)",
+        "operationId": "post-api-option-rest-model-ratio",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

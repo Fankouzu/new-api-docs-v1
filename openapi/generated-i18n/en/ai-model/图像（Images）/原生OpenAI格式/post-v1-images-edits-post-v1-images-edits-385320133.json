@@ -1,0 +1,126 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Edit Image",
+    "version": "1.0.0",
+    "description": "Create an edited or extended image given the original image and a prompt.\n\n"
+  },
+  "tags": [
+    {
+      "name": "Images (Images) / Native OpenAI Format"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "paths": {
+    "/v1/images/edits/": {
+      "post": {
+        "tags": [
+          "Images (Images) / Native OpenAI Format"
+        ],
+        "summary": "Edit Image",
+        "description": "Create an edited or extended image given the original image and a prompt.\n\n",
+        "operationId": "post-v1-images-edits",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "description": "Image to edit. Must be a valid PNG file, less than 4MB, and square. If no mask is provided, the image must have transparency, which will be used as the mask.",
+                    "type": "string",
+                    "format": "binary",
+                    "examples": [
+                      "cmMtdXBsb2FkLTE2ODc4MzMzNDc3NTEtMjA=/31225951_59371037e9_small.png"
+                    ]
+                  },
+                  "mask": {
+                    "description": "Additional image, whose fully transparent areas (e.g., areas with zero alpha) indicate where the image should be edited. Must be a valid PNG file, less than 4MB, and have the same dimensions as the original image.",
+                    "type": "string",
+                    "format": "binary",
+                    "examples": [
+                      []
+                    ]
+                  },
+                  "prompt": {
+                    "description": "Text description of the desired image. The maximum length is 1000 characters.",
+                    "type": "string",
+                    "examples": [
+                      "A cute baby sea otter wearing a beret."
+                    ]
+                  },
+                  "n": {
+                    "description": "Number of images to generate. Must be between 1 and 10.",
+                    "type": "string",
+                    "examples": [
+                      "1"
+                    ]
+                  },
+                  "size": {
+                    "description": "The size of the generated image. Must be one of `256x256`, `512x512`, or `1024x1024`.",
+                    "type": "string",
+                    "examples": [
+                      "1024x1024"
+                    ]
+                  },
+                  "response_format": {
+                    "description": "The format of the returned generated image. Must be `url` or `b64_json`.",
+                    "type": "string",
+                    "examples": [
+                      "url"
+                    ]
+                  },
+                  "user": {
+                    "description": "A unique identifier representing your end-user, which can help OpenAI monitor and detect abuse. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).",
+                    "type": "string",
+                    "examples": [
+                      ""
+                    ]
+                  },
+                  "model": {
+                    "type": "string",
+                    "examples": [
+                      "dall-e-2"
+                    ]
+                  }
+                },
+                "required": [
+                  "image",
+                  "prompt"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

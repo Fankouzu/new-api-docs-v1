@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Start Passkey verification",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/passkey/verify/begin": {
+      "post": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Start Passkey verification",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "post-api-user-passkey-verify-begin",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

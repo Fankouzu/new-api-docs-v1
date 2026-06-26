@@ -1,0 +1,61 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Update User Settings",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/setting": {
+      "put": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Update User Settings",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "put-api-user-setting",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "notify_type": {
+                    "type": "string"
+                  },
+                  "quota_warning_threshold": {
+                    "type": "number"
+                  },
+                  "webhook_url": {
+                    "type": "string"
+                  },
+                  "notification_email": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "notify_type",
+                  "quota_warning_threshold",
+                  "webhook_url",
+                  "notification_email"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

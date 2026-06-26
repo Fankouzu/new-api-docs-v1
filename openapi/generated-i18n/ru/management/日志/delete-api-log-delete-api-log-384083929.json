@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Удаление исторических логов",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Логи"
+    }
+  ],
+  "paths": {
+    "/api/log/": {
+      "delete": {
+        "tags": [
+          "Логи"
+        ],
+        "summary": "Удаление исторических логов",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "delete-api-log",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "プリフィルグループを更新",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "グループ"
+    }
+  ],
+  "paths": {
+    "/api/prefill_group/": {
+      "put": {
+        "tags": [
+          "グループ"
+        ],
+        "summary": "プリフィルグループを更新",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "put-api-prefill-group",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

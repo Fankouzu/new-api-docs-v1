@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить ключ канала",
+    "version": "1.0.0",
+    "description": "👑 Требуются права суперадминистратора (Root) + проверка безопасности"
+  },
+  "tags": [
+    {
+      "name": "Управление каналами"
+    }
+  ],
+  "paths": {
+    "/api/channel/{id}/key": {
+      "post": {
+        "tags": [
+          "Управление каналами"
+        ],
+        "summary": "Получить ключ канала",
+        "description": "👑 Требуются права суперадминистратора (Root) + проверка безопасности",
+        "operationId": "post-api-channel-id-key",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

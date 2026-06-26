@@ -1,0 +1,302 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "動画の作成",
+    "version": "1.0.0",
+    "description": "OpenAI互換のビデオ生成インターフェース。\n\n参考ドキュメント: https://platform.openai.com/docs/api-reference/videos/create\n"
+  },
+  "tags": [
+    {
+      "name": "ビデオ（Videos）/Sora形式"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Bearer Token認証を使用します。\n形式: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/videos": {
+      "post": {
+        "tags": [
+          "ビデオ（Videos）/Sora形式"
+        ],
+        "summary": "動画の作成",
+        "description": "OpenAI互換のビデオ生成インターフェース。\n\n参考ドキュメント: https://platform.openai.com/docs/api-reference/videos/create\n",
+        "operationId": "createvideo",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "description": "ビデオ生成リクエスト",
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "description": "モデル/スタイル ID",
+                    "examples": [
+                      "kling-v1"
+                    ]
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "description": "テキスト説明プロンプト",
+                    "examples": [
+                      "宇宙飛行士が立ち上がって去った"
+                    ]
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "画像入力（URLまたはBase64）",
+                    "examples": [
+                      "https://example.com/image.jpg"
+                    ]
+                  },
+                  "duration": {
+                    "type": "number",
+                    "description": "ビデオ長さ（秒）",
+                    "examples": [
+                      5
+                    ]
+                  },
+                  "width": {
+                    "type": "integer",
+                    "description": "ビデオ幅",
+                    "examples": [
+                      1280
+                    ]
+                  },
+                  "height": {
+                    "type": "integer",
+                    "description": "ビデオ高さ",
+                    "examples": [
+                      720
+                    ]
+                  },
+                  "fps": {
+                    "type": "integer",
+                    "description": "ビデオフレームレート",
+                    "examples": [
+                      30
+                    ]
+                  },
+                  "seed": {
+                    "type": "integer",
+                    "description": "ランダムシード",
+                    "examples": [
+                      20231234
+                    ]
+                  },
+                  "n": {
+                    "type": "integer",
+                    "description": "ビデオ生成数",
+                    "examples": [
+                      1
+                    ]
+                  },
+                  "response_format": {
+                    "type": "string",
+                    "description": "レスポンス形式",
+                    "examples": [
+                      "url"
+                    ]
+                  },
+                  "user": {
+                    "type": "string",
+                    "description": "ユーザー識別子",
+                    "examples": [
+                      "user-1234"
+                    ]
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "description": "拡張パラメータ (negative_prompt、style、quality_level など)",
+                    "additionalProperties": true,
+                    "properties": {},
+                    "x-apifox-orders": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "model",
+                  "prompt",
+                  "image",
+                  "duration",
+                  "width",
+                  "height",
+                  "fps",
+                  "seed",
+                  "n",
+                  "response_format",
+                  "user",
+                  "metadata"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "動画タスクの作成に成功しました",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ビデオID"
+                    },
+                    "object": {
+                      "type": "string",
+                      "description": "オブジェクトタイプ"
+                    },
+                    "model": {
+                      "type": "string",
+                      "description": "使用されたモデル"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "タスク状態"
+                    },
+                    "progress": {
+                      "type": "integer",
+                      "description": "進捗率（%）"
+                    },
+                    "created_at": {
+                      "type": "integer",
+                      "description": "作成タイムスタンプ"
+                    },
+                    "seconds": {
+                      "type": "string",
+                      "description": "ビデオ長さ"
+                    },
+                    "completed_at": {
+                      "type": "integer",
+                      "description": "完了タイムスタンプ"
+                    },
+                    "expires_at": {
+                      "type": "integer",
+                      "description": "有効期限タイムスタンプ"
+                    },
+                    "size": {
+                      "type": "string",
+                      "description": "ビデオサイズ"
+                    },
+                    "error": {
+                      "type": "object",
+                      "description": "OpenAIビデオエラー情報",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "エラーメッセージ"
+                        },
+                        "code": {
+                          "type": "string",
+                          "description": "エラーコード"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "code"
+                      ]
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "description": "追加メタデータ",
+                      "additionalProperties": true,
+                      "x-apifox-orders": [],
+                      "properties": {}
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "object",
+                    "model",
+                    "status",
+                    "progress",
+                    "created_at",
+                    "seconds"
+                  ],
+                  "x-apifox-orders": [
+                    "id",
+                    "object",
+                    "model",
+                    "status",
+                    "progress",
+                    "created_at",
+                    "seconds",
+                    "completed_at",
+                    "expires_at",
+                    "size",
+                    "error",
+                    "metadata"
+                  ],
+                  "x-apifox-refs": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "リクエストパラメータエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "エラーメッセージ"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "エラータイプ"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "関連パラメータ"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "エラーコード"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

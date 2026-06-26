@@ -1,0 +1,106 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Native OpenAI Format",
+    "version": "1.0.0",
+    "description": "Establish a WebSocket connection for realtime conversation.\n\n**Note**: This is a WebSocket endpoint and requires a WebSocket protocol connection.\n\nExample connection URL: `wss://api.example.com/v1/realtime?model=gpt-4o-realtime`\n"
+  },
+  "tags": [
+    {
+      "name": "Realtime Voice (Realtime)"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Use Bearer Token authentication.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/realtime": {
+      "get": {
+        "tags": [
+          "Realtime Voice (Realtime)"
+        ],
+        "summary": "Native OpenAI Format",
+        "description": "Establish a WebSocket connection for realtime conversation.\n\n**Note**: This is a WebSocket endpoint and requires a WebSocket protocol connection.\n\nExample connection URL: `wss://api.example.com/v1/realtime?model=gpt-4o-realtime`\n",
+        "operationId": "createrealtimesession",
+        "parameters": [
+          {
+            "name": "model",
+            "in": "query",
+            "required": false,
+            "description": "Model to Use",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "gpt-4o-realtime-preview"
+              ]
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "101": {
+            "description": "WebSocket protocol switching"
+          },
+          "400": {
+            "description": "Request Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Error Message"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Error Type"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Related parameters"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Error Code"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

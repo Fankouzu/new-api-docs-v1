@@ -1,0 +1,191 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Нативный формат OpenAI",
+    "version": "1.0.0",
+    "description": "Получить список доступных в настоящее время моделей.\n\nФормат возврата автоматически определяется по заголовкам запроса:\n- При наличии заголовков `x-api-key` и `anthropic-version` возвращается формат Anthropic\n- При наличии заголовка `x-goog-api-key` или параметра запроса `key` возвращается формат Gemini\n- В остальных случаях возвращается формат OpenAI\n"
+  },
+  "tags": [
+    {
+      "name": "Модели (Models) / Список моделей"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Аутентификация с помощью Bearer Token.\nФормат: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/models": {
+      "get": {
+        "tags": [
+          "Модели (Models) / Список моделей"
+        ],
+        "summary": "Нативный формат OpenAI",
+        "description": "Получить список доступных в настоящее время моделей.\n\nФормат возврата автоматически определяется по заголовкам запроса:\n- При наличии заголовков `x-api-key` и `anthropic-version` возвращается формат Anthropic\n- При наличии заголовка `x-goog-api-key` или параметра запроса `key` возвращается формат Gemini\n- В остальных случаях возвращается формат OpenAI\n",
+        "operationId": "listmodels",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "required": false,
+            "description": "Google API Key (для формата Gemini)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "description": "Anthropic API Key (для формата Claude)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "anthropic-version",
+            "in": "header",
+            "required": false,
+            "description": "Версия Anthropic API",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "2023-06-01"
+              ]
+            }
+          },
+          {
+            "name": "x-goog-api-key",
+            "in": "header",
+            "required": false,
+            "description": "Google API Key (для формата Gemini)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Список моделей успешно получен",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "object": {
+                      "type": "string",
+                      "examples": [
+                        "list"
+                      ]
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "ID модели",
+                            "examples": [
+                              "gpt-4"
+                            ]
+                          },
+                          "object": {
+                            "type": "string",
+                            "description": "Тип объекта",
+                            "examples": [
+                              "model"
+                            ]
+                          },
+                          "created": {
+                            "type": "integer",
+                            "description": "Временная метка создания"
+                          },
+                          "owned_by": {
+                            "type": "string",
+                            "description": "Владелец модели",
+                            "examples": [
+                              "openai"
+                            ]
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "id",
+                          "object",
+                          "created",
+                          "owned_by"
+                        ]
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "object",
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Ошибка аутентификации",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Сообщение об ошибке"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Тип ошибки"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Соответствующие параметры"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Код ошибки"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

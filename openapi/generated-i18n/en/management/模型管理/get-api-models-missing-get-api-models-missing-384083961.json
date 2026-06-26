@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Missing Models",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Model Management"
+    }
+  ],
+  "paths": {
+    "/api/models/missing": {
+      "get": {
+        "tags": [
+          "Model Management"
+        ],
+        "summary": "Get Missing Models",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "get-api-models-missing",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

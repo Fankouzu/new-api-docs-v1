@@ -1,0 +1,170 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Generate Image",
+    "version": "1.0.0",
+    "description": " Bailian qwen-image series image generation"
+  },
+  "tags": [
+    {
+      "name": "Images (Images) / Qwen OpenAI Format"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Use Bearer Token authentication.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/images/generations": {
+      "post": {
+        "tags": [
+          "Images (Images) / Qwen OpenAI Format"
+        ],
+        "summary": "Generate Image",
+        "description": " Bailian qwen-image series image generation",
+        "operationId": "createimage",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {
+                    "type": "string"
+                  },
+                  "input": {
+                    "type": "object",
+                    "properties": {
+                      "messages": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "role": {
+                              "type": "string"
+                            },
+                            "content": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "text": {
+                                    "type": "string"
+                                  }
+                                },
+                                "x-apifox-orders": [
+                                  "text"
+                                ]
+                              }
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "role",
+                            "content"
+                          ]
+                        }
+                      }
+                    },
+                    "required": [
+                      "messages"
+                    ],
+                    "x-apifox-orders": [
+                      "messages"
+                    ]
+                  },
+                  "parameters": {
+                    "type": "object",
+                    "properties": {
+                      "negative_prompt": {
+                        "type": "string"
+                      },
+                      "prompt_extend": {
+                        "type": "boolean"
+                      },
+                      "watermark": {
+                        "type": "boolean"
+                      },
+                      "size": {
+                        "type": "string"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "negative_prompt",
+                      "prompt_extend",
+                      "watermark",
+                      "size"
+                    ]
+                  }
+                },
+                "required": [
+                  "model",
+                  "input"
+                ],
+                "x-apifox-orders": [
+                  "model",
+                  "input",
+                  "parameters"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully generated image",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "created": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string"
+                          },
+                          "b64_json": {
+                            "type": "string"
+                          },
+                          "revised_prompt": {
+                            "type": "string"
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "url",
+                          "b64_json",
+                          "revised_prompt"
+                        ]
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "created",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

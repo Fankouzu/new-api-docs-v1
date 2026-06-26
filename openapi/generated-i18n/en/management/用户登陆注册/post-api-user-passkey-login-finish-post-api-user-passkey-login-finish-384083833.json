@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Complete Passkey login",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required"
+  },
+  "tags": [
+    {
+      "name": "User login and registration"
+    }
+  ],
+  "paths": {
+    "/api/user/passkey/login/finish": {
+      "post": {
+        "tags": [
+          "User login and registration"
+        ],
+        "summary": "Complete Passkey login",
+        "description": "🔓 No authentication required",
+        "operationId": "post-api-user-passkey-login-finish",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

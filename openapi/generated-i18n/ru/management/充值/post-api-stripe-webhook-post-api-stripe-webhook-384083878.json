@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Stripe Webhook",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации (обратный вызов Webhook)"
+  },
+  "tags": [
+    {
+      "name": "Пополнение баланса"
+    }
+  ],
+  "paths": {
+    "/api/stripe/webhook": {
+      "post": {
+        "tags": [
+          "Пополнение баланса"
+        ],
+        "summary": "Stripe Webhook",
+        "description": "🔓 Без аутентификации (обратный вызов Webhook)",
+        "operationId": "post-api-stripe-webhook",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

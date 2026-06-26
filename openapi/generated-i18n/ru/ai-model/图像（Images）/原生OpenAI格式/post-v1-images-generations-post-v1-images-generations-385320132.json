@@ -1,0 +1,196 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Сгенерировать изображение",
+    "version": "1.0.0",
+    "description": "Создание изображения на основе подсказки.[Узнать больше](https://platform.openai.com/docs/guides/images)."
+  },
+  "tags": [
+    {
+      "name": "Изображения (Images)/Собственный формат OpenAI"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "paths": {
+    "/v1/images/generations/": {
+      "post": {
+        "tags": [
+          "Изображения (Images)/Собственный формат OpenAI"
+        ],
+        "summary": "Сгенерировать изображение",
+        "description": "Создание изображения на основе подсказки.[Узнать больше](https://platform.openai.com/docs/guides/images).",
+        "operationId": "post-v1-images-generations",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "description": "Модель для генерации изображений. Одна из `dall-e-2`, `dall-e-3` или `gpt-image-1`. По умолчанию `dall-e-2`, если не используются параметры, специфичные для `gpt-image-1`."
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "description": "Текстовое описание требуемого изображения. Максимальная длина для `gpt-image-1` составляет 32000 символов, для `dall-e-2` - 1000 символов, для `dall-e-3` - 4000 символов."
+                  },
+                  "n": {
+                    "type": "integer",
+                    "description": "Количество генерируемых изображений. Должно быть от 1 до 10. Для `dall-e-3` поддерживается только `n=1`."
+                  },
+                  "size": {
+                    "type": "string",
+                    "description": "Размер генерируемого изображения. Для `gpt-image-1` должен быть одним из `1024x1024`, `1536x1024` (горизонтальный), `1024x1536` (вертикальный) или `auto` (по умолчанию). Для `dall-e-2` должен быть одним из `256x256`, `512x512` или `1024x1024`. Для `dall-e-3` должен быть одним из `1024x1024`, `1792x1024` или `1024x1792`."
+                  },
+                  "background": {
+                    "type": "string",
+                    "description": "Разрешает установку прозрачности фона для сгенерированных изображений. Этот параметр поддерживается только для `gpt-image-1`. Должно быть одним из следующих: `прозрачный`, `непрозрачный` или `авто` (по умолчанию). При использовании `авто` модель автоматически определит наилучший фон для изображения.\n\nЕсли выбрано `прозрачный`, выходной формат должен поддерживать прозрачность, поэтому следует установить его в `png` (по умолчанию) или `webp`."
+                  },
+                  "moderation": {
+                    "type": "string",
+                    "description": "Уровень модерации контента для изображений, созданных `gpt-image-1`. Должен быть `low` для менее строгой фильтрации или `auto` (по умолчанию)."
+                  },
+                  "quality": {
+                    "type": "string",
+                    "description": "Качество сгенерированного изображения."
+                  },
+                  "stream": {
+                    "type": "string"
+                  },
+                  "style": {
+                    "type": "string"
+                  },
+                  "user": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "prompt"
+                ],
+                "x-apifox-orders": [
+                  "model",
+                  "prompt",
+                  "n",
+                  "size",
+                  "background",
+                  "moderation",
+                  "quality",
+                  "stream",
+                  "style",
+                  "user"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "created": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "b64_json": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "url"
+                        ],
+                        "x-apifox-orders": [
+                          "b64_json",
+                          "url"
+                        ]
+                      }
+                    },
+                    "usage": {
+                      "type": "object",
+                      "properties": {
+                        "total_tokens": {
+                          "type": "integer"
+                        },
+                        "input_tokens": {
+                          "type": "integer"
+                        },
+                        "output_tokens": {
+                          "type": "integer"
+                        },
+                        "input_tokens_details": {
+                          "type": "object",
+                          "properties": {
+                            "text_tokens": {
+                              "type": "integer"
+                            },
+                            "image_tokens": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "text_tokens",
+                            "image_tokens"
+                          ],
+                          "x-apifox-orders": [
+                            "text_tokens",
+                            "image_tokens"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "total_tokens",
+                        "input_tokens",
+                        "output_tokens",
+                        "input_tokens_details"
+                      ],
+                      "x-apifox-orders": [
+                        "total_tokens",
+                        "input_tokens",
+                        "output_tokens",
+                        "input_tokens_details"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "created",
+                    "data",
+                    "usage"
+                  ],
+                  "x-apifox-orders": [
+                    "created",
+                    "data",
+                    "usage"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

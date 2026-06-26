@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Инициировать платеж Stripe",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Пополнение баланса"
+    }
+  ],
+  "paths": {
+    "/api/user/stripe/pay": {
+      "post": {
+        "tags": [
+          "Пополнение баланса"
+        ],
+        "summary": "Инициировать платеж Stripe",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "post-api-user-stripe-pay",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

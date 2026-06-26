@@ -1,0 +1,48 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get All Redemption Codes",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Redemption code"
+    }
+  ],
+  "paths": {
+    "/api/redemption/": {
+      "get": {
+        "tags": [
+          "Redemption code"
+        ],
+        "summary": "Get All Redemption Codes",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "get-api-redemption",
+        "parameters": [
+          {
+            "name": "p",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

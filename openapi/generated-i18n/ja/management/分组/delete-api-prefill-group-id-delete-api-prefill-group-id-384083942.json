@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "事前入力グループの削除",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "グループ"
+    }
+  ],
+  "paths": {
+    "/api/prefill_group/{id}": {
+      "delete": {
+        "tags": [
+          "グループ"
+        ],
+        "summary": "事前入力グループの削除",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "delete-api-prefill-group-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

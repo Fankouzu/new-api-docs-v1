@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ユーザー規約を取得する",
+    "version": "1.0.0",
+    "description": "🔓 認証不要"
+  },
+  "tags": [
+    {
+      "name": "システム"
+    }
+  ],
+  "paths": {
+    "/api/user-agreement": {
+      "get": {
+        "tags": [
+          "システム"
+        ],
+        "summary": "ユーザー規約を取得する",
+        "description": "🔓 認証不要",
+        "operationId": "get-api-user-agreement",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

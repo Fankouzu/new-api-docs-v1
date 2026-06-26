@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Update Model Metadata",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Model Management"
+    }
+  ],
+  "paths": {
+    "/api/models/": {
+      "put": {
+        "tags": [
+          "Model Management"
+        ],
+        "summary": "Update Model Metadata",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "put-api-models",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

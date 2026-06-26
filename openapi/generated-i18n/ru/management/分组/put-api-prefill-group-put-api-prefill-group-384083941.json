@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Обновить предварительно заполненную группу",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Группировка"
+    }
+  ],
+  "paths": {
+    "/api/prefill_group/": {
+      "put": {
+        "tags": [
+          "Группировка"
+        ],
+        "summary": "Обновить предварительно заполненную группу",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "put-api-prefill-group",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

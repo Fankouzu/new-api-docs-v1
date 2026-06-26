@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Payment Amount",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "Recharge"
+    }
+  ],
+  "paths": {
+    "/api/user/amount": {
+      "post": {
+        "tags": [
+          "Recharge"
+        ],
+        "summary": "Get Payment Amount",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "post-api-user-amount",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

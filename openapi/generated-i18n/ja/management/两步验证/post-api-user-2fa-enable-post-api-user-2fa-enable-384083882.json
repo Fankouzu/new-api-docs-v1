@@ -1,0 +1,49 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "2FAを有効化",
+    "version": "1.0.0",
+    "description": "🔐 ログインが必要（User権限）"
+  },
+  "tags": [
+    {
+      "name": "二要素認証"
+    }
+  ],
+  "paths": {
+    "/api/user/2fa/enable": {
+      "post": {
+        "tags": [
+          "二要素認証"
+        ],
+        "summary": "2FAを有効化",
+        "description": "🔐 ログインが必要（User権限）",
+        "operationId": "post-api-user-2fa-enable",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "code"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

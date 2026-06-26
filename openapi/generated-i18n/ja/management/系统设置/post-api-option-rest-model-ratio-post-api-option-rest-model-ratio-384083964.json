@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "モデル倍率のリセット",
+    "version": "1.0.0",
+    "description": "👑 スーパー管理者権限（Root）が必要"
+  },
+  "tags": [
+    {
+      "name": "システム設定"
+    }
+  ],
+  "paths": {
+    "/api/option/rest_model_ratio": {
+      "post": {
+        "tags": [
+          "システム設定"
+        ],
+        "summary": "モデル倍率のリセット",
+        "description": "👑 スーパー管理者権限（Root）が必要",
+        "operationId": "post-api-option-rest-model-ratio",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

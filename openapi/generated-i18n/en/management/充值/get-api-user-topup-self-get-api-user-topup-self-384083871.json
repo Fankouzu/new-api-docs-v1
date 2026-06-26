@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get User Top-Up Records",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "Recharge"
+    }
+  ],
+  "paths": {
+    "/api/user/topup/self": {
+      "get": {
+        "tags": [
+          "Recharge"
+        ],
+        "summary": "Get User Top-Up Records",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "get-api-user-topup-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

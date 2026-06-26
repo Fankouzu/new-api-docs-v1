@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Delete Redemption Code",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Redemption code"
+    }
+  ],
+  "paths": {
+    "/api/redemption/{id}": {
+      "delete": {
+        "tags": [
+          "Redemption code"
+        ],
+        "summary": "Delete Redemption Code",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "delete-api-redemption-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "すべてのチャネル残高を更新",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "チャネル管理"
+    }
+  ],
+  "paths": {
+    "/api/channel/update_balance": {
+      "get": {
+        "tags": [
+          "チャネル管理"
+        ],
+        "summary": "すべてのチャネル残高を更新",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "get-api-channel-update-balance",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

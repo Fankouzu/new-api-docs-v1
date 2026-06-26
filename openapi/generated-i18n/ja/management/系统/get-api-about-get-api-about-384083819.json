@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "アバウト情報の取得",
+    "version": "1.0.0",
+    "description": "🔓 認証不要"
+  },
+  "tags": [
+    {
+      "name": "システム"
+    }
+  ],
+  "paths": {
+    "/api/about": {
+      "get": {
+        "tags": [
+          "システム"
+        ],
+        "summary": "アバウト情報の取得",
+        "description": "🔓 認証不要",
+        "operationId": "get-api-about",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

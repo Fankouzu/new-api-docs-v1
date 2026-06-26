@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить доступные пользователю модели",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Управление пользователями"
+    }
+  ],
+  "paths": {
+    "/api/user/models": {
+      "get": {
+        "tags": [
+          "Управление пользователями"
+        ],
+        "summary": "Получить доступные пользователю модели",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "get-api-user-models",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

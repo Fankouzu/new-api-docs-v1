@@ -1,0 +1,904 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Формат ChatCompletions",
+    "version": "1.0.0",
+    "description": "Создать ответ модели на основе истории диалога. Поддерживает потоковый и непотоковый режимы.\n\nСовместимо с OpenAI Chat Completions API.\n"
+  },
+  "tags": [
+    {
+      "name": "Чат (Chat)/родной формат OpenAI"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Аутентификация с помощью Bearer Token.\nФормат: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/chat/completions": {
+      "post": {
+        "tags": [
+          "Чат (Chat)/родной формат OpenAI"
+        ],
+        "summary": "Формат ChatCompletions",
+        "description": "Создать ответ модели на основе истории диалога. Поддерживает потоковый и непотоковый режимы.\n\nСовместимо с OpenAI Chat Completions API.\n",
+        "operationId": "createchatcompletion",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "model",
+                  "messages"
+                ],
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "description": "ID модели",
+                    "examples": [
+                      "gpt-4"
+                    ]
+                  },
+                  "messages": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "role",
+                        "content"
+                      ],
+                      "properties": {
+                        "role": {
+                          "type": "string",
+                          "enum": [
+                            "system",
+                            "user",
+                            "assistant",
+                            "tool",
+                            "developer"
+                          ],
+                          "description": "Роль сообщения"
+                        },
+                        "content": {
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "text",
+                                      "image_url",
+                                      "input_audio",
+                                      "file",
+                                      "video_url"
+                                    ]
+                                  },
+                                  "text": {
+                                    "type": "string"
+                                  },
+                                  "image_url": {
+                                    "type": "object",
+                                    "properties": {
+                                      "url": {
+                                        "type": "string",
+                                        "description": "URL изображения или base64"
+                                      },
+                                      "detail": {
+                                        "type": "string",
+                                        "enum": [
+                                          "low",
+                                          "high",
+                                          "auto"
+                                        ]
+                                      }
+                                    },
+                                    "x-apifox-orders": [
+                                      "url",
+                                      "detail"
+                                    ]
+                                  },
+                                  "input_audio": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "string",
+                                        "description": "Аудиоданные в кодировке Base64"
+                                      },
+                                      "format": {
+                                        "type": "string",
+                                        "enum": [
+                                          "wav",
+                                          "mp3"
+                                        ]
+                                      }
+                                    },
+                                    "x-apifox-orders": [
+                                      "data",
+                                      "format"
+                                    ]
+                                  },
+                                  "file": {
+                                    "type": "object",
+                                    "properties": {
+                                      "filename": {
+                                        "type": "string"
+                                      },
+                                      "file_data": {
+                                        "type": "string"
+                                      },
+                                      "file_id": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "x-apifox-orders": [
+                                      "filename",
+                                      "file_data",
+                                      "file_id"
+                                    ]
+                                  },
+                                  "video_url": {
+                                    "type": "object",
+                                    "properties": {
+                                      "url": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "x-apifox-orders": [
+                                      "url"
+                                    ]
+                                  }
+                                },
+                                "x-apifox-orders": [
+                                  "type",
+                                  "text",
+                                  "image_url",
+                                  "input_audio",
+                                  "file",
+                                  "video_url"
+                                ]
+                              }
+                            }
+                          ],
+                          "description": "Содержимое сообщения"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Имя отправителя"
+                        },
+                        "tool_calls": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string",
+                                "examples": [
+                                  "function"
+                                ]
+                              },
+                              "function": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string"
+                                  },
+                                  "arguments": {
+                                    "type": "string"
+                                  }
+                                },
+                                "x-apifox-orders": [
+                                  "name",
+                                  "arguments"
+                                ]
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "id",
+                              "type",
+                              "function"
+                            ]
+                          }
+                        },
+                        "tool_call_id": {
+                          "type": "string",
+                          "description": "Идентификатор вызова инструмента (для сообщений с ролью tool)"
+                        },
+                        "reasoning_content": {
+                          "type": "string",
+                          "description": "Содержимое рассуждений"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "role",
+                        "content",
+                        "name",
+                        "tool_calls",
+                        "tool_call_id",
+                        "reasoning_content"
+                      ]
+                    },
+                    "description": "Список сообщений диалога"
+                  },
+                  "temperature": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 2,
+                    "default": 1,
+                    "description": "Температура выборки"
+                  },
+                  "top_p": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "default": 1,
+                    "description": "Параметр ядерной выборки"
+                  },
+                  "n": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "default": 1,
+                    "description": "Количество генераций"
+                  },
+                  "stream": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Потоковый ответ"
+                  },
+                  "stream_options": {
+                    "type": "object",
+                    "properties": {
+                      "include_usage": {
+                        "type": "boolean"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "include_usage"
+                    ]
+                  },
+                  "stop": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    ],
+                    "description": "Стоп-последовательность"
+                  },
+                  "max_tokens": {
+                    "type": "integer",
+                    "description": "Максимальное количество генерируемых токенов"
+                  },
+                  "max_completion_tokens": {
+                    "type": "integer",
+                    "description": "Максимальное количество токенов завершения"
+                  },
+                  "presence_penalty": {
+                    "type": "number",
+                    "minimum": -2,
+                    "maximum": 2,
+                    "default": 0
+                  },
+                  "frequency_penalty": {
+                    "type": "number",
+                    "minimum": -2,
+                    "maximum": 2,
+                    "default": 0
+                  },
+                  "logit_bias": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "number"
+                    },
+                    "properties": {},
+                    "x-apifox-orders": []
+                  },
+                  "user": {
+                    "type": "string"
+                  },
+                  "tools": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "examples": [
+                            "function"
+                          ]
+                        },
+                        "function": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "parameters": {
+                              "type": "object",
+                              "description": "Определение параметров в формате JSON Schema",
+                              "properties": {},
+                              "x-apifox-orders": []
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "name",
+                            "description",
+                            "parameters"
+                          ]
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "type",
+                        "function"
+                      ]
+                    }
+                  },
+                  "tool_choice": {
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "none",
+                          "auto",
+                          "required"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string"
+                          },
+                          "function": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "name"
+                            ]
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "type",
+                          "function"
+                        ]
+                      }
+                    ]
+                  },
+                  "response_format": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "enum": [
+                          "text",
+                          "json_object",
+                          "json_schema"
+                        ]
+                      },
+                      "json_schema": {
+                        "type": "object",
+                        "description": "Определение JSON Schema",
+                        "properties": {},
+                        "x-apifox-orders": []
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "type",
+                      "json_schema"
+                    ]
+                  },
+                  "seed": {
+                    "type": "integer"
+                  },
+                  "reasoning_effort": {
+                    "type": "string",
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high"
+                    ],
+                    "description": "Интенсивность рассуждений (для моделей, поддерживающих рассуждение)"
+                  },
+                  "modalities": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "text",
+                        "audio"
+                      ]
+                    }
+                  },
+                  "audio": {
+                    "type": "object",
+                    "properties": {
+                      "voice": {
+                        "type": "string"
+                      },
+                      "format": {
+                        "type": "string"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "voice",
+                      "format"
+                    ]
+                  }
+                },
+                "x-apifox-orders": [
+                  "model",
+                  "messages",
+                  "temperature",
+                  "top_p",
+                  "n",
+                  "stream",
+                  "stream_options",
+                  "stop",
+                  "max_tokens",
+                  "max_completion_tokens",
+                  "presence_penalty",
+                  "frequency_penalty",
+                  "logit_bias",
+                  "user",
+                  "tools",
+                  "tool_choice",
+                  "response_format",
+                  "seed",
+                  "reasoning_effort",
+                  "modalities",
+                  "audio"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно создан ответ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string",
+                      "examples": [
+                        "chat.completion"
+                      ]
+                    },
+                    "created": {
+                      "type": "integer"
+                    },
+                    "model": {
+                      "type": "string"
+                    },
+                    "choices": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "index": {
+                            "type": "integer"
+                          },
+                          "message": {
+                            "type": "object",
+                            "required": [
+                              "role",
+                              "content"
+                            ],
+                            "properties": {
+                              "role": {
+                                "type": "string",
+                                "enum": [
+                                  "system",
+                                  "user",
+                                  "assistant",
+                                  "tool",
+                                  "developer"
+                                ],
+                                "description": "Роль сообщения"
+                              },
+                              "content": {
+                                "oneOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "text",
+                                            "image_url",
+                                            "input_audio",
+                                            "file",
+                                            "video_url"
+                                          ]
+                                        },
+                                        "text": {
+                                          "type": "string"
+                                        },
+                                        "image_url": {
+                                          "type": "object",
+                                          "properties": {
+                                            "url": {
+                                              "type": "string",
+                                              "description": "URL изображения или base64"
+                                            },
+                                            "detail": {
+                                              "type": "string",
+                                              "enum": [
+                                                "low",
+                                                "high",
+                                                "auto"
+                                              ]
+                                            }
+                                          },
+                                          "x-apifox-orders": [
+                                            "url",
+                                            "detail"
+                                          ]
+                                        },
+                                        "input_audio": {
+                                          "type": "object",
+                                          "properties": {
+                                            "data": {
+                                              "type": "string",
+                                              "description": "Аудиоданные в кодировке Base64"
+                                            },
+                                            "format": {
+                                              "type": "string",
+                                              "enum": [
+                                                "wav",
+                                                "mp3"
+                                              ]
+                                            }
+                                          },
+                                          "x-apifox-orders": [
+                                            "data",
+                                            "format"
+                                          ]
+                                        },
+                                        "file": {
+                                          "type": "object",
+                                          "properties": {
+                                            "filename": {
+                                              "type": "string"
+                                            },
+                                            "file_data": {
+                                              "type": "string"
+                                            },
+                                            "file_id": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "x-apifox-orders": [
+                                            "filename",
+                                            "file_data",
+                                            "file_id"
+                                          ]
+                                        },
+                                        "video_url": {
+                                          "type": "object",
+                                          "properties": {
+                                            "url": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "x-apifox-orders": [
+                                            "url"
+                                          ]
+                                        }
+                                      },
+                                      "x-apifox-orders": [
+                                        "type",
+                                        "text",
+                                        "image_url",
+                                        "input_audio",
+                                        "file",
+                                        "video_url"
+                                      ]
+                                    }
+                                  }
+                                ],
+                                "description": "Содержимое сообщения"
+                              },
+                              "name": {
+                                "type": "string",
+                                "description": "Имя отправителя"
+                              },
+                              "tool_calls": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "examples": [
+                                        "function"
+                                      ]
+                                    },
+                                    "function": {
+                                      "type": "object",
+                                      "properties": {
+                                        "name": {
+                                          "type": "string"
+                                        },
+                                        "arguments": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "x-apifox-orders": [
+                                        "name",
+                                        "arguments"
+                                      ]
+                                    }
+                                  },
+                                  "x-apifox-orders": [
+                                    "id",
+                                    "type",
+                                    "function"
+                                  ]
+                                }
+                              },
+                              "tool_call_id": {
+                                "type": "string",
+                                "description": "Идентификатор вызова инструмента (для сообщений с ролью tool)"
+                              },
+                              "reasoning_content": {
+                                "type": "string",
+                                "description": "Содержимое рассуждений"
+                              }
+                            },
+                            "x-apifox-orders": [
+                              "role",
+                              "content",
+                              "name",
+                              "tool_calls",
+                              "tool_call_id",
+                              "reasoning_content"
+                            ]
+                          },
+                          "finish_reason": {
+                            "type": "string",
+                            "enum": [
+                              "stop",
+                              "length",
+                              "tool_calls",
+                              "content_filter"
+                            ]
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "index",
+                          "message",
+                          "finish_reason"
+                        ]
+                      }
+                    },
+                    "usage": {
+                      "type": "object",
+                      "properties": {
+                        "prompt_tokens": {
+                          "type": "integer",
+                          "description": "Количество токенов промпта"
+                        },
+                        "completion_tokens": {
+                          "type": "integer",
+                          "description": "Количество токенов завершения"
+                        },
+                        "total_tokens": {
+                          "type": "integer",
+                          "description": "Общее количество токенов"
+                        },
+                        "prompt_tokens_details": {
+                          "type": "object",
+                          "properties": {
+                            "cached_tokens": {
+                              "type": "integer"
+                            },
+                            "text_tokens": {
+                              "type": "integer"
+                            },
+                            "audio_tokens": {
+                              "type": "integer"
+                            },
+                            "image_tokens": {
+                              "type": "integer"
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "cached_tokens",
+                            "text_tokens",
+                            "audio_tokens",
+                            "image_tokens"
+                          ]
+                        },
+                        "completion_tokens_details": {
+                          "type": "object",
+                          "properties": {
+                            "text_tokens": {
+                              "type": "integer"
+                            },
+                            "audio_tokens": {
+                              "type": "integer"
+                            },
+                            "reasoning_tokens": {
+                              "type": "integer"
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "text_tokens",
+                            "audio_tokens",
+                            "reasoning_tokens"
+                          ]
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "prompt_tokens",
+                        "completion_tokens",
+                        "total_tokens",
+                        "prompt_tokens_details",
+                        "completion_tokens_details"
+                      ]
+                    },
+                    "system_fingerprint": {
+                      "type": "string"
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "id",
+                    "object",
+                    "created",
+                    "model",
+                    "choices",
+                    "usage",
+                    "system_fingerprint"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка параметров запроса",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Сообщение об ошибке"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Тип ошибки"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Соответствующие параметры"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Код ошибки"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Ограничение частоты запросов",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Сообщение об ошибке"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Тип ошибки"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Соответствующие параметры"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Код ошибки"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

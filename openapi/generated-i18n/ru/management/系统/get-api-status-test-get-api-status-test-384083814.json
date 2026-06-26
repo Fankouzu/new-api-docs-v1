@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Тестировать состояние системы",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Система"
+    }
+  ],
+  "paths": {
+    "/api/status/test": {
+      "get": {
+        "tags": [
+          "Система"
+        ],
+        "summary": "Тестировать состояние системы",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-status-test",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

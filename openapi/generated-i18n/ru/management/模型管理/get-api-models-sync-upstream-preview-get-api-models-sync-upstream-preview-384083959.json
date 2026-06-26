@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Предварительный просмотр синхронизации вышестоящей модели",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление моделями"
+    }
+  ],
+  "paths": {
+    "/api/models/sync_upstream/preview": {
+      "get": {
+        "tags": [
+          "Управление моделями"
+        ],
+        "summary": "Предварительный просмотр синхронизации вышестоящей модели",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-models-sync-upstream-preview",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

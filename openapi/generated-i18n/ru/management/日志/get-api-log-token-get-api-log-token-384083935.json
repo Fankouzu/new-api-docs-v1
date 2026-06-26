@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получение журналов по токену",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации (запрос по токену)"
+  },
+  "tags": [
+    {
+      "name": "Логи"
+    }
+  ],
+  "paths": {
+    "/api/log/token": {
+      "get": {
+        "tags": [
+          "Логи"
+        ],
+        "summary": "Получение журналов по токену",
+        "description": "🔓 Без аутентификации (запрос по токену)",
+        "operationId": "get-api-log-token",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Привязка Telegram",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/telegram/bind": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Привязка Telegram",
+        "description": "🔓 Без аутентификации",
+        "operationId": "get-api-oauth-telegram-bind",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

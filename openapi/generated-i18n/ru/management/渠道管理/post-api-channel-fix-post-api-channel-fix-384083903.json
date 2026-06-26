@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Исправление возможностей канала",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление каналами"
+    }
+  ],
+  "paths": {
+    "/api/channel/fix": {
+      "post": {
+        "tags": [
+          "Управление каналами"
+        ],
+        "summary": "Исправление возможностей канала",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "post-api-channel-fix",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

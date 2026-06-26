@@ -1,0 +1,60 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ユーザーステータス管理",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "ユーザー管理"
+    }
+  ],
+  "paths": {
+    "/api/user/manage": {
+      "post": {
+        "tags": [
+          "ユーザー管理"
+        ],
+        "summary": "ユーザーステータス管理",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "post-api-user-manage",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "disable",
+                      "enable",
+                      "delete",
+                      "promote",
+                      "demote"
+                    ]
+                  }
+                },
+                "x-apifox-orders": [
+                  "id",
+                  "action"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Управление статусом пользователя",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление пользователями"
+    }
+  ],
+  "paths": {
+    "/api/user/manage": {
+      "post": {
+        "tags": [
+          "Управление пользователями"
+        ],
+        "summary": "Управление статусом пользователя",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "post-api-user-manage",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "disable",
+                      "enable",
+                      "delete",
+                      "promote",
+                      "demote"
+                    ]
+                  }
+                },
+                "x-apifox-orders": [
+                  "id",
+                  "action"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить все метаданные моделей",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Управление моделями"
+    }
+  ],
+  "paths": {
+    "/api/models/": {
+      "get": {
+        "tags": [
+          "Управление моделями"
+        ],
+        "summary": "Получить все метаданные моделей",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-models",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

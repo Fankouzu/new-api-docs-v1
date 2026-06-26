@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Начало входа с Passkey",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "Вход и регистрация пользователя"
+    }
+  ],
+  "paths": {
+    "/api/user/passkey/login/begin": {
+      "post": {
+        "tags": [
+          "Вход и регистрация пользователя"
+        ],
+        "summary": "Начало входа с Passkey",
+        "description": "🔓 Без аутентификации",
+        "operationId": "post-api-user-passkey-login-begin",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

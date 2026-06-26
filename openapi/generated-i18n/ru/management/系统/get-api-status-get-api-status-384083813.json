@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить состояние системы",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "Система"
+    }
+  ],
+  "paths": {
+    "/api/status": {
+      "get": {
+        "tags": [
+          "Система"
+        ],
+        "summary": "Получить состояние системы",
+        "description": "🔓 Без аутентификации",
+        "operationId": "get-api-status",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

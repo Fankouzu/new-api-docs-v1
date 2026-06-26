@@ -1,0 +1,176 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Jimeng Video Generation",
+    "version": "1.0.0",
+    "description": "Jimeng Official API format video generation interface.\n\nSupports specifying operation type via Action parameter:\n- `CVSync2AsyncSubmitTask`: Submit video generation task\n- `CVSync2AsyncGetResult`: Get task result\n\nAction and Version need to be specified in query parameters.\n"
+  },
+  "tags": [
+    {
+      "name": "Videos / Jimeng format"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Use Bearer Token authentication.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/jimeng/": {
+      "post": {
+        "tags": [
+          "Videos / Jimeng format"
+        ],
+        "summary": "Jimeng Video Generation",
+        "description": "Jimeng Official API format video generation interface.\n\nSupports specifying operation type via Action parameter:\n- `CVSync2AsyncSubmitTask`: Submit video generation task\n- `CVSync2AsyncGetResult`: Get task result\n\nAction and Version need to be specified in query parameters.\n",
+        "operationId": "createjimengvideo",
+        "parameters": [
+          {
+            "name": "Action",
+            "in": "query",
+            "required": true,
+            "description": "API operation type",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "CVSync2AsyncSubmitTask",
+                "CVSync2AsyncGetResult"
+              ]
+            }
+          },
+          {
+            "name": "Version",
+            "in": "query",
+            "required": true,
+            "description": "API version",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Jimeng Official API Request Format",
+                "properties": {
+                  "req_key": {
+                    "type": "string",
+                    "description": "Request Type Identifier"
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "description": "Text description"
+                  },
+                  "binary_data_base64": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Base64-encoded image data"
+                  }
+                },
+                "x-apifox-orders": [
+                  "req_key",
+                  "prompt",
+                  "binary_data_base64"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully processed request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "description": "Response Code"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Response Message"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "Response Data",
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "code",
+                    "message",
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request Parameter Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Error Message"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Error Type"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Related parameters"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Error Code"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

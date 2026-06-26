@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Discord OAuth ログイン",
+    "version": "1.0.0",
+    "description": "🔓 認証不要（OAuthコールバック）"
+  },
+  "tags": [
+    {
+      "name": "OAuth"
+    }
+  ],
+  "paths": {
+    "/api/oauth/discord": {
+      "get": {
+        "tags": [
+          "OAuth"
+        ],
+        "summary": "Discord OAuth ログイン",
+        "description": "🔓 認証不要（OAuthコールバック）",
+        "operationId": "get-api-oauth-discord",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

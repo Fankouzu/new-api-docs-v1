@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "管理者がユーザーのPasskeyをリセット",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "ユーザー管理"
+    }
+  ],
+  "paths": {
+    "/api/user/{id}/reset_passkey": {
+      "delete": {
+        "tags": [
+          "ユーザー管理"
+        ],
+        "summary": "管理者がユーザーのPasskeyをリセット",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "delete-api-user-id-reset-passkey",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Отправить код подтверждения по электронной почте",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "Вход и регистрация пользователя"
+    }
+  ],
+  "paths": {
+    "/api/verification": {
+      "get": {
+        "tags": [
+          "Вход и регистрация пользователя"
+        ],
+        "summary": "Отправить код подтверждения по электронной почте",
+        "description": "🔓 Без аутентификации",
+        "operationId": "get-api-verification",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

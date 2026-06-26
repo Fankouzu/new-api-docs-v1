@@ -1,0 +1,49 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Вход с двухфакторной аутентификацией",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации (процесс входа)"
+  },
+  "tags": [
+    {
+      "name": "Вход и регистрация пользователя"
+    }
+  ],
+  "paths": {
+    "/api/user/login/2fa": {
+      "post": {
+        "tags": [
+          "Вход и регистрация пользователя"
+        ],
+        "summary": "Вход с двухфакторной аутентификацией",
+        "description": "🔓 Без аутентификации (процесс входа)",
+        "operationId": "post-api-user-login-2fa",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "code"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Specified Provider",
+    "version": "1.0.0",
+    "description": "👨‍💼 Requires admin privilege (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Provider"
+    }
+  ],
+  "paths": {
+    "/api/vendors/{id}": {
+      "get": {
+        "tags": [
+          "Provider"
+        ],
+        "summary": "Get Specified Provider",
+        "description": "👨‍💼 Requires admin privilege (Admin)",
+        "operationId": "get-api-vendors-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

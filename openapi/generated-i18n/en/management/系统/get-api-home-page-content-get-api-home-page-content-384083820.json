@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Home Page Content",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required"
+  },
+  "tags": [
+    {
+      "name": "System"
+    }
+  ],
+  "paths": {
+    "/api/home_page_content": {
+      "get": {
+        "tags": [
+          "System"
+        ],
+        "summary": "Get Home Page Content",
+        "description": "🔓 No authentication required",
+        "operationId": "get-api-home-page-content",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

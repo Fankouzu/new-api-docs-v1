@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Synchronizable Channels",
+    "version": "1.0.0",
+    "description": "👑 Requires super admin privilege (Root)"
+  },
+  "tags": [
+    {
+      "name": "System Settings"
+    }
+  ],
+  "paths": {
+    "/api/ratio_sync/channels": {
+      "get": {
+        "tags": [
+          "System Settings"
+        ],
+        "summary": "Get Synchronizable Channels",
+        "description": "👑 Requires super admin privilege (Root)",
+        "operationId": "get-api-ratio-sync-channels",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

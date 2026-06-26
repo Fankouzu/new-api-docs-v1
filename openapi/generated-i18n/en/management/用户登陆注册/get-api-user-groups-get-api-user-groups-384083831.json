@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get User Group List",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required"
+  },
+  "tags": [
+    {
+      "name": "User login and registration"
+    }
+  ],
+  "paths": {
+    "/api/user/groups": {
+      "get": {
+        "tags": [
+          "User login and registration"
+        ],
+        "summary": "Get User Group List",
+        "description": "🔓 No authentication required",
+        "operationId": "get-api-user-groups",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

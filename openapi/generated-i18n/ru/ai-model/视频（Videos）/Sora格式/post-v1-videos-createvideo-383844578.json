@@ -1,0 +1,302 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Создание видео",
+    "version": "1.0.0",
+    "description": "Интерфейс генерации видео, совместимый с OpenAI.\n\nСправочная документация: https://platform.openai.com/docs/api-reference/videos/create\n"
+  },
+  "tags": [
+    {
+      "name": "Видео (Videos)/формат Sora"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Аутентификация с помощью Bearer Token.\nФормат: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/videos": {
+      "post": {
+        "tags": [
+          "Видео (Videos)/формат Sora"
+        ],
+        "summary": "Создание видео",
+        "description": "Интерфейс генерации видео, совместимый с OpenAI.\n\nСправочная документация: https://platform.openai.com/docs/api-reference/videos/create\n",
+        "operationId": "createvideo",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "description": "Запрос на генерацию видео",
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "description": "ID модели/стиля",
+                    "examples": [
+                      "kling-v1"
+                    ]
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "description": "Промпт текстового описания",
+                    "examples": [
+                      "Астронавт встал и ушел"
+                    ]
+                  },
+                  "image": {
+                    "type": "string",
+                    "description": "Ввод изображения (URL или Base64)",
+                    "examples": [
+                      "https://example.com/image.jpg"
+                    ]
+                  },
+                  "duration": {
+                    "type": "number",
+                    "description": "Длительность видео (сек)",
+                    "examples": [
+                      5
+                    ]
+                  },
+                  "width": {
+                    "type": "integer",
+                    "description": "Ширина видео",
+                    "examples": [
+                      1280
+                    ]
+                  },
+                  "height": {
+                    "type": "integer",
+                    "description": "Высота видео",
+                    "examples": [
+                      720
+                    ]
+                  },
+                  "fps": {
+                    "type": "integer",
+                    "description": "Частота кадров видео",
+                    "examples": [
+                      30
+                    ]
+                  },
+                  "seed": {
+                    "type": "integer",
+                    "description": "Случайное зерно",
+                    "examples": [
+                      20231234
+                    ]
+                  },
+                  "n": {
+                    "type": "integer",
+                    "description": "Количество генерируемых видео",
+                    "examples": [
+                      1
+                    ]
+                  },
+                  "response_format": {
+                    "type": "string",
+                    "description": "Формат ответа",
+                    "examples": [
+                      "url"
+                    ]
+                  },
+                  "user": {
+                    "type": "string",
+                    "description": "Идентификатор пользователя",
+                    "examples": [
+                      "user-1234"
+                    ]
+                  },
+                  "metadata": {
+                    "type": "object",
+                    "description": "Расширенные параметры (например, negative_prompt, style, quality_level и т.д.)",
+                    "additionalProperties": true,
+                    "properties": {},
+                    "x-apifox-orders": []
+                  }
+                },
+                "x-apifox-orders": [
+                  "model",
+                  "prompt",
+                  "image",
+                  "duration",
+                  "width",
+                  "height",
+                  "fps",
+                  "seed",
+                  "n",
+                  "response_format",
+                  "user",
+                  "metadata"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно создана задача видео",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "ID видео"
+                    },
+                    "object": {
+                      "type": "string",
+                      "description": "Тип объекта"
+                    },
+                    "model": {
+                      "type": "string",
+                      "description": "Используемая модель"
+                    },
+                    "status": {
+                      "type": "string",
+                      "description": "Статус задачи"
+                    },
+                    "progress": {
+                      "type": "integer",
+                      "description": "Процент выполнения"
+                    },
+                    "created_at": {
+                      "type": "integer",
+                      "description": "Временная метка создания"
+                    },
+                    "seconds": {
+                      "type": "string",
+                      "description": "Длительность видео"
+                    },
+                    "completed_at": {
+                      "type": "integer",
+                      "description": "Временная метка завершения"
+                    },
+                    "expires_at": {
+                      "type": "integer",
+                      "description": "Временная метка истечения"
+                    },
+                    "size": {
+                      "type": "string",
+                      "description": "Размер видео"
+                    },
+                    "error": {
+                      "type": "object",
+                      "description": "Сообщение об ошибке видео OpenAI",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Сообщение об ошибке"
+                        },
+                        "code": {
+                          "type": "string",
+                          "description": "Код ошибки"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "code"
+                      ]
+                    },
+                    "metadata": {
+                      "type": "object",
+                      "description": "Дополнительные метаданные",
+                      "additionalProperties": true,
+                      "x-apifox-orders": [],
+                      "properties": {}
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "object",
+                    "model",
+                    "status",
+                    "progress",
+                    "created_at",
+                    "seconds"
+                  ],
+                  "x-apifox-orders": [
+                    "id",
+                    "object",
+                    "model",
+                    "status",
+                    "progress",
+                    "created_at",
+                    "seconds",
+                    "completed_at",
+                    "expires_at",
+                    "size",
+                    "error",
+                    "metadata"
+                  ],
+                  "x-apifox-refs": {}
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка параметров запроса",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Сообщение об ошибке"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Тип ошибки"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Соответствующие параметры"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Код ошибки"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

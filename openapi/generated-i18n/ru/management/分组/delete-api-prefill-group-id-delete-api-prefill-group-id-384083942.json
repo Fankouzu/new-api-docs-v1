@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Удаление предварительно заполненной группы",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Группировка"
+    }
+  ],
+  "paths": {
+    "/api/prefill_group/{id}": {
+      "delete": {
+        "tags": [
+          "Группировка"
+        ],
+        "summary": "Удаление предварительно заполненной группы",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "delete-api-prefill-group-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

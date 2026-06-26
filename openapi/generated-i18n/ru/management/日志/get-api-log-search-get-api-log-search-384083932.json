@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Поиск логов",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Логи"
+    }
+  ],
+  "paths": {
+    "/api/log/search": {
+      "get": {
+        "tags": [
+          "Логи"
+        ],
+        "summary": "Поиск логов",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-log-search",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

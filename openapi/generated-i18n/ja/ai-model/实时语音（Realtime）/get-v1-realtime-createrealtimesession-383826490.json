@@ -1,0 +1,106 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ネイティブOpenAI形式",
+    "version": "1.0.0",
+    "description": "リアルタイム会話のためのWebSocket接続を確立します。\n\n**注意**: これはWebSocketエンドポイントであり、WebSocketプロトコルを使用して接続する必要があります。\n\n接続URLの例: `wss://api.example.com/v1/realtime?model=gpt-4o-realtime`\n"
+  },
+  "tags": [
+    {
+      "name": "リアルタイム音声（Realtime）"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Bearer Token認証を使用します。\n形式: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/realtime": {
+      "get": {
+        "tags": [
+          "リアルタイム音声（Realtime）"
+        ],
+        "summary": "ネイティブOpenAI形式",
+        "description": "リアルタイム会話のためのWebSocket接続を確立します。\n\n**注意**: これはWebSocketエンドポイントであり、WebSocketプロトコルを使用して接続する必要があります。\n\n接続URLの例: `wss://api.example.com/v1/realtime?model=gpt-4o-realtime`\n",
+        "operationId": "createrealtimesession",
+        "parameters": [
+          {
+            "name": "model",
+            "in": "query",
+            "required": false,
+            "description": "使用するモデル",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "gpt-4o-realtime-preview"
+              ]
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "101": {
+            "description": "WebSocketプロトコル切り替え"
+          },
+          "400": {
+            "description": "リクエストエラー",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "エラーメッセージ"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "エラータイプ"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "関連パラメータ"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "エラーコード"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

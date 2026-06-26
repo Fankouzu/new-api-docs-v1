@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Pricing Information",
+    "version": "1.0.0",
+    "description": "🔓 No authentication required (optional login)"
+  },
+  "tags": [
+    {
+      "name": "System"
+    }
+  ],
+  "paths": {
+    "/api/pricing": {
+      "get": {
+        "tags": [
+          "System"
+        ],
+        "summary": "Get Pricing Information",
+        "description": "🔓 No authentication required (optional login)",
+        "operationId": "get-api-pricing",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "プライバシーポリシーを取得する",
+    "version": "1.0.0",
+    "description": "🔓 認証不要"
+  },
+  "tags": [
+    {
+      "name": "システム"
+    }
+  ],
+  "paths": {
+    "/api/privacy-policy": {
+      "get": {
+        "tags": [
+          "システム"
+        ],
+        "summary": "プライバシーポリシーを取得する",
+        "description": "🔓 認証不要",
+        "operationId": "get-api-privacy-policy",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

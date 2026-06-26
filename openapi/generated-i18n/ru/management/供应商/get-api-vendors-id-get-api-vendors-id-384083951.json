@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить указанного поставщика",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Поставщик"
+    }
+  ],
+  "paths": {
+    "/api/vendors/{id}": {
+      "get": {
+        "tags": [
+          "Поставщик"
+        ],
+        "summary": "Получить указанного поставщика",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "get-api-vendors-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

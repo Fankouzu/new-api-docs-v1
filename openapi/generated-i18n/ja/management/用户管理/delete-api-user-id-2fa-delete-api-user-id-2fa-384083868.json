@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "管理者がユーザーの2FAを無効にする",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "ユーザー管理"
+    }
+  ],
+  "paths": {
+    "/api/user/{id}/2fa": {
+      "delete": {
+        "tags": [
+          "ユーザー管理"
+        ],
+        "summary": "管理者がユーザーの2FAを無効にする",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "delete-api-user-id-2fa",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

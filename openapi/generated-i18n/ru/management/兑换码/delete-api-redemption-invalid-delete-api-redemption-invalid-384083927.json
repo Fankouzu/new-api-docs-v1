@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Удаление недействительных подарочных кодов",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Код активации"
+    }
+  ],
+  "paths": {
+    "/api/redemption/invalid": {
+      "delete": {
+        "tags": [
+          "Код активации"
+        ],
+        "summary": "Удаление недействительных подарочных кодов",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "delete-api-redemption-invalid",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

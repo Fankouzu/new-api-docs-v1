@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Удаление Passkey",
+    "version": "1.0.0",
+    "description": "🔐 Требуется вход (права User)"
+  },
+  "tags": [
+    {
+      "name": "Управление пользователями"
+    }
+  ],
+  "paths": {
+    "/api/user/passkey": {
+      "delete": {
+        "tags": [
+          "Управление пользователями"
+        ],
+        "summary": "Удаление Passkey",
+        "description": "🔐 Требуется вход (права User)",
+        "operationId": "delete-api-user-passkey",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

@@ -28,9 +28,12 @@ async function walkJsonFiles(dir: string): Promise<string[]> {
 export const openapi = createOpenAPI({
   // Set proxy URL to resolve CORS issues
   proxyUrl: '/api/proxy',
-  // Always load generated per-endpoint OpenAPI files (clean single source of truth)
+  // Always load generated per-endpoint OpenAPI files plus locale-specific copies.
   async input() {
-    const files = await walkJsonFiles('./openapi/generated');
+    const files = [
+      ...(await walkJsonFiles('./openapi/generated')),
+      ...(await walkJsonFiles('./openapi/generated-i18n')),
+    ];
     if (files.length === 0) {
       throw new Error(
         'No generated OpenAPI files found in ./openapi/generated. Run: bun run generate:openapi'

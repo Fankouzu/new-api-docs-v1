@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "有効化済みモデルリストの取得",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "チャネル管理"
+    }
+  ],
+  "paths": {
+    "/api/channel/models_enabled": {
+      "get": {
+        "tags": [
+          "チャネル管理"
+        ],
+        "summary": "有効化済みモデルリストの取得",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "get-api-channel-models-enabled",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

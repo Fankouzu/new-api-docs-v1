@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "システムオプションを取得する",
+    "version": "1.0.0",
+    "description": "👑 スーパー管理者権限（Root）が必要"
+  },
+  "tags": [
+    {
+      "name": "システム設定"
+    }
+  ],
+  "paths": {
+    "/api/option/": {
+      "get": {
+        "tags": [
+          "システム設定"
+        ],
+        "summary": "システムオプションを取得する",
+        "description": "👑 スーパー管理者権限（Root）が必要",
+        "operationId": "get-api-option",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

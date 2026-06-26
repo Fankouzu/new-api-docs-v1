@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get 2FA Status",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "Two-factor authentication"
+    }
+  ],
+  "paths": {
+    "/api/user/2fa/status": {
+      "get": {
+        "tags": [
+          "Two-factor authentication"
+        ],
+        "summary": "Get 2FA Status",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "get-api-user-2fa-status",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

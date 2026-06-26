@@ -1,0 +1,66 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "マルチキー管理",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "チャネル管理"
+    }
+  ],
+  "paths": {
+    "/api/channel/multi_key/manage": {
+      "post": {
+        "tags": [
+          "チャネル管理"
+        ],
+        "summary": "マルチキー管理",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "post-api-channel-multi-key-manage",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "channel_id": {
+                    "type": "integer"
+                  },
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "get_key_status",
+                      "disable_key",
+                      "enable_key",
+                      "delete_key",
+                      "delete_disabled_keys",
+                      "enable_all_keys",
+                      "disable_all_keys"
+                    ]
+                  },
+                  "key_index": {
+                    "type": "integer"
+                  }
+                },
+                "x-apifox-orders": [
+                  "channel_id",
+                  "action",
+                  "key_index"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Responses形式",
+    "version": "1.0.0",
+    "description": "OpenAI Responses API、モデル応答を作成するためのもの。\nマルチターン対話、ツール呼び出し、推論などの機能をサポートしています。\n"
+  },
+  "tags": [
+    {
+      "name": "チャット（Chat）/ネイティブOpenAI形式"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Bearer Token認証を使用します。\n形式: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/responses": {
+      "post": {
+        "tags": [
+          "チャット（Chat）/ネイティブOpenAI形式"
+        ],
+        "summary": "Responses形式",
+        "description": "OpenAI Responses API、モデル応答を作成するためのもの。\nマルチターン対話、ツール呼び出し、推論などの機能をサポートしています。\n",
+        "operationId": "createresponse",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "model"
+                ],
+                "properties": {
+                  "model": {
+                    "type": "string"
+                  },
+                  "input": {
+                    "description": "入力内容。文字列またはメッセージ配列",
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {},
+                          "x-apifox-orders": []
+                        }
+                      }
+                    ]
+                  },
+                  "instructions": {
+                    "type": "string"
+                  },
+                  "max_output_tokens": {
+                    "type": "integer"
+                  },
+                  "temperature": {
+                    "type": "number"
+                  },
+                  "top_p": {
+                    "type": "number"
+                  },
+                  "stream": {
+                    "type": "boolean"
+                  },
+                  "tools": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": []
+                    }
+                  },
+                  "tool_choice": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "object",
+                        "properties": {},
+                        "x-apifox-orders": []
+                      }
+                    ]
+                  },
+                  "reasoning": {
+                    "type": "object",
+                    "properties": {
+                      "effort": {
+                        "type": "string",
+                        "enum": [
+                          "low",
+                          "medium",
+                          "high"
+                        ]
+                      },
+                      "summary": {
+                        "type": "string"
+                      }
+                    },
+                    "x-apifox-orders": [
+                      "effort",
+                      "summary"
+                    ]
+                  },
+                  "previous_response_id": {
+                    "type": "string"
+                  },
+                  "truncation": {
+                    "type": "string",
+                    "enum": [
+                      "auto",
+                      "disabled"
+                    ]
+                  }
+                },
+                "x-apifox-orders": [
+                  "model",
+                  "input",
+                  "instructions",
+                  "max_output_tokens",
+                  "temperature",
+                  "top_p",
+                  "stream",
+                  "tools",
+                  "tool_choice",
+                  "reasoning",
+                  "previous_response_id",
+                  "truncation"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "レスポンスの作成に成功しました",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "object": {
+                      "type": "string",
+                      "examples": [
+                        "response"
+                      ]
+                    },
+                    "created_at": {
+                      "type": "integer"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "completed",
+                        "failed",
+                        "in_progress",
+                        "incomplete"
+                      ]
+                    },
+                    "model": {
+                      "type": "string"
+                    },
+                    "output": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "role": {
+                            "type": "string"
+                          },
+                          "content": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "type": {
+                                  "type": "string"
+                                },
+                                "text": {
+                                  "type": "string"
+                                }
+                              },
+                              "x-apifox-orders": [
+                                "type",
+                                "text"
+                              ]
+                            }
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "type",
+                          "id",
+                          "status",
+                          "role",
+                          "content"
+                        ]
+                      }
+                    },
+                    "usage": {
+                      "type": "object",
+                      "properties": {
+                        "prompt_tokens": {
+                          "type": "integer",
+                          "description": "プロンプトのトークン数"
+                        },
+                        "completion_tokens": {
+                          "type": "integer",
+                          "description": "トークン数の補完"
+                        },
+                        "total_tokens": {
+                          "type": "integer",
+                          "description": "総トークン数"
+                        },
+                        "prompt_tokens_details": {
+                          "type": "object",
+                          "properties": {
+                            "cached_tokens": {
+                              "type": "integer"
+                            },
+                            "text_tokens": {
+                              "type": "integer"
+                            },
+                            "audio_tokens": {
+                              "type": "integer"
+                            },
+                            "image_tokens": {
+                              "type": "integer"
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "cached_tokens",
+                            "text_tokens",
+                            "audio_tokens",
+                            "image_tokens"
+                          ]
+                        },
+                        "completion_tokens_details": {
+                          "type": "object",
+                          "properties": {
+                            "text_tokens": {
+                              "type": "integer"
+                            },
+                            "audio_tokens": {
+                              "type": "integer"
+                            },
+                            "reasoning_tokens": {
+                              "type": "integer"
+                            }
+                          },
+                          "x-apifox-orders": [
+                            "text_tokens",
+                            "audio_tokens",
+                            "reasoning_tokens"
+                          ]
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "prompt_tokens",
+                        "completion_tokens",
+                        "total_tokens",
+                        "prompt_tokens_details",
+                        "completion_tokens_details"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "id",
+                    "object",
+                    "created_at",
+                    "status",
+                    "model",
+                    "output",
+                    "usage"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

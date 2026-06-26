@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "初期化ステータスの取得",
+    "version": "1.0.0",
+    "description": "🔓 認証不要"
+  },
+  "tags": [
+    {
+      "name": "システム"
+    }
+  ],
+  "paths": {
+    "/api/setup": {
+      "get": {
+        "tags": [
+          "システム"
+        ],
+        "summary": "初期化ステータスの取得",
+        "description": "🔓 認証不要",
+        "operationId": "get-api-setup",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

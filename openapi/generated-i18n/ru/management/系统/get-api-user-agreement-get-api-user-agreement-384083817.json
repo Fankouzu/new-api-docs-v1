@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Получить пользовательское соглашение",
+    "version": "1.0.0",
+    "description": "🔓 Без аутентификации"
+  },
+  "tags": [
+    {
+      "name": "Система"
+    }
+  ],
+  "paths": {
+    "/api/user-agreement": {
+      "get": {
+        "tags": [
+          "Система"
+        ],
+        "summary": "Получить пользовательское соглашение",
+        "description": "🔓 Без аутентификации",
+        "operationId": "get-api-user-agreement",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

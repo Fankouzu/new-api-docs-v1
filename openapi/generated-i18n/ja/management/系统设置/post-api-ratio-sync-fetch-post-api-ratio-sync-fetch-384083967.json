@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "アップストリーム倍率の取得",
+    "version": "1.0.0",
+    "description": "👑 スーパー管理者権限（Root）が必要"
+  },
+  "tags": [
+    {
+      "name": "システム設定"
+    }
+  ],
+  "paths": {
+    "/api/ratio_sync/fetch": {
+      "post": {
+        "tags": [
+          "システム設定"
+        ],
+        "summary": "アップストリーム倍率の取得",
+        "description": "👑 スーパー管理者権限（Root）が必要",
+        "operationId": "post-api-ratio-sync-fetch",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

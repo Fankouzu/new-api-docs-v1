@@ -1,0 +1,196 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "画像を生成",
+    "version": "1.0.0",
+    "description": "プロンプトを指定して画像を作成します。[詳細](https://platform.openai.com/docs/guides/images)。"
+  },
+  "tags": [
+    {
+      "name": "画像（Images）/ネイティブOpenAI形式"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "paths": {
+    "/v1/images/generations/": {
+      "post": {
+        "tags": [
+          "画像（Images）/ネイティブOpenAI形式"
+        ],
+        "summary": "画像を生成",
+        "description": "プロンプトを指定して画像を作成します。[詳細](https://platform.openai.com/docs/guides/images)。",
+        "operationId": "post-v1-images-generations",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "description": "画像生成に使用するモデル。`dall-e-2`、`dall-e-3`、または`gpt-image-1`のいずれか。デフォルトは`dall-e-2`ですが、`gpt-image-1`固有のパラメータを使用する場合を除きます。"
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "description": "必要な画像のテキスト説明。`gpt-image-1` の最大長は 32000 文字、`dall-e-2` の最大長は 1000 文字、`dall-e-3` の最大長は 4000 文字です。"
+                  },
+                  "n": {
+                    "type": "integer",
+                    "description": "生成する画像数。1から10の間でなければなりません。`dall-e-3`では`n=1`のみサポートされています。"
+                  },
+                  "size": {
+                    "type": "string",
+                    "description": "生成される画像のサイズ。`gpt-image-1`の場合は、`1024x1024`、`1536x1024`（横向き）、`1024x1536`（縦向き）、または`自動`（デフォルト）のいずれかである必要があります。`dall-e-2`の場合は、`256x256`、`512x512`、または`1024x1024`のいずれかである必要があります。`dall-e-3`の場合は、`1024x1024`、`1792x1024`、または`1024x1792`のいずれかである必要があります。"
+                  },
+                  "background": {
+                    "type": "string",
+                    "description": "生成画像の背景に透明度を設定できます。このパラメータは `gpt-image-1` のみサポートします。`透明`、`不透明`、または`自動`（デフォルト）のいずれかでなければなりません。`自動`を使用すると、モデルが画像に最適な背景を自動的に決定します。\n\nもし`是透明`の場合、出力形式は透明度をサポートする必要があるため、`png`（デフォルト）または `webp` に設定する必要があります。"
+                  },
+                  "moderation": {
+                    "type": "string",
+                    "description": "`gpt-image-1` が生成する画像のコンテンツ審査レベルを制御します。制限を緩めたフィルタリングを行うには`低`、または`自動`（デフォルト）を指定する必要があります。"
+                  },
+                  "quality": {
+                    "type": "string",
+                    "description": "生成された画像の品質。"
+                  },
+                  "stream": {
+                    "type": "string"
+                  },
+                  "style": {
+                    "type": "string"
+                  },
+                  "user": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "prompt"
+                ],
+                "x-apifox-orders": [
+                  "model",
+                  "prompt",
+                  "n",
+                  "size",
+                  "background",
+                  "moderation",
+                  "quality",
+                  "stream",
+                  "style",
+                  "user"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "created": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "b64_json": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "url"
+                        ],
+                        "x-apifox-orders": [
+                          "b64_json",
+                          "url"
+                        ]
+                      }
+                    },
+                    "usage": {
+                      "type": "object",
+                      "properties": {
+                        "total_tokens": {
+                          "type": "integer"
+                        },
+                        "input_tokens": {
+                          "type": "integer"
+                        },
+                        "output_tokens": {
+                          "type": "integer"
+                        },
+                        "input_tokens_details": {
+                          "type": "object",
+                          "properties": {
+                            "text_tokens": {
+                              "type": "integer"
+                            },
+                            "image_tokens": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": [
+                            "text_tokens",
+                            "image_tokens"
+                          ],
+                          "x-apifox-orders": [
+                            "text_tokens",
+                            "image_tokens"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "total_tokens",
+                        "input_tokens",
+                        "output_tokens",
+                        "input_tokens_details"
+                      ],
+                      "x-apifox-orders": [
+                        "total_tokens",
+                        "input_tokens",
+                        "output_tokens",
+                        "input_tokens_details"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "created",
+                    "data",
+                    "usage"
+                  ],
+                  "x-apifox-orders": [
+                    "created",
+                    "data",
+                    "usage"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Current User Information",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/self": {
+      "get": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Get Current User Information",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "get-api-user-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

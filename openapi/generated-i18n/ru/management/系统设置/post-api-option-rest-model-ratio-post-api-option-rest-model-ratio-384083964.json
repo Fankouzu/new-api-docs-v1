@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Сброс множителя модели",
+    "version": "1.0.0",
+    "description": "👑 Требуются права суперадминистратора (Root)"
+  },
+  "tags": [
+    {
+      "name": "Настройки системы"
+    }
+  ],
+  "paths": {
+    "/api/option/rest_model_ratio": {
+      "post": {
+        "tags": [
+          "Настройки системы"
+        ],
+        "summary": "Сброс множителя модели",
+        "description": "👑 Требуются права суперадминистратора (Root)",
+        "operationId": "post-api-option-rest-model-ratio",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get Personal Logs",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "Logs"
+    }
+  ],
+  "paths": {
+    "/api/log/self": {
+      "get": {
+        "tags": [
+          "Logs"
+        ],
+        "summary": "Get Personal Logs",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "get-api-log-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

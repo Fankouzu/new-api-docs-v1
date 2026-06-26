@@ -1,0 +1,56 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "チャネルラベルの一括設定",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "チャネル管理"
+    }
+  ],
+  "paths": {
+    "/api/channel/batch/tag": {
+      "post": {
+        "tags": [
+          "チャネル管理"
+        ],
+        "summary": "チャネルラベルの一括設定",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "post-api-channel-batch-tag",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "tag": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "ids",
+                  "tag"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

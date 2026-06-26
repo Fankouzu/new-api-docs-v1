@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get User Available Models",
+    "version": "1.0.0",
+    "description": "🔐 Requires login (User privilege)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/models": {
+      "get": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Get User Available Models",
+        "description": "🔐 Requires login (User privilege)",
+        "operationId": "get-api-user-models",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Создать поставщика",
+    "version": "1.0.0",
+    "description": "👨‍💼 Требуются права администратора (Admin)"
+  },
+  "tags": [
+    {
+      "name": "Поставщик"
+    }
+  ],
+  "paths": {
+    "/api/vendors/": {
+      "post": {
+        "tags": [
+          "Поставщик"
+        ],
+        "summary": "Создать поставщика",
+        "description": "👨‍💼 Требуются права администратора (Admin)",
+        "operationId": "post-api-vendors",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Успешно"
+          }
+        }
+      }
+    }
+  }
+}

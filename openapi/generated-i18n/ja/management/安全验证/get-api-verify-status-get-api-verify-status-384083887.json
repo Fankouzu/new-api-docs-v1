@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "検証状態の取得",
+    "version": "1.0.0",
+    "description": "🔐 ログインが必要（User権限）"
+  },
+  "tags": [
+    {
+      "name": "セキュリティ検証"
+    }
+  ],
+  "paths": {
+    "/api/verify/status": {
+      "get": {
+        "tags": [
+          "セキュリティ検証"
+        ],
+        "summary": "検証状態の取得",
+        "description": "🔐 ログインが必要（User権限）",
+        "operationId": "get-api-verify-status",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

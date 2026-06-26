@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Stripe支払いを開始",
+    "version": "1.0.0",
+    "description": "🔐 ログインが必要（User権限）"
+  },
+  "tags": [
+    {
+      "name": "チャージ"
+    }
+  ],
+  "paths": {
+    "/api/user/stripe/pay": {
+      "post": {
+        "tags": [
+          "チャージ"
+        ],
+        "summary": "Stripe支払いを開始",
+        "description": "🔐 ログインが必要（User権限）",
+        "operationId": "post-api-user-stripe-pay",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

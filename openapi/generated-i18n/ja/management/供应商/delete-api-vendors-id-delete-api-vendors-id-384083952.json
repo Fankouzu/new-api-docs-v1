@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "プロバイダーの削除",
+    "version": "1.0.0",
+    "description": "👨‍💼 管理者権限（Admin）が必要"
+  },
+  "tags": [
+    {
+      "name": "ベンダ"
+    }
+  ],
+  "paths": {
+    "/api/vendors/{id}": {
+      "delete": {
+        "tags": [
+          "ベンダ"
+        ],
+        "summary": "プロバイダーの削除",
+        "description": "👨‍💼 管理者権限（Admin）が必要",
+        "operationId": "delete-api-vendors-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功しました"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,8 +1,9 @@
 import { ProvideLinksToolSchema } from '../../../lib/inkeep-qa-schema';
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 import { convertToModelMessages, streamText } from 'ai';
+import { getDocsSystemPrompt, resolveDocsLanguage } from '@/lib/ask-ai-context';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
 const openai = createOpenAICompatible({
   name: 'inkeep',
@@ -12,6 +13,11 @@ const openai = createOpenAICompatible({
 
 export async function POST(req: Request) {
   const reqJson = await req.json();
+  const lang = resolveDocsLanguage({
+    explicitLang: reqJson.lang,
+    referer: req.headers.get('referer'),
+  });
+  const docsSystemPrompt = await getDocsSystemPrompt(lang);
 
   const result = streamText({
     model: openai(process.env.AI_MODEL || 'inkeep-qa-sonnet-4'),
@@ -20,9 +26,12 @@ export async function POST(req: Request) {
         inputSchema: ProvideLinksToolSchema,
       },
     },
-    messages: convertToModelMessages(reqJson.messages, {
-      ignoreIncompleteToolCalls: true,
-    }),
+    messages: [
+      docsSystemPrompt,
+      ...convertToModelMessages(reqJson.messages, {
+        ignoreIncompleteToolCalls: true,
+      }),
+    ],
     toolChoice: 'auto',
   });
 

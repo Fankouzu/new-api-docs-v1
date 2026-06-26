@@ -70,6 +70,24 @@ type SchemaDefItem = {
   items?: SchemaDefItem[];
 };
 
+function getOpenApiServerUrl() {
+  const configured = process.env.DEFAULT_NEWAPI_SERVER_URL?.trim();
+
+  if (!configured) {
+    throw new Error(
+      'DEFAULT_NEWAPI_SERVER_URL is required for generated OpenAPI server URLs.'
+    );
+  }
+
+  if (!/^https?:\/\//i.test(configured)) {
+    throw new Error(
+      'DEFAULT_NEWAPI_SERVER_URL must be an absolute http(s) URL, for example: https://api.example.com'
+    );
+  }
+
+  return configured.replace(/\/+$/, '');
+}
+
 function sanitizePathPart(input: string): string {
   // Windows-safe file/folder names
   return input
@@ -528,6 +546,12 @@ async function main() {
         version: '1.0.0',
         description: ep.description || undefined,
       },
+      servers: [
+        {
+          url: getOpenApiServerUrl(),
+          description: 'Lychee AI API',
+        },
+      ],
       tags: tags.map((name) => ({ name })),
       ...(sec.securitySchemes
         ? { components: { securitySchemes: sec.securitySchemes } }

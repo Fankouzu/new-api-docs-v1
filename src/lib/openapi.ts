@@ -2,6 +2,44 @@ import { createOpenAPI } from 'fumadocs-openapi/server';
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
+type OpenAPIDocument = Record<string, unknown> & {
+  servers?: Array<{ url?: string; description?: string }>;
+};
+
+function getOpenApiServerUrl() {
+  const configured = process.env.DEFAULT_NEWAPI_SERVER_URL?.trim();
+
+  if (!configured) {
+    throw new Error(
+      'DEFAULT_NEWAPI_SERVER_URL is required for API reference examples and requests.'
+    );
+  }
+
+  if (!isAbsoluteHttpUrl(configured)) {
+    throw new Error(
+      'DEFAULT_NEWAPI_SERVER_URL must be an absolute http(s) URL, for example: https://api.example.com'
+    );
+  }
+
+  return configured.replace(/\/+$/, '');
+}
+
+function isAbsoluteHttpUrl(url: unknown): url is string {
+  return typeof url === 'string' && /^https?:\/\//i.test(url.trim());
+}
+
+function withConfiguredServer(document: OpenAPIDocument): OpenAPIDocument {
+  return {
+    ...document,
+    servers: [
+      {
+        url: getOpenApiServerUrl(),
+        description: 'Lychee AI API',
+      },
+    ],
+  };
+}
+
 async function walkJsonFiles(dir: string): Promise<string[]> {
   const out: string[] = [];
   async function walk(current: string) {
@@ -42,7 +80,10 @@ export const openapi = createOpenAPI({
     const entries = await Promise.all(
       files.map(async (p) => {
         const raw = await readFile(p, 'utf8');
-        return [p, JSON.parse(raw)] as const;
+        return [
+          p,
+          withConfiguredServer(JSON.parse(raw) as OpenAPIDocument),
+        ] as const;
       })
     );
     return Object.fromEntries(entries);

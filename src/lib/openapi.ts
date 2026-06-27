@@ -1,40 +1,19 @@
 import { createOpenAPI } from 'fumadocs-openapi/server';
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { getNewApiServerUrl, getWebsiteName } from './site-config';
 
 type OpenAPIDocument = Record<string, unknown> & {
   servers?: Array<{ url?: string; description?: string }>;
 };
-
-function getOpenApiServerUrl() {
-  const configured = process.env.DEFAULT_NEWAPI_SERVER_URL?.trim();
-
-  if (!configured) {
-    throw new Error(
-      'DEFAULT_NEWAPI_SERVER_URL is required for API reference examples and requests.'
-    );
-  }
-
-  if (!isAbsoluteHttpUrl(configured)) {
-    throw new Error(
-      'DEFAULT_NEWAPI_SERVER_URL must be an absolute http(s) URL, for example: https://api.example.com'
-    );
-  }
-
-  return configured.replace(/\/+$/, '');
-}
-
-function isAbsoluteHttpUrl(url: unknown): url is string {
-  return typeof url === 'string' && /^https?:\/\//i.test(url.trim());
-}
 
 function withConfiguredServer(document: OpenAPIDocument): OpenAPIDocument {
   return {
     ...document,
     servers: [
       {
-        url: getOpenApiServerUrl(),
-        description: 'Lychee AI API',
+        url: getNewApiServerUrl(),
+        description: `${getWebsiteName()} API`,
       },
     ],
   };

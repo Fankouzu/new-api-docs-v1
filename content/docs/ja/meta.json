@@ -1,6 +1,6 @@
 {
   "title": "APIリファレンス",
-  "description": "Lychee AI の完全なインターフェースドキュメント",
+  "description": "__WEBSITE_NAME__ の完全なインターフェースドキュメント",
   "icon": "Code",
   "pages": ["index", "ai-model", "management", "apps"]
 }

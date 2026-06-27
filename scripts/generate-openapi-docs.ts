@@ -187,8 +187,26 @@ async function ensureFileFromTemplate(destPath: string, templatePath: string) {
   }
 
   await mkdir(path.dirname(destPath), { recursive: true });
-  const content = await readFile(templatePath, 'utf8');
+  const content = formatWebsiteText(await readFile(templatePath, 'utf8'));
   await writeFile(destPath, content, 'utf8');
+}
+
+function getWebsiteName() {
+  const configured = process.env.NEXT_PUBLIC_WEBSITE_NAME?.trim();
+
+  if (!configured) {
+    throw new Error(
+      'NEXT_PUBLIC_WEBSITE_NAME is required for generated documentation templates.'
+    );
+  }
+
+  return configured;
+}
+
+function formatWebsiteText(value: string) {
+  return value
+    .replaceAll('__WEBSITE_NAME__', getWebsiteName())
+    .replaceAll('{websiteName}', getWebsiteName());
 }
 
 async function generate() {

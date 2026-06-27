@@ -88,6 +88,18 @@ function getOpenApiServerUrl() {
   return configured.replace(/\/+$/, '');
 }
 
+function getWebsiteName() {
+  const configured = process.env.NEXT_PUBLIC_WEBSITE_NAME?.trim();
+
+  if (!configured) {
+    throw new Error(
+      'NEXT_PUBLIC_WEBSITE_NAME is required for generated OpenAPI server descriptions.'
+    );
+  }
+
+  return configured;
+}
+
 function sanitizePathPart(input: string): string {
   // Windows-safe file/folder names
   return input
@@ -549,7 +561,7 @@ async function main() {
       servers: [
         {
           url: getOpenApiServerUrl(),
-          description: 'Lychee AI API',
+          description: `${getWebsiteName()} API`,
         },
       ],
       tags: tags.map((name) => ({ name })),

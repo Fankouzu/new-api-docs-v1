@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getWebsiteName, getWebsiteUrl } from './site-config';
 
 export const siteIcons: Metadata['icons'] = {
   icon: [
@@ -11,15 +12,17 @@ export const siteIcons: Metadata['icons'] = {
 };
 
 export function createMetadata(override: Metadata): Metadata {
+  const websiteName = getWebsiteName();
+
   return {
     ...override,
     icons: siteIcons,
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      url: 'https://www.newapi.ai',
+      url: getWebsiteUrl(),
       images: '/assets/auth_logo.png',
-      siteName: 'Lychee AI',
+      siteName: websiteName,
       type: 'website',
       ...override.openGraph,
     },

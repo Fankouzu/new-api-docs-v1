@@ -1,4 +1,5 @@
 import type { SystemModelMessage } from 'ai';
+import { getNewApiServerUrl, getWebsiteName } from './site-config';
 
 const docsLanguages = ['en', 'zh', 'ja', 'ru'];
 const defaultDocsLanguage = 'en';
@@ -38,11 +39,15 @@ export function createDocsSystemPrompt(
   lang: string,
   docsCorpus: string
 ): SystemModelMessage {
+  const websiteName = getWebsiteName();
+  const apiGatewayUrl = getNewApiServerUrl();
+
   return {
     role: 'system',
-    content: `You are the Lychee AI Docs assistant.
-Answer using the full Lychee AI documentation corpus below.
+    content: `You are the ${websiteName} Docs assistant.
+Answer using the full ${websiteName} documentation corpus below.
 Current docs language: ${lang}.
+The ${websiteName} API gateway address is: ${apiGatewayUrl}.
 
 Rules:
 - Prioritize the documentation corpus over your training data.
@@ -50,9 +55,9 @@ Rules:
 - Keep answers practical and cite relevant page titles or sections when possible.
 - Answer in the user's language unless they ask otherwise.
 
-<lychee_ai_docs_corpus>
+<docs_corpus>
 ${docsCorpus}
-</lychee_ai_docs_corpus>`,
+</docs_corpus>`,
   };
 }
 

@@ -2,6 +2,11 @@ import { getPageImage, source } from '@/lib/source';
 import { notFound } from 'next/navigation';
 import { ImageResponse } from 'next/og';
 import { generate as DefaultImage } from 'fumadocs-ui/og';
+import {
+  formatOptionalWebsiteText,
+  formatWebsiteText,
+  getWebsiteName,
+} from '@/lib/site-config';
 
 export const revalidate = false;
 
@@ -16,9 +21,9 @@ export async function GET(
   return new ImageResponse(
     (
       <DefaultImage
-        title={page.data.title}
-        description={page.data.description}
-        site="Lychee AI"
+        title={formatWebsiteText(page.data.title)}
+        description={formatOptionalWebsiteText(page.data.description)}
+        site={getWebsiteName()}
       />
     ),
     {

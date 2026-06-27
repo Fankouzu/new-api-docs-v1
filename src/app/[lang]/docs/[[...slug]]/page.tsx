@@ -12,6 +12,10 @@ import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { Feedback } from '@/components/feedback';
 import { LLMCopyButton, ViewOptions } from '@/components/page-actions';
 import { onRateAction } from '@/lib/github';
+import {
+  formatOptionalWebsiteText,
+  formatWebsiteText,
+} from '@/lib/site-config';
 
 // GitHub repository info for source links
 const owner = 'Fankouzu';
@@ -39,9 +43,9 @@ export default async function Page(props: {
         enabled: !page.data.full,
       }}
     >
-      <DocsTitle>{page.data.title}</DocsTitle>
+      <DocsTitle>{formatWebsiteText(page.data.title)}</DocsTitle>
       <DocsDescription className="mb-2">
-        {page.data.description}
+        {formatOptionalWebsiteText(page.data.description)}
       </DocsDescription>
       <div className="mb-6 flex flex-row flex-wrap items-center gap-2 border-b pb-6">
         <LLMCopyButton
@@ -78,8 +82,8 @@ export async function generateMetadata(props: {
   if (!page) notFound();
 
   return {
-    title: page.data.title,
-    description: page.data.description,
+    title: formatWebsiteText(page.data.title),
+    description: formatOptionalWebsiteText(page.data.description),
     openGraph: { images: getPageImage(page).url },
   };
 }

@@ -5,6 +5,13 @@ import '../global.css';
 import type { Metadata } from 'next';
 import { createMetadata, baseUrl } from '@/lib/metadata';
 import { notFound } from 'next/navigation';
+import { getWebsiteName } from '@/lib/site-config';
+
+const websiteName = getWebsiteName();
+
+function withWebsiteName(value: string) {
+  return value.replaceAll('{websiteName}', websiteName);
+}
 
 const { provider } = defineI18nUI(i18n, {
   translations: {
@@ -55,27 +62,28 @@ const titleMap: Record<
   { default: string; template: string; description: string }
 > = {
   en: {
-    default: 'Lychee AI API Reference',
-    template: '%s | Lychee AI',
+    default: '{websiteName} API Reference',
+    template: `%s | {websiteName}`,
     description:
-      'API reference for Lychee AI model endpoints, management endpoints, and supported AI application integrations.',
+      'API reference for {websiteName} model endpoints, management endpoints, and supported AI application integrations.',
   },
   zh: {
-    default: 'Lychee AI API 参考',
-    template: '%s | Lychee AI',
-    description: 'Lychee AI 模型接口、管理接口与 AI 应用接入的 API 参考文档。',
+    default: '{websiteName} API 参考',
+    template: `%s | {websiteName}`,
+    description:
+      '{websiteName} 模型接口、管理接口与 AI 应用接入的 API 参考文档。',
   },
   ja: {
-    default: 'Lychee AI APIリファレンス',
-    template: '%s | Lychee AI',
+    default: '{websiteName} APIリファレンス',
+    template: `%s | {websiteName}`,
     description:
-      'Lychee AI のモデルエンドポイント、管理エンドポイント、AI アプリ連携の API リファレンス。',
+      '{websiteName} のモデルエンドポイント、管理エンドポイント、AI アプリ連携の API リファレンス。',
   },
   ru: {
-    default: 'Справочник API Lychee AI',
-    template: '%s | Lychee AI',
+    default: 'Справочник API {websiteName}',
+    template: `%s | {websiteName}`,
     description:
-      'Справочник API для модельных и административных интерфейсов Lychee AI, а также поддерживаемых интеграций AI-приложений.',
+      'Справочник API для модельных и административных интерфейсов {websiteName}, а также поддерживаемых интеграций AI-приложений.',
   },
 };
 
@@ -86,14 +94,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const lang = (await params).lang;
   const titles = titleMap[lang] || titleMap.en;
+  const title = {
+    default: withWebsiteName(titles.default),
+    template: withWebsiteName(titles.template),
+  };
+  const description = withWebsiteName(titles.description);
 
   return createMetadata({
     metadataBase: baseUrl,
-    title: {
-      default: titles.default,
-      template: titles.template,
-    },
-    description: titles.description,
+    title,
+    description,
     keywords: [
       'AI Infrastructure',
       'AI Gateway',
@@ -107,9 +117,12 @@ export async function generateMetadata({
       'Intelligent API Management',
     ],
     authors: [
-      { name: 'Lychee AI Team', url: 'https://github.com/QuantumNous/new-api' },
+      {
+        name: `${websiteName} Team`,
+        url: 'https://github.com/QuantumNous/new-api',
+      },
     ],
-    creator: 'Lychee AI Team',
+    creator: `${websiteName} Team`,
     alternates: {
       languages: {
         en: '/en/docs',
@@ -121,14 +134,14 @@ export async function generateMetadata({
     openGraph: {
       type: 'website',
       locale: lang,
-      title: titles.default,
-      description: titles.description,
-      siteName: 'Lychee AI',
+      title: title.default,
+      description,
+      siteName: websiteName,
     },
     twitter: {
       card: 'summary_large_image',
-      title: titles.default,
-      description: titles.description,
+      title: title.default,
+      description,
     },
   });
 }

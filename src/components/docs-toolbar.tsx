@@ -5,29 +5,24 @@ import { ThemeToggle } from 'fumadocs-ui/components/layout/theme-toggle';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/cn';
 import { ArrowLeft, Languages } from 'lucide-react';
+import { getWebsiteName, getWebsiteUrl } from '@/lib/site-config';
 
-const homeLabels = {
-  en: 'Back to lizh.ai',
-  zh: '返回 lizh.ai',
-  ja: 'lizh.ai に戻る',
-  ru: 'Вернуться на lizh.ai',
-} as const;
+const websiteName = getWebsiteName();
+const websiteUrl = getWebsiteUrl();
 
 export function DocsSidebarFooter({ lang }: { lang: string }) {
-  const homeLabel =
-    homeLabels[lang as keyof typeof homeLabels] || homeLabels.en;
-
   return (
-    <div className="flex items-center gap-1.5 text-fd-muted-foreground">
+    <div className="text-fd-muted-foreground flex items-center gap-1.5">
       <a
-        href="https://lizh.ai/"
+        aria-label={websiteName}
+        href={websiteUrl}
         className={cn(
           buttonVariants({ color: 'ghost', size: 'sm' }),
           'gap-1.5'
         )}
       >
         <ArrowLeft className="size-4" />
-        <span className="hidden sm:inline">{homeLabel}</span>
+        <span className="hidden sm:inline">{websiteName}</span>
       </a>
       <LanguageToggle>
         <Languages className="size-4.5" />

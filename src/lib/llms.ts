@@ -1,5 +1,6 @@
 import { i18n } from '@/lib/i18n';
 import { getLLMText, source } from '@/lib/source';
+import { formatWebsiteText, getWebsiteName } from '@/lib/site-config';
 
 const defaultLanguage = i18n.defaultLanguage;
 
@@ -13,13 +14,14 @@ export async function generateLLMsFullText(
   const scan = source.getPages(lang).map(getLLMText);
   const scanned = await Promise.all(scan);
 
-  return scanned.join('\n\n');
+  return scanned.map(formatWebsiteText).join('\n\n');
 }
 
 export function generateLLMsText(
   origin: string,
   lang: string = defaultLanguage
 ): string {
+  const websiteName = getWebsiteName();
   const pages = source
     .getPages(lang)
     .map((page) => {
@@ -30,7 +32,7 @@ export function generateLLMsText(
         : `/${lang}/llms.mdx`;
 
       return {
-        title: page.data.title,
+        title: formatWebsiteText(page.data.title),
         docsUrl: toAbsoluteUrl(origin, docsPath),
         markdownUrl: toAbsoluteUrl(origin, markdownPath),
       };
@@ -38,9 +40,9 @@ export function generateLLMsText(
     .sort((a, b) => a.docsUrl.localeCompare(b.docsUrl));
 
   const lines = [
-    `# Lychee AI Docs (${lang})`,
+    `# ${websiteName} Docs (${lang})`,
     '',
-    '> LLM-friendly index for Lychee AI documentation.',
+    `> LLM-friendly index for ${websiteName} documentation.`,
     '',
     '## Preferred Sources',
     `- [Full Documentation](${toAbsoluteUrl(origin, `/${lang}/llms-full.txt`)}): Full corpus in one file.`,

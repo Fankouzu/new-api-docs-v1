@@ -19,6 +19,10 @@ import type { z } from 'zod';
 import { DefaultChatTransport } from 'ai';
 import { Markdown } from './markdown';
 import { Presence } from '@radix-ui/react-presence';
+import { getWebsiteName, getWebsiteUrl } from '@/lib/site-config';
+
+const websiteName = getWebsiteName();
+const websiteUrl = getWebsiteUrl();
 
 const Context = createContext<{
   open: boolean;
@@ -39,12 +43,8 @@ function Header() {
         <p className="mb-2 text-sm font-medium">Ask AI</p>
         <p className="text-fd-muted-foreground text-xs">
           Powered by{' '}
-          <a
-            href="https://lizh.ai"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Lychee AI
+          <a href={websiteUrl} target="_blank" rel="noreferrer noopener">
+            {websiteName}
           </a>
         </p>
       </div>
@@ -247,7 +247,7 @@ function Input(props: ComponentProps<'textarea'>) {
 
 const roleName: Record<string, string> = {
   user: 'you',
-  assistant: 'Lychee AI Docs',
+  assistant: `${websiteName} Docs`,
 };
 
 function Message({

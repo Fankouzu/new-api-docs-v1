@@ -1,6 +1,6 @@
 # new-api-docs-v1
 
-A Next.js documentation site for Lychee AI.
+A Next.js documentation site configured by `NEXT_PUBLIC_WEBSITE_NAME`.
 
 ## Development
 

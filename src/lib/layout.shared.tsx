@@ -2,10 +2,13 @@ import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 import { i18n } from '@/lib/i18n';
 import Image from 'next/image';
 import { getLocalePath } from '@/lib/i18n';
+import { getWebsiteName } from '@/lib/site-config';
+
+const websiteName = getWebsiteName();
 
 export const logo = (
   <Image
-    alt="Lychee AI"
+    alt={websiteName}
     src="/assets/auth_logo.png"
     width={40}
     height={40}
@@ -24,7 +27,7 @@ export function baseOptions(locale: string): BaseLayoutProps {
         <>
           {logo}
           <span className="font-medium in-[header]:text-[15px] [.uwu_&]:hidden">
-            Lychee AI
+            {websiteName}
           </span>
         </>
       ),

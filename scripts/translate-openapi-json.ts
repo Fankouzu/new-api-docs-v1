@@ -19,7 +19,10 @@ const OPENAI_MODEL = process.env.OPENAI_MODEL || 'gemini-2.5-flash';
 const TARGET_LOCALE = process.env.TARGET_LOCALE || 'ru';
 const MAX_RETRIES = Number.parseInt(process.env.MAX_RETRIES || '3', 10);
 const RETRY_DELAY = Number.parseFloat(process.env.RETRY_DELAY || '2');
-const BATCH_SIZE = Number.parseInt(process.env.OPENAPI_TRANSLATE_BATCH || '40', 10);
+const BATCH_SIZE = Number.parseInt(
+  process.env.OPENAPI_TRANSLATE_BATCH || '40',
+  10
+);
 
 const TARGETS = {
   en: {
@@ -100,7 +103,11 @@ function hasChinese(value: string) {
   return /\p{Script=Han}/u.test(value);
 }
 
-function shouldTranslateString(key: string, value: string, parentPath: string[]) {
+function shouldTranslateString(
+  key: string,
+  value: string,
+  parentPath: string[]
+) {
   if (!value.trim()) return false;
   if (!hasChinese(value)) return false;
 
@@ -133,7 +140,10 @@ function collectStrings(
   if (!value || typeof value !== 'object') return;
 
   for (const [key, child] of Object.entries(value)) {
-    if (typeof child === 'string' && shouldTranslateString(key, child, parentPath)) {
+    if (
+      typeof child === 'string' &&
+      shouldTranslateString(key, child, parentPath)
+    ) {
       out.add(child);
     } else {
       collectStrings(child, out, [...parentPath, key]);
@@ -150,8 +160,11 @@ function applyTranslations(
     if (!NON_TRANSLATABLE_ARRAYS.has(parentPath[parentPath.length - 1] ?? '')) {
       return value.map((item, index) =>
         typeof item === 'string'
-          ? translations.get(item) ?? item
-          : applyTranslations(item, translations, [...parentPath, String(index)])
+          ? (translations.get(item) ?? item)
+          : applyTranslations(item, translations, [
+              ...parentPath,
+              String(index),
+            ])
       );
     }
     return value.map((item, index) =>
@@ -163,7 +176,10 @@ function applyTranslations(
 
   const out: Record<string, unknown> = {};
   for (const [key, child] of Object.entries(value)) {
-    if (typeof child === 'string' && shouldTranslateString(key, child, parentPath)) {
+    if (
+      typeof child === 'string' &&
+      shouldTranslateString(key, child, parentPath)
+    ) {
       out[key] = translations.get(child) ?? child;
     } else {
       out[key] = applyTranslations(child, translations, [...parentPath, key]);
@@ -178,7 +194,7 @@ function getPrompt(locale: TargetLocale, items: string[]) {
 
 要求：
 1. 只输出 JSON 数组，数组长度和顺序必须与输入完全一致。
-2. 保留 Markdown、反引号代码、URL、HTTP header、API path、模型名、品牌名（OpenAI、Gemini、Claude、Anthropic、Google、Lychee AI、Bailian、Qwen 等）。
+2. 保留 Markdown、反引号代码、URL、HTTP header、API path、模型名、品牌名（OpenAI、Gemini、Claude、Anthropic、Google、__WEBSITE_NAME__、Bailian、Qwen 等）。
 3. 不要翻译 JSON key、枚举值、代码标识符；只翻译自然语言说明和 tag 显示名称。
 4. 语气正式、技术准确。
 5. ${target.extraInstruction}
@@ -209,7 +225,9 @@ async function callOpenAI(prompt: string): Promise<string> {
   });
 
   if (!response.ok) {
-    throw new Error(`API request failed: ${response.status} ${response.statusText}`);
+    throw new Error(
+      `API request failed: ${response.status} ${response.statusText}`
+    );
   }
 
   const data = (await response.json()) as OpenAIResponse;
@@ -222,7 +240,10 @@ function parseJsonArray(raw: string): string[] {
     .replace(/\s*```$/i, '')
     .trim();
   const parsed = JSON.parse(cleaned);
-  if (!Array.isArray(parsed) || !parsed.every((item) => typeof item === 'string')) {
+  if (
+    !Array.isArray(parsed) ||
+    !parsed.every((item) => typeof item === 'string')
+  ) {
     throw new Error('translation output is not a string array');
   }
   return parsed;
@@ -258,12 +279,19 @@ function validateTranslations(
   }
 }
 
-async function translateBatch(locale: TargetLocale, batch: string[]): Promise<string[]> {
+async function translateBatch(
+  locale: TargetLocale,
+  batch: string[]
+): Promise<string[]> {
   for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
     try {
-      const translated = parseJsonArray(await callOpenAI(getPrompt(locale, batch)));
+      const translated = parseJsonArray(
+        await callOpenAI(getPrompt(locale, batch))
+      );
       if (translated.length !== batch.length) {
-        throw new Error(`expected ${batch.length} translations, got ${translated.length}`);
+        throw new Error(
+          `expected ${batch.length} translations, got ${translated.length}`
+        );
       }
       validateTranslations(locale, batch, translated);
       return translated;
@@ -314,7 +342,11 @@ async function main() {
     const rel = path.relative(SOURCE_ROOT, file);
     const outPath = path.join(OUT_ROOT, TARGET_LOCALE, rel);
     await mkdir(path.dirname(outPath), { recursive: true });
-    await writeFile(outPath, `${JSON.stringify(translated, null, 2)}\n`, 'utf8');
+    await writeFile(
+      outPath,
+      `${JSON.stringify(translated, null, 2)}\n`,
+      'utf8'
+    );
   }
 
   console.log(

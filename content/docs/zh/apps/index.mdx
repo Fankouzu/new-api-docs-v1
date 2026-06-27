@@ -3,6 +3,8 @@ title: AI 应用
 description: 支持的 AI 应用和集成方案
 ---
 
+import { WebsiteName } from '@/components/website-name';
+
 import { Card, Cards } from 'fumadocs-ui/components/card';
 import {
   Cherry,
@@ -17,7 +19,7 @@ import {
 
 ## 概述
 
-__WEBSITE_NAME__ 兼容多种流行的 AI 应用和工具。以下是已验证支持的应用列表及配置指南。
+<WebsiteName /> 兼容多种流行的 AI 应用和工具。以下是已验证支持的应用列表及配置指南。
 
 ## 支持的应用
 
@@ -31,7 +33,12 @@ __WEBSITE_NAME__ 兼容多种流行的 AI 应用和工具。以下是已验证�
   <Card
     icon={<Settings />}
     title="CC Switch"
-    description="支持一键填入，点击 __WEBSITE_NAME__ 后弹窗配置 Claude/Codex/Gemini 及主模型与各型号。"
+    description={
+      <>
+        支持一键填入，点击 <WebsiteName /> 后弹窗配置 Claude/Codex/Gemini
+        及主模型与各型号。
+      </>
+    }
     href="/zh/docs/apps/cc-switch"
   />
   <Card
@@ -55,7 +62,12 @@ __WEBSITE_NAME__ 兼容多种流行的 AI 应用和工具。以下是已验证�
   <Card
     icon={<Bot />}
     title="OpenClaw"
-    description="自托管 AI 助手平台 — 安装 OpenClaw，对接 __WEBSITE_NAME__，支持飞书、Discord、Slack 等多渠道 AI 代理管理。"
+    description={
+      <>
+        自托管 AI 助手平台 — 安装 OpenClaw，对接 <WebsiteName />
+        ，支持飞书、Discord、Slack 等多渠道 AI 代理管理。
+      </>
+    }
     href="/zh/docs/apps/openclaw"
   />
   <Card
@@ -104,10 +116,10 @@ __WEBSITE_NAME__ 兼容多种流行的 AI 应用和工具。以下是已验证�
 
 ## 集成指南
 
-大多数应用只需要配置以下信息即可连接 __WEBSITE_NAME__：
+大多数应用只需要配置以下信息即可连接 <WebsiteName />：
 
-1. **API 地址**：您的 __WEBSITE_NAME__ 服务地址
-2. **API Key**：在 __WEBSITE_NAME__ 控制台生成的令牌
+1. **API 地址**：您的 <WebsiteName /> 服务地址
+2. **API Key**：在 <WebsiteName /> 控制台生成的令牌
 3. **模型名称**：选择需要使用的模型
 
 具体配置步骤请参考各应用的详细文档。

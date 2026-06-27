@@ -1,7 +1,9 @@
 ---
 title: AionUi - Free Open-Source Desktop Office Agent
-description: AionUi Tutorial — A free open-source desktop office agent supporting various AI agents like Gemini CLI, Claude Code, Codex, and more. Integrates with __WEBSITE_NAME__ to enable multi-model workflows.
+description: AionUi Tutorial — A free open-source desktop office agent supporting various AI agents like Gemini CLI, Claude Code, Codex, and more. Integrates with ((WEBSITE_NAME)) to enable multi-model workflows.
 ---
+
+import { WebsiteName } from '@/components/website-name';
 
 <Callout type="info">
   🚀 AionUi is a free, local, open-source Cowork, supporting various AI agents such as Gemini CLI, Claude Code, Codex, OpenCode, Qwen Code, Goose CLI, Auggie. It provides a complete GUI interface and WebUI remote access functionality, serving as an open-source alternative to Cowork.
@@ -49,19 +51,19 @@ description: AionUi Tutorial — A free open-source desktop office agent support
 - **Feishu Integration** - Supports access and interaction via Feishu.
 - **Local Data Security** - All data is stored in a local SQLite database, suitable for server deployment.
 
-## NewAPI Integration Method
+## <WebsiteName /> Integration Method
 
 ### Parameter Entry
 
-Provider Type: Types supported by NewAPI
-API Key: Obtained from NewAPI
-API Address: NewAPI site address (e.g., `https://<your-newapi-domain>/v1`)
+Provider Type: Types supported by <WebsiteName />
+API Key: Obtained from <WebsiteName />
+API Address: <WebsiteName /> site address (e.g., `https://<your-newapi-domain>/v1`)
 
-Please use your self-deployed __WEBSITE_NAME__, or ensure that the service provider offers __WEBSITE_NAME__ services with legitimate upstream authorization and compliance obligations. Do not connect API addresses or keys from unknown sources to a production environment.
+Please use your self-deployed <WebsiteName />, or ensure that the service provider offers <WebsiteName /> services with legitimate upstream authorization and compliance obligations. Do not connect API addresses or keys from unknown sources to a production environment.
 
 ### Configuration Steps
 
-1.  **Copy API key in NewAPI**
+1.  **Copy API key in <WebsiteName />**
     ![Copy API Key](/assets/aionui/copy_apikey.png)
 
 2.  **Open AionUi Settings**
@@ -72,21 +74,21 @@ Please use your self-deployed __WEBSITE_NAME__, or ensure that the service provi
 
 3.  **Add New Provider**
     - Click "Add Model"
-    - Select NewAPI
-    ![Add NewAPI Provider](/assets/aionui/newapi_provider.png)
+    - Select <WebsiteName />
+    ![Add Provider](/assets/aionui/newapi_provider.png)
 
 4.  **Configure API Information**
-    - API Address: Enter your NewAPI site address (format: `https://<your-newapi-domain>/v1`)
-    - API Key: Paste the API Key copied from the NewAPI console
+    - API Address: Enter your <WebsiteName /> site address (format: `https://<your-newapi-domain>/v1`)
+    - API Key: Paste the API Key copied from the <WebsiteName /> console
 
 5.  **Add Model**
     - Select the model to add from the dropdown
-    - The model name should match the model name configured in NewAPI
+    - The model name should match the model name configured in <WebsiteName />
     - Select the appropriate request protocol
 
 6.  **Start Using**
     - Return to the chat page
-    - Select the configured NewAPI model to start a conversation
+    - Select the configured <WebsiteName /> model to start a conversation
 
 ## Related Links
 

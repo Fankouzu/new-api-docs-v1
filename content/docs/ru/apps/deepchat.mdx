@@ -1,10 +1,12 @@
 ---
 title: DeepChat — Полнофункциональный клиент AI Agent
-description: Учебник DeepChat — подключение полнофункционального клиента AI Agent к __WEBSITE_NAME__ и импорт конфигурации DeepChat одним щелчком через DeepLink.
+description: Учебник DeepChat — подключение полнофункционального клиента AI Agent к ((WEBSITE_NAME)) и импорт конфигурации DeepChat одним щелчком через DeepLink.
 ---
 
+import { WebsiteName } from '@/components/website-name';
+
 <Callout type="info" title="Параметры настроек чата">
-  В консоли __WEBSITE_NAME__, в разделе «Системные настройки» → «Настройки чата», можно добавить следующие быстрые параметры для быстрой подстановки конфигурации DeepChat на странице управления токенами:
+  В консоли <WebsiteName />, в разделе «Системные настройки» → «Настройки чата», можно добавить следующие быстрые параметры для быстрой подстановки конфигурации DeepChat на странице управления токенами:
 </Callout>
 
     ```json
@@ -19,11 +21,11 @@ description: Учебник DeepChat — подключение полнофун
 - Репозиторий GitHub: [https://github.com/ThinkInAIXYZ/deepchat](https://github.com/ThinkInAIXYZ/deepchat)
 - Ссылка для скачивания: [https://deepchat.thinkinai.xyz/#/download](https://deepchat.thinkinai.xyz/#/download)
 
-## Способы подключения к __WEBSITE_NAME__
+## Способы подключения к <WebsiteName />
 
 ### Способ 1: импорт одним щелчком
 
-1. В боковом меню консоли __WEBSITE_NAME__ выберите «Управление токенами» и найдите нужный токен.
+1. В боковом меню консоли <WebsiteName /> выберите «Управление токенами» и найдите нужный токен.
    <img src="/assets/deepchat/1-Enter-API-key.png" alt="Переход в управление токенами" width="240" />
 
 2. В действиях с токеном выберите **DeepChat**
@@ -35,18 +37,18 @@ description: Учебник DeepChat — подключение полнофун
 4. В окне предварительного просмотра импорта провайдера DeepChat проверьте конфигурацию
    ![Подтверждение конфигурации DeepChat](/assets/deepchat/4-deepchat-ok.png)
 
-5. Откройте список моделей и выберите модель __WEBSITE_NAME__ для начала работы
+5. Откройте список моделей и выберите модель <WebsiteName /> для начала работы
    ![Открыть список моделей](/assets/deepchat/5-open-models.png)
 
 ### Способ 2: ручной импорт
 
-1. В консоли __WEBSITE_NAME__ скопируйте API‑ключ и адрес сайта
-   ![Руководство по ручной настройке __WEBSITE_NAME__](/assets/deepchat/7-new-api-manual-guidance.png)
+1. В консоли <WebsiteName /> скопируйте API‑ключ и адрес сайта
+   ![Руководство по ручной настройке](/assets/deepchat/7-new-api-manual-guidance.png)
 
-2. В настройках DeepChat добавьте или отредактируйте провайдер __WEBSITE_NAME__, укажите адрес API и API‑ключ
+2. В настройках DeepChat добавьте или отредактируйте провайдер <WebsiteName />, укажите адрес API и API‑ключ
    ![Руководство по ручной настройке DeepChat](/assets/deepchat/6-deepchat-manual-guidance.png)
 
-3. Откройте список моделей и выберите модель __WEBSITE_NAME__ для начала работы
+3. Откройте список моделей и выберите модель <WebsiteName /> для начала работы
    ![Открыть список моделей](/assets/deepchat/5-open-models.png)
 
 ## Связанные ссылки

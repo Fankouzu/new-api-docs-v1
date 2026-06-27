@@ -1,6 +1,6 @@
 {
   "title": "Справочник API",
-  "description": "Документация __WEBSITE_NAME__",
+  "description": "Документация ((WEBSITE_NAME))",
   "icon": "Code",
   "pages": [
     "index",

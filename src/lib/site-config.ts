@@ -47,6 +47,8 @@ export function formatWebsiteText(value: string) {
   const websiteName = getWebsiteName();
 
   return value
+    .replaceAll('((WEBSITE_NAME))', websiteName)
+    .replaceAll('%%WEBSITE_NAME%%', websiteName)
     .replaceAll('__WEBSITE_NAME__', websiteName)
     .replaceAll('{websiteName}', websiteName);
 }

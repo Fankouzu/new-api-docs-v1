@@ -1,7 +1,9 @@
 ---
 title: AionUi - 免费开源的桌面办公Agent
-description: AionUi 教程 — 免费开源桌面办公 Agent，支持 Gemini CLI、Claude Code、Codex 等多种 AI 代理。对接 __WEBSITE_NAME__ 实现多模型工作流。
+description: AionUi 教程 — 免费开源桌面办公 Agent，支持 Gemini CLI、Claude Code、Codex 等多种 AI 代理。对接 ((WEBSITE_NAME)) 实现多模型工作流。
 ---
+
+import { WebsiteName } from '@/components/website-name';
 
 <Callout type="info">
   🚀 AionUi 是一款免费、本地、开源的Cowork，支持 Gemini CLI、Claude Code、Codex、OpenCode、Qwen Code、Goose CLI、Auggie 等多种 AI 代理。它提供了完整的 GUI 界面和 WebUI 远程访问功能，是 Cowork 的开源替代方案。
@@ -49,19 +51,19 @@ description: AionUi 教程 — 免费开源桌面办公 Agent，支持 Gemini CL
 - **飞书集成** - 支持通过飞书进行访问和交互
 - **本地数据安全** - 所有数据存储在本地 SQLite 数据库中，适合服务器部署
 
-## NewAPI 接入方法
+## <WebsiteName /> 接入方法
 
 ### 参数填写
 
-提供商类型：NewAPI 支持的类型  
-API 密钥：于 NewAPI 获取  
-API 地址：NewAPI 站点地址（例如：`https://<your-newapi-domain>/v1`）
+提供商类型：<WebsiteName /> 支持的类型<br />
+API 密钥：于 <WebsiteName /> 获取<br />
+API 地址：<WebsiteName /> 站点地址（例如：`https://<your-newapi-domain>/v1`）
 
-请使用您自己部署的 __WEBSITE_NAME__，或确认服务方具备合法上游授权和合规义务的 __WEBSITE_NAME__ 服务。不要将来源不明的 API 地址或密钥接入生产环境。
+请使用您自己部署的 <WebsiteName />，或确认服务方具备合法上游授权和合规义务的 <WebsiteName /> 服务。不要将来源不明的 API 地址或密钥接入生产环境。
 
 ### 配置步骤
 
-1. **在 NewAPI 中复制 API key**
+1. **在 <WebsiteName /> 中复制 API key**
    ![复制 API 密钥](/assets/aionui/copy_apikey.png)
 
 2. **打开 AionUi 设置**
@@ -72,21 +74,21 @@ API 地址：NewAPI 站点地址（例如：`https://<your-newapi-domain>/v1`）
 
 3. **添加新的提供商**
    - 点击"添加模型"
-   - 选择 NewAPI
-   ![添加 NewAPI 提供商](/assets/aionui/newapi_provider.png)
+   - 选择 <WebsiteName />
+   ![添加 提供商](/assets/aionui/newapi_provider.png)
 
 4. **配置 API 信息**
-   - API 地址：填写您的 NewAPI 站点地址（格式：`https://<your-newapi-domain>/v1`）
-   - API 密钥：粘贴从 NewAPI 控制台复制的 API Key
+   - API 地址：填写您的 <WebsiteName /> 站点地址（格式：`https://<your-newapi-domain>/v1`）
+   - API 密钥：粘贴从 <WebsiteName /> 控制台复制的 API Key
 
 5. **添加模型**
    - 下拉选择需要添加的模型
-   - 模型名称应与 NewAPI 中配置的模型名称一致
+   - 模型名称应与 <WebsiteName /> 中配置的模型名称一致
    - 选择合适的请求协议
 
 6. **开始使用**
    - 返回聊天页面
-   - 选择已配置的 NewAPI 模型开始对话
+   - 选择已配置的 <WebsiteName /> 模型开始对话
 
 
 ## 相关链接

@@ -205,7 +205,7 @@ function getWebsiteName() {
 
 function formatWebsiteText(value: string) {
   return value
-    .replaceAll('__WEBSITE_NAME__', getWebsiteName())
+    .replaceAll('%%WEBSITE_NAME%%', getWebsiteName())
     .replaceAll('{websiteName}', getWebsiteName());
 }
 

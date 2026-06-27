@@ -1,7 +1,9 @@
 ---
 title: Memoh - コンテナ化AIエージェントプラットフォーム
-description: Memoh 接続ガイド — セルフホスト型コンテナ化AIエージェントプラットフォームを __WEBSITE_NAME__ に接続し、Telegram、Discord、飛書、QQ、WeChat などのチャネルで長期記憶を持つAIボットを作成。
+description: Memoh 接続ガイド — セルフホスト型コンテナ化AIエージェントプラットフォームを ((WEBSITE_NAME)) に接続し、Telegram、Discord、飛書、QQ、WeChat などのチャネルで長期記憶を持つAIボットを作成。
 ---
+
+import { WebsiteName } from '@/components/website-name';
 
 <Callout type="info">
   Memoh
@@ -42,15 +44,15 @@ sudo docker compose up -d
 
 起動後、`http://localhost:8082` にアクセスしてください。デフォルトの認証情報：`admin` / `admin123`。
 
-## NewAPI 接続方法
+## <WebsiteName /> 接続方法
 
-Memoh は OpenAI 互換のあらゆるモデルプロバイダーに対応しており、NewAPI を通じてさまざまな AI モデルサービスを一元管理・利用できます。
+Memoh は OpenAI 互換のあらゆるモデルプロバイダーに対応しており、<WebsiteName /> を通じてさまざまな AI モデルサービスを一元管理・利用できます。
 
 ### 設定手順
 
-#### NewAPI API Key の取得
+#### <WebsiteName /> API Key の取得
 
-NewAPI に登録・ログインした後、上部ナビゲーションバーの「コンソール」をクリックし、「トークン管理」から「トークン追加」ボタンをクリックして新しい API Key を作成します。適切な権限を選択し、「作成」をクリックしてください。
+<WebsiteName /> に登録・ログインした後、上部ナビゲーションバーの「コンソール」をクリックし、「トークン管理」から「トークン追加」ボタンをクリックして新しい API Key を作成します。適切な権限を選択し、「作成」をクリックしてください。
 
 作成完了後、コピーボタンをクリックして、生成された API Key をコピーします。
 
@@ -58,14 +60,14 @@ NewAPI に登録・ログインした後、上部ナビゲーションバーの�
 
 #### Memoh でモデルプロバイダーを追加
 
-Memoh Web 管理パネルにログインし、プロバイダー管理ページに移動して、NewAPI をクリックします。
+Memoh Web 管理パネルにログインし、プロバイダー管理ページに移動して、<WebsiteName /> をクリックします。
 
 ![switch-to-newapi-provider](/assets/memoh/switch_to_newapi_provider.png)
 
 設定ページで以下の情報を入力します：
 
-- **API Base URL**：NewAPI のエンドポイント URL を入力します。例：`https://api.example.com/v1`（ローカルデプロイの場合は `http://localhost:3000/v1`）
-- **API Key**：NewAPI からコピーした API Key を貼り付けます
+- **API Base URL**：<WebsiteName /> のエンドポイント URL を入力します。例：`https://api.example.com/v1`（ローカルデプロイの場合は `http://localhost:3000/v1`）
+- **API Key**：<WebsiteName /> からコピーした API Key を貼り付けます
 
 「保存」をクリックして、プロバイダーの設定を完了します。
 
@@ -75,8 +77,8 @@ Memoh Web 管理パネルにログインし、プロバイダー管理ページ�
 
 #### ボットにモデルを設定
 
-ボット設定ページに移動し、モデル設定セクションでデフォルトのチャットモデルを NewAPI プロバイダー経由で追加したモデルに切り替え、「保存」をクリックします。
+ボット設定ページに移動し、モデル設定セクションでデフォルトのチャットモデルを <WebsiteName /> プロバイダー経由で追加したモデルに切り替え、「保存」をクリックします。
 
 ![set_chat_model](/assets/memoh/set_chat_model.png)
 
-以上で、NewAPI を Memoh のモデルプロバイダーとして設定が完了しました。Memoh の各チャネル（Telegram、Discord、飛書など）を通じて AI ボットと会話でき、すべてのリクエストは NewAPI 経由でルーティングされます。
+以上で、<WebsiteName /> を Memoh のモデルプロバイダーとして設定が完了しました。Memoh の各チャネル（Telegram、Discord、飛書など）を通じて AI ボットと会話でき、すべてのリクエストは <WebsiteName /> 経由でルーティングされます。

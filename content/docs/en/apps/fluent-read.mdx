@@ -1,10 +1,12 @@
 ---
 title: FluentRead - Open Source Translation Plugin
-description: FluentRead configuration guide — open-source browser translation plugin with 20+ engines and AI model support. Connect to __WEBSITE_NAME__ for immersive bilingual reading.
+description: FluentRead configuration guide — open-source browser translation plugin with 20+ engines and AI model support. Connect to ((WEBSITE_NAME)) for immersive bilingual reading.
 ---
 
+import { WebsiteName } from '@/components/website-name';
+
 <Callout type="info" title="Chat Settings Options">
-  In the System Settings -> Chat Settings of the __WEBSITE_NAME__ console, you can add
+  In the System Settings -> Chat Settings of the <WebsiteName /> console, you can add
   the following shortcut options for easy one-click population to FluentRead on
   the Token Management page:
 </Callout>
@@ -52,9 +54,9 @@ description: FluentRead configuration guide — open-source browser translation 
 
 ## 🚀 Configuration Methods
 
-### Import Configuration from __WEBSITE_NAME__ Console (Recommended)
+### Import Configuration from <WebsiteName /> Console (Recommended)
 
-After the FluentRead plugin is installed in your browser, opening the __WEBSITE_NAME__ console -> Token Management page will display a prompt to add FluentRead.
+After the FluentRead plugin is installed in your browser, opening the <WebsiteName /> console -> Token Management page will display a prompt to add FluentRead.
 
 ![添加提示](/assets/fluentread/hint.png)
 
@@ -62,7 +64,7 @@ After selecting a model, click 'One-click fill to FluentRead', and a confirmatio
 
 ![确认](/assets/fluentread/confirm.png)
 
-After confirming the import, the __WEBSITE_NAME__ configuration in FluentRead will be enabled.
+After confirming the import, the <WebsiteName /> configuration in FluentRead will be enabled.
 
 ![配置结果](/assets/fluentread/fluentread.png)
 
@@ -72,8 +74,8 @@ After confirming the import, the __WEBSITE_NAME__ configuration in FluentRead wi
 
 | Configuration Item  | Content                                 |
 | ------------------- | --------------------------------------- |
-| Translation Service | NewAPI                                  |
-| Access Token        | NewAPI Key                              |
-| NewAPI Endpoint     | NewAPI Deployment Address (without /v1) |
+| Translation Service | <WebsiteName />                                  |
+| Access Token        | <WebsiteName /> Key                              |
+| <WebsiteName /> Endpoint     | <WebsiteName /> Deployment Address (without /v1) |
 | Model               | Select from list, or custom model       |
 | Custom Model        | Model Name                              |

@@ -1,10 +1,12 @@
 ---
 title: 流畅阅读 (FluentRead) - 开源翻译插件
-description: FluentRead 教程 — 开源浏览器翻译插件，支持 20+ 翻译引擎与 AI 大模型翻译。对接 __WEBSITE_NAME__ 实现沉浸式双语阅读体验。
+description: FluentRead 教程 — 开源浏览器翻译插件，支持 20+ 翻译引擎与 AI 大模型翻译。对接 ((WEBSITE_NAME)) 实现沉浸式双语阅读体验。
 ---
 
+import { WebsiteName } from '@/components/website-name';
+
 <Callout type="info" title="聊天设置选项">
-  在 __WEBSITE_NAME__
+  在 <WebsiteName />
   控制台的系统设置->聊天设置中，可添加如下快捷选项，便于在令牌管理页一键填充到
   FluentRead：
 </Callout>
@@ -52,9 +54,9 @@ description: FluentRead 教程 — 开源浏览器翻译插件，支持 20+ 翻�
 
 ## 🚀 配置方法
 
-### 从 __WEBSITE_NAME__ 控制台导入配置（推荐）
+### 从 <WebsiteName /> 控制台导入配置（推荐）
 
-当浏览器安装了流畅阅读插件后，打开 __WEBSITE_NAME__ 控制台->令牌管理页面会弹出添加流畅阅读的提示
+当浏览器安装了流畅阅读插件后，打开 <WebsiteName /> 控制台->令牌管理页面会弹出添加流畅阅读的提示
 
 ![添加提示](/assets/fluentread/hint.png)
 
@@ -62,7 +64,7 @@ description: FluentRead 教程 — 开源浏览器翻译插件，支持 20+ 翻�
 
 ![确认](/assets/fluentread/confirm.png)
 
-确认导入后在流畅阅读中的New API配置便会启用
+确认导入后在流畅阅读中的<WebsiteName />配置便会启用
 
 ![配置结果](/assets/fluentread/fluentread.png)
 
@@ -72,8 +74,8 @@ description: FluentRead 教程 — 开源浏览器翻译插件，支持 20+ 翻�
 
 | 配置项     | 内容                       |
 | ---------- | -------------------------- |
-| 翻译服务   | NewAPI                     |
-| 访问令牌   | NewAPI 密钥                |
-| NewAPI接口 | NewAPI部署地址（不带/v1）  |
+| 翻译服务   | <WebsiteName />                     |
+| 访问令牌   | <WebsiteName /> 密钥                |
+| <WebsiteName />接口 | <WebsiteName />部署地址（不带/v1）  |
 | 模型       | 列表中选择，或者自定义模型 |
 | 自定义模型 | 模型名称                   |

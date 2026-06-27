@@ -1,6 +1,6 @@
 {
   "title": "API 参考",
-  "description": "__WEBSITE_NAME__ 接口文档",
+  "description": "((WEBSITE_NAME)) 接口文档",
   "icon": "Code",
   "pages": ["index", "ai-model", "management", "apps"]
 }

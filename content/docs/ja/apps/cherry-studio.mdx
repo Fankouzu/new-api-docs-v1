@@ -1,10 +1,12 @@
 ---
 title: Cherry Studio - デスクトップAIクライアント
-description: Cherry Studio チュートリアル — デスクトップAIクライアントをNew APIに接続し、ワンクリックでAPIキーを入力します。30以上のプロフェッショナルAIアシスタントを内蔵し、さまざまな作業シナリオに対応します。
+description: Cherry Studio チュートリアル — デスクトップAIクライアントを((WEBSITE_NAME))に接続し、ワンクリックでAPIキーを入力します。30以上のプロフェッショナルAIアシスタントを内蔵し、さまざまな作業シナリオに対応します。
 ---
 
+import { WebsiteName } from '@/components/website-name';
+
 <Callout type="info" title="チャット設定オプション">
-  __WEBSITE_NAME__
+  <WebsiteName />
   コンソールのシステム設定->チャット設定で、以下のショートカットオプションを追加できます。これにより、トークン管理ページからCherry Studioにワンクリックで入力するのに便利です。
 </Callout>
 
@@ -20,19 +22,19 @@ description: Cherry Studio チュートリアル — デスクトップAIクラ�
 - ダウンロード：[https://cherry-ai.com/download](https://cherry-ai.com/download)
 - 公式ドキュメント：[https://docs.cherry-ai.com](https://docs.cherry-ai.com)
 
-## NewAPI 接続方法
+## <WebsiteName /> 接続方法
 
 ### パラメータ入力
 
-プロバイダータイプ：NewAPIがサポートするタイプ  
-APIキー：NewAPIで取得  
-APIアドレス：NewAPIサイトアドレス
+プロバイダータイプ：<WebsiteName />がサポートするタイプ<br />
+APIキー：<WebsiteName />で取得<br />
+APIアドレス：<WebsiteName />サイトアドレス
 
-ご自身でデプロイしたNew APIを使用するか、サービスプロバイダーが合法的なアップストリームライセンスとコンプライアンス義務を持つNew APIサービスであることを確認してください。出所不明のAPIアドレスやキーを本番環境に接続しないでください。
+ご自身でデプロイした<WebsiteName />を使用するか、サービスプロバイダーが合法的なアップストリームライセンスとコンプライアンス義務を持つ<WebsiteName />サービスであることを確認してください。出所不明のAPIアドレスやキーを本番環境に接続しないでください。
 
 ### 図解ガイド
 
-1. NewAPIでAPIキーをコピー
+1. <WebsiteName />でAPIキーをコピー
    ![APIキーをコピー](/assets/cherry_studio/copy_api_key.png)
 
 2. プロバイダーを追加
@@ -44,7 +46,7 @@ APIアドレス：NewAPIサイトアドレス
 4. チャットページに戻る
    ![チャットページに戻る](/assets/cherry_studio/back_to_chat.png)
 
-5. NewAPIモデルに切り替える
+5. <WebsiteName />モデルに切り替える
    ![モデルを切り替える](/assets/cherry_studio/switch_model.png)
 
 ## Cherry Studioで絵を描く

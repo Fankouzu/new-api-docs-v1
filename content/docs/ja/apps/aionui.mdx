@@ -1,7 +1,9 @@
 ---
 title: AionUi - 無料オープンソースのデスクトップオフィスエージェント
-description: AionUi チュートリアル — 無料オープンソースのデスクトップオフィスエージェント。Gemini CLI、Claude Code、Codex など、さまざまなAIエージェントをサポート。__WEBSITE_NAME__ と連携してマルチモデルワークフローを実現します。
+description: AionUi チュートリアル — 無料オープンソースのデスクトップオフィスエージェント。Gemini CLI、Claude Code、Codex など、さまざまなAIエージェントをサポート。((WEBSITE_NAME)) と連携してマルチモデルワークフローを実現します。
 ---
+
+import { WebsiteName } from '@/components/website-name';
 
 <Callout type="info">
   🚀 AionUi は、Gemini CLI、Claude Code、Codex、OpenCode、Qwen Code、Goose CLI、Auggie など、さまざまなAIエージェントをサポートする無料、ローカル、オープンソースのCoworkです。完全なGUIインターフェースとWebUIリモートアクセス機能を提供し、Coworkのオープンソース代替ソリューションです。
@@ -49,19 +51,19 @@ description: AionUi チュートリアル — 無料オープンソースのデ�
 - **Feishu連携** - Feishuを介したアクセスとインタラクションをサポートします
 - **ローカルデータセキュリティ** - すべてのデータはローカルのSQLiteデータベースに保存され、サーバーデプロイメントに適しています
 
-## NewAPI接続方法
+## <WebsiteName />接続方法
 
 ### パラメータ入力
 
-プロバイダータイプ：NewAPIがサポートするタイプ
-APIキー：NewAPIで取得
-APIアドレス：NewAPIサイトアドレス（例：`https://<your-newapi-domain>/v1`）
+プロバイダータイプ：<WebsiteName />がサポートするタイプ
+APIキー：<WebsiteName />で取得
+APIアドレス：<WebsiteName />サイトアドレス（例：`https://<your-newapi-domain>/v1`）
 
-ご自身でデプロイしたNew API、またはサービスプロバイダーが合法的なアップストリーム認証とコンプライアンス義務を持つNew APIサービスを使用してください。出所の不明なAPIアドレスやキーを本番環境に接続しないでください。
+ご自身でデプロイした<WebsiteName />、またはサービスプロバイダーが合法的なアップストリーム認証とコンプライアンス義務を持つ<WebsiteName />サービスを使用してください。出所の不明なAPIアドレスやキーを本番環境に接続しないでください。
 
 ### 設定手順
 
-1. **NewAPIでAPIキーをコピー**
+1. **<WebsiteName />でAPIキーをコピー**
    ![APIキーをコピー](/assets/aionui/copy_apikey.png)
 
 2. **AionUi設定を開く**
@@ -72,21 +74,21 @@ APIアドレス：NewAPIサイトアドレス（例：`https://<your-newapi-doma
 
 3. **新しいプロバイダーを追加**
    - 「モデルを追加」をクリックします
-   - NewAPIを選択します
-   ![NewAPIプロバイダーを追加](/assets/aionui/newapi_provider.png)
+   - <WebsiteName />を選択します
+   ![プロバイダーを追加](/assets/aionui/newapi_provider.png)
 
 4. **API情報を設定**
-   - APIアドレス：NewAPIサイトアドレスを入力します（形式：`https://<your-newapi-domain>/v1`）
-   - APIキー：NewAPIコンソールからコピーしたAPIキーを貼り付けます
+   - APIアドレス：<WebsiteName />サイトアドレスを入力します（形式：`https://<your-newapi-domain>/v1`）
+   - APIキー：<WebsiteName />コンソールからコピーしたAPIキーを貼り付けます
 
 5. **モデルを追加**
    - ドロップダウンから追加したいモデルを選択します
-   - モデル名はNewAPIで設定されているモデル名と一致している必要があります
+   - モデル名は<WebsiteName />で設定されているモデル名と一致している必要があります
    - 適切なリクエストプロトコルを選択します
 
 6. **使用を開始**
    - チャットページに戻ります
-   - 設定済みのNewAPIモデルを選択して会話を開始します
+   - 設定済みの<WebsiteName />モデルを選択して会話を開始します
 
 ## 関連リンク
 

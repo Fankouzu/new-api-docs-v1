@@ -1,10 +1,12 @@
 ---
 title: LunaTranslator - オープンソース GalGame 翻訳ツール
-description: LunaTranslator チュートリアル — オープンソースのGalGame / ビジュアルノベル翻訳ツール。HOOK、OCR、AI翻訳エンジンをサポート。__WEBSITE_NAME__ と連携して翻訳品質を向上させます。
+description: LunaTranslator チュートリアル — オープンソースのGalGame / ビジュアルノベル翻訳ツール。HOOK、OCR、AI翻訳エンジンをサポート。((WEBSITE_NAME)) と連携して翻訳品質を向上させます。
 ---
 
+import { WebsiteName } from '@/components/website-name';
+
 <Callout type="info" title="チャット設定オプション">
-  __WEBSITE_NAME__
+  <WebsiteName />
   コンソールのシステム設定->チャット設定で、以下のショートカットオプションを追加すると、トークン管理ページから
   LunaTranslator にワンクリックで入力できます。
 </Callout>
@@ -43,13 +45,13 @@ description: LunaTranslator チュートリアル — オープンソースのGa
 
 [LunaTranslator ドキュメント - ダウンロード & 起動 & 更新](https://docs.lunatranslator.org/ja/README.html) からダウンロードしてインストールしてください。
 
-## LunaTranslator で __WEBSITE_NAME__ を連携する
+## LunaTranslator で <WebsiteName /> を連携する
 
-LunaTranslator はローカルにデプロイされた __WEBSITE_NAME__ の連携をサポートしています。ご自身でデプロイした __WEBSITE_NAME__ を使用するか、サービスプロバイダーが合法的なアップストリームライセンスとコンプライアンス義務を持つ __WEBSITE_NAME__ サービスであることを確認してください。出所不明のAPIアドレスやAPIキーを本番環境に接続しないでください。
+LunaTranslator はローカルにデプロイされた <WebsiteName /> の連携をサポートしています。ご自身でデプロイした <WebsiteName /> を使用するか、サービスプロバイダーが合法的なアップストリームライセンスとコンプライアンス義務を持つ <WebsiteName /> サービスであることを確認してください。出所不明のAPIアドレスやAPIキーを本番環境に接続しないでください。
 
 ### ワンクリック設定
 
-1.  __WEBSITE_NAME__ コンソールの`システム設定` -> `チャット設定`で、以下のショートカットオプションを追加します。
+1.  <WebsiteName /> コンソールの`システム設定` -> `チャット設定`で、以下のショートカットオプションを追加します。
 
     ```json
     { "LunaTranslator": "lunatranslator://llmapi/base64?data={cheryConfig}" }
@@ -57,7 +59,7 @@ LunaTranslator はローカルにデプロイされた __WEBSITE_NAME__ の連�
 
     ![add_config](/assets/luna_translator/add_config.png)
 
-2.  **`NewAPI`** -> `コンソール` -> `トークン管理`タブで、LunaTranslator で使用するトークンを選択し、チャットボタンの横にあるドロップダウンオプションをクリックして `LunaTranslator` を選択すると、LunaTranslator にジャンプし、APIアドレスとAPIキーが自動的に設定されます。
+2.  **<WebsiteName />** -> `コンソール` -> `トークン管理`タブで、LunaTranslator で使用するトークンを選択し、チャットボタンの横にあるドロップダウンオプションをクリックして `LunaTranslator` を選択すると、LunaTranslator にジャンプし、APIアドレスとAPIキーが自動的に設定されます。
 
     ![跳转到 LunaTranslator](/assets/luna_translator/jump_to_app.png)
 
@@ -65,7 +67,7 @@ LunaTranslator はローカルにデプロイされた __WEBSITE_NAME__ の連�
 
     ![设置api](/assets/luna_translator/api_setting.png)
 
-4.  **model** ドロップダウンボックスの横にある更新ボタンをクリックして、__WEBSITE_NAME__ プラットフォームのモデルリストを取得し、モデル名を選択または入力した後、OKをクリックして保存します。
+4.  **model** ドロップダウンボックスの横にある更新ボタンをクリックして、<WebsiteName /> プラットフォームのモデルリストを取得し、モデル名を選択または入力した後、OKをクリックして保存します。
 
     ![设置模型](/assets/luna_translator/setting_model.png)
 
@@ -75,7 +77,7 @@ LunaTranslator はローカルにデプロイされた __WEBSITE_NAME__ の連�
 
 ### 手動設定
 
-1.  **`NewAPI`** -> `コンソール` -> `トークン管理`タブでAPIキーを取得します。
+1.  **<WebsiteName />** -> `コンソール` -> `トークン管理`タブでAPIキーを取得します。
 
     ![获取 API Key](/assets/luna_translator/copy_api_key.png)
 
@@ -93,11 +95,11 @@ LunaTranslator はローカルにデプロイされた __WEBSITE_NAME__ の連�
 
     ![设置 API2](/assets/luna_translator/setting_api2.png)
 
-5.  **model** ドロップダウンボックスの横にある更新ボタンをクリックして、__WEBSITE_NAME__ プラットフォームのモデルリストを取得し、モデル名を選択または入力した後、OKをクリックして保存します。
+5.  **model** ドロップダウンボックスの横にある更新ボタンをクリックして、<WebsiteName /> プラットフォームのモデルリストを取得し、モデル名を選択または入力した後、OKをクリックして保存します。
 
     ![设置 API3](/assets/luna_translator/setting_api3.png)
 
-6.  **NewAPI** の横にあるトグルボタンをクリックしてインターフェースを有効にし、使用を開始します。
+6.  **<WebsiteName />** の横にあるトグルボタンをクリックしてインターフェースを有効にし、使用を開始します。
 
     ![打开API](/assets/luna_translator/open_api.png)
 

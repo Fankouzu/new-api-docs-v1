@@ -1,6 +1,6 @@
 {
   "title": "APIリファレンス",
-  "description": "__WEBSITE_NAME__ の完全なインターフェースドキュメント",
+  "description": "((WEBSITE_NAME)) の完全なインターフェースドキュメント",
   "icon": "Code",
   "pages": ["index", "ai-model", "management", "apps"]
 }

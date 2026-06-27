@@ -7,6 +7,7 @@ import { AISearchTrigger } from '@/components/search';
 import 'katex/dist/katex.min.css';
 import { notFound } from 'next/navigation';
 import { i18n } from '@/lib/i18n';
+import { formatPageTree } from '@/lib/page-tree-format';
 
 export default async function Layout({
   params,
@@ -31,7 +32,7 @@ export default async function Layout({
       themeSwitch={{
         enabled: false,
       }}
-      tree={source.pageTree[lang]}
+      tree={formatPageTree(source.pageTree[lang])}
       sidebar={{
         defaultOpenLevel: 0,
         tabs: false,

@@ -1,0 +1,146 @@
+---
+title: Hermes Agent - 自学习 AI 智能体
+description: Hermes Agent 教程 — 安装 Hermes Agent，并通过自定义 OpenAI 兼容端点接入 ((WEBSITE_NAME)) 的 API 地址、API Key 和模型。
+---
+
+import { WebsiteName } from '@/components/website-name';
+
+<Callout type="info" title="项目介绍">
+  Hermes Agent 是 Nous Research 开源的 AI 智能体，支持命令行交互、工具调用、记忆、技能和自动化任务。Hermes 可以连接任何兼容 OpenAI Chat Completions 的 API 服务。
+
+  - 官方网站：[https://hermes-agent.nousresearch.com](https://hermes-agent.nousresearch.com)
+  - 官方文档：[https://hermes-agent.nousresearch.com/docs](https://hermes-agent.nousresearch.com/docs)
+  - GitHub：[https://github.com/NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)
+</Callout>
+
+本教程介绍如何安装 Hermes Agent，并把 <WebsiteName /> 配置为 Hermes 的自定义模型服务。
+
+## 接入前准备
+
+开始前，请准备以下信息：
+
+1. **API 地址**：`https://lizh.ai/v1`
+2. **API Key**：登录 <WebsiteName />，在「控制台 → 令牌管理」中创建并复制令牌
+3. **模型 ID**：在 <WebsiteName /> 模型广场中复制希望使用的准确模型名称
+
+<Callout type="warning" title="保护 API Key">
+  API Key 相当于账户密码。请勿把真实密钥发送给他人、写入公开仓库或粘贴到截图中。
+</Callout>
+
+## 安装 Hermes Agent
+
+### macOS、Linux 或 WSL2
+
+在终端运行 Hermes 官方安装命令：
+
+```bash
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+```
+
+### Windows
+
+在 PowerShell 中运行：
+
+```powershell
+iex (irm https://hermes-agent.nousresearch.com/install.ps1)
+```
+
+安装完成后，打开一个新的终端窗口并检查版本：
+
+```bash
+hermes version
+```
+
+如果能够显示版本信息，说明 Hermes 已安装成功。
+
+## 配置 <WebsiteName />
+
+Hermes 官方推荐使用模型配置向导添加自定义 OpenAI 兼容端点。
+
+### 1. 打开模型配置向导
+
+请在终端中运行：
+
+```bash
+hermes model
+```
+
+### 2. 选择自定义端点
+
+在 Provider 列表中选择：
+
+```text
+Custom endpoint (self-hosted / VLLM / etc.)
+```
+
+不同版本的选项文字可能略有不同；请选择包含 **Custom endpoint** 的选项。
+
+### 3. 填写连接信息
+
+按照向导提示依次填写：
+
+| 配置项 | 填写内容 |
+| --- | --- |
+| API base URL | `https://lizh.ai/v1` |
+| API key | 从 <WebsiteName /> 令牌管理中复制的 API Key |
+| Model name | 从 <WebsiteName /> 模型广场复制的准确模型 ID |
+
+如果向导要求填写 Context length，请根据模型广场显示的上下文长度填写；不确定时可先使用 Hermes 提供的默认值。
+
+完成后，Hermes 会把模型、Provider 和 API 地址保存到 `~/.hermes/config.yaml`，重新启动终端后仍然有效。
+
+<Callout type="warning" title="首次配置请使用 hermes model">
+  `hermes model` 是终端中的完整配置向导，可以添加 Provider、API 地址和 API Key。Hermes 会话内的 `/model` 只能切换已经配置过的模型，不能完成首次接入。
+</Callout>
+
+## 验证连接
+
+运行：
+
+```bash
+hermes chat
+```
+
+进入会话后发送一条简单消息。如果 Hermes 能正常返回回答，说明 API 地址、API Key 和模型 ID 均已配置成功。
+
+以后需要更换 <WebsiteName /> 模型时，可以退出当前会话并再次运行：
+
+```bash
+hermes model
+```
+
+## 手动配置（可选）
+
+如果无法使用交互式向导，也可以编辑 `~/.hermes/config.yaml`：
+
+```yaml
+model:
+  default: "从模型广场复制的模型 ID"
+  provider: custom
+  base_url: https://lizh.ai/v1
+  api_key: "你的 lizh.ai API Key"
+```
+
+保存后重新运行 `hermes chat`。YAML 使用空格缩进，请勿使用 Tab；也不要把包含真实 API Key 的配置文件提交到公开仓库。
+
+## 常见问题
+
+### 提示 401 或 Authentication failed
+
+API Key 无效、已过期或复制不完整。请在 <WebsiteName /> 的令牌管理中检查令牌状态，必要时重新创建。
+
+### 提示 404、Model not found 或模型不可用
+
+模型 ID 必须与 <WebsiteName /> 模型广场显示的名称完全一致。请注意大小写、连字符和版本号。
+
+### 无法连接 API
+
+确认 API Base URL 是 `https://lizh.ai/v1`，末尾包含 `/v1`，并检查当前网络能否访问 <WebsiteName />。
+
+### `/model` 中没有 <WebsiteName />
+
+先退出 Hermes 会话，再在系统终端运行 `hermes model` 完成自定义端点配置。配置成功后，才能在会话内使用 `/model` 切换模型。
+
+### 提示 `hermes: command not found`
+
+关闭并重新打开终端。如果仍然无效，请按照 Hermes 官方 FAQ 检查安装路径与 `PATH` 配置：[FAQ & Troubleshooting](https://hermes-agent.nousresearch.com/docs/reference/faq)。

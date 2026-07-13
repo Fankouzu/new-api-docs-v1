@@ -36,7 +36,7 @@ export default async function Layout({
       sidebar={{
         defaultOpenLevel: 0,
         tabs: false,
-        footer: <DocsSidebarFooter lang={lang} />,
+        footer: <DocsSidebarFooter />,
       }}
     >
       <DocsNavigationFeedback />

@@ -5,8 +5,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from 'fumadocs-ui/components/ui/popover';
+import { useI18n } from 'fumadocs-ui/contexts/i18n';
 import { ThemeToggle } from 'fumadocs-ui/components/layout/theme-toggle';
-import { useI18n } from 'fumadocs-ui/provider';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/cn';
 import { ArrowLeft, Check, Languages, LoaderCircle } from 'lucide-react';

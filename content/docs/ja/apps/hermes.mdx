@@ -1,0 +1,146 @@
+---
+title: Hermes Agent - 自己改善型AIエージェント
+description: Hermes Agent ガイド — Hermes Agentをインストールし、OpenAI互換のカスタムAPI URL、API Key、モデルを設定して((WEBSITE_NAME))に接続します。
+---
+
+import { WebsiteName } from '@/components/website-name';
+
+<Callout type="info" title="Hermes Agentについて">
+  Hermes AgentはNous Researchが開発するオープンソースのAIエージェントです。コマンドライン操作、ツール呼び出し、メモリ、スキル、自動化タスクに対応しています。また、OpenAI Chat Completions互換のAPIサービスに接続できます。
+
+  - 公式サイト：[https://hermes-agent.nousresearch.com](https://hermes-agent.nousresearch.com)
+  - 公式ドキュメント：[https://hermes-agent.nousresearch.com/docs](https://hermes-agent.nousresearch.com/docs)
+  - GitHub：[https://github.com/NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)
+</Callout>
+
+このガイドでは、Hermes Agentをインストールし、<WebsiteName />をカスタムモデルプロバイダーとして設定する方法を説明します。
+
+## 事前準備
+
+次の情報を用意してください。
+
+1. **API URL**：`https://lizh.ai/v1`
+2. **API Key**：<WebsiteName />にログインし、「コンソール → API Key管理」で作成してコピー
+3. **モデルID**：<WebsiteName />のモデル広場から、使用するモデルの正確な名称をコピー
+
+<Callout type="warning" title="API Keyを安全に管理してください">
+  API Keyはパスワードと同様に扱ってください。他人に共有したり、公開リポジトリへ登録したり、スクリーンショットに表示したりしないでください。
+</Callout>
+
+## Hermes Agentをインストールする
+
+### macOS、Linux、WSL2
+
+ターミナルでHermes公式のインストールコマンドを実行します。
+
+```bash
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+```
+
+### Windows
+
+PowerShellで次のコマンドを実行します。
+
+```powershell
+iex (irm https://hermes-agent.nousresearch.com/install.ps1)
+```
+
+インストール後、新しいターミナルを開いてバージョンを確認します。
+
+```bash
+hermes version
+```
+
+バージョン情報が表示されれば、Hermesのインストールは完了です。
+
+## <WebsiteName />を設定する
+
+Hermesでは、モデル設定ウィザードを使ってOpenAI互換のカスタムエンドポイントを追加する方法が推奨されています。
+
+### 1. モデル設定ウィザードを開く
+
+ターミナルで次のコマンドを実行します。
+
+```bash
+hermes model
+```
+
+### 2. カスタムエンドポイントを選択する
+
+Provider一覧から次の項目を選択します。
+
+```text
+Custom endpoint (self-hosted / VLLM / etc.)
+```
+
+バージョンによって表示が多少異なる場合があります。**Custom endpoint**を含む項目を選択してください。
+
+### 3. 接続情報を入力する
+
+ウィザードの案内に従い、次の内容を入力します。
+
+| 設定項目 | 入力内容 |
+| --- | --- |
+| API base URL | `https://lizh.ai/v1` |
+| API key | [API Key管理](https://lizh.ai/keys)でAPI Keyを作成してコピー |
+| Model name | [モデル広場](https://lizh.ai/pricing)で正確なモデル名を確認してコピー。例：`glm-5.2` |
+
+Context lengthの入力を求められた場合は、モデルに表示されているコンテキスト長を入力してください。不明な場合は、まずHermesが提示するデフォルト値を使用できます。
+
+設定が完了すると、Hermesはモデル、Provider、API URLを`~/.hermes/config.yaml`に保存します。ターミナルを再起動しても設定は維持されます。
+
+<Callout type="warning" title="初回設定では hermes model を使用してください">
+  `hermes model`は、Provider、API URL、API Keyを追加できるターミナル用の完全な設定ウィザードです。Hermesのチャットセッション内で使用する`/model`は、設定済みのProviderとモデルを切り替えることしかできません。
+</Callout>
+
+## 接続を確認する
+
+次のコマンドを実行します。
+
+```bash
+hermes chat
+```
+
+チャットが始まったら、簡単なメッセージを送信します。Hermesから回答が返れば、API URL、API Key、モデルIDは正しく設定されています。
+
+後から<WebsiteName />のモデルを変更する場合は、現在のセッションを終了して次を実行します。
+
+```bash
+hermes model
+```
+
+## 手動設定（任意）
+
+対話型ウィザードを使用できない場合は、`~/.hermes/config.yaml`を編集します。
+
+```yaml
+model:
+  default: "モデル広場からコピーしたモデルID"
+  provider: custom
+  base_url: https://lizh.ai/v1
+  api_key: "あなたのlizh.ai API Key"
+```
+
+保存後、`hermes chat`を再度実行します。YAMLのインデントにはTabではなくスペースを使用してください。実際のAPI Keyを含む設定ファイルを公開リポジトリへ登録しないでください。
+
+## よくある問題
+
+### 401またはAuthentication failedと表示される
+
+API Keyが無効、期限切れ、または正しくコピーされていない可能性があります。<WebsiteName />のAPI Key管理で状態を確認し、必要に応じて新しいKeyを作成してください。
+
+### 404、Model not found、またはモデルを利用できない
+
+モデルIDは、<WebsiteName />のモデル広場に表示されている名称と完全に一致する必要があります。大文字と小文字、ハイフン、バージョン番号を確認してください。
+
+### APIに接続できない
+
+API Base URLが`https://lizh.ai/v1`であり、末尾に`/v1`が含まれていることを確認します。また、現在のネットワークから<WebsiteName />へアクセスできるか確認してください。
+
+### `/model`に<WebsiteName />が表示されない
+
+Hermesのチャットセッションを終了し、システムのターミナルで`hermes model`を実行して、先にカスタムエンドポイントを設定してください。設定後は、セッション内の`/model`でモデルを切り替えられます。
+
+### `hermes: command not found`と表示される
+
+ターミナルを閉じて再度開いてください。それでも実行できない場合は、Hermes公式FAQに従ってインストール先と`PATH`の設定を確認してください：[FAQ & Troubleshooting](https://hermes-agent.nousresearch.com/docs/reference/faq)。

@@ -1,0 +1,146 @@
+---
+title: Hermes Agent - Self-improving AI Agent
+description: Hermes Agent guide — install Hermes Agent and connect it to ((WEBSITE_NAME)) by configuring a custom OpenAI-compatible API URL, API key, and model.
+---
+
+import { WebsiteName } from '@/components/website-name';
+
+<Callout type="info" title="About Hermes Agent">
+  Hermes Agent is an open-source AI agent from Nous Research. It supports a command-line interface, tool use, memory, skills, and automated tasks. Hermes can connect to any API service compatible with OpenAI Chat Completions.
+
+  - Website: [https://hermes-agent.nousresearch.com](https://hermes-agent.nousresearch.com)
+  - Documentation: [https://hermes-agent.nousresearch.com/docs](https://hermes-agent.nousresearch.com/docs)
+  - GitHub: [https://github.com/NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent)
+</Callout>
+
+This guide explains how to install Hermes Agent and configure <WebsiteName /> as its custom model provider.
+
+## Before you begin
+
+Prepare the following information:
+
+1. **API URL**: `https://lizh.ai/v1`
+2. **API key**: Sign in to <WebsiteName />, then create and copy a key from **Console → API Keys**
+3. **Model ID**: Copy the exact model name you want to use from the <WebsiteName /> model marketplace
+
+<Callout type="warning" title="Protect your API key">
+  Treat your API key like a password. Never share it, commit it to a public repository, or expose it in screenshots.
+</Callout>
+
+## Install Hermes Agent
+
+### macOS, Linux, or WSL2
+
+Run the official Hermes installer in a terminal:
+
+```bash
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+```
+
+### Windows
+
+Run the following command in PowerShell:
+
+```powershell
+iex (irm https://hermes-agent.nousresearch.com/install.ps1)
+```
+
+After installation, open a new terminal window and check the installed version:
+
+```bash
+hermes version
+```
+
+If version information appears, Hermes has been installed successfully.
+
+## Configure <WebsiteName />
+
+Hermes recommends using its model setup wizard to add a custom OpenAI-compatible endpoint.
+
+### 1. Open the model setup wizard
+
+Run this command in your terminal:
+
+```bash
+hermes model
+```
+
+### 2. Select a custom endpoint
+
+From the Provider list, select:
+
+```text
+Custom endpoint (self-hosted / VLLM / etc.)
+```
+
+The exact wording may vary by version. Choose the option containing **Custom endpoint**.
+
+### 3. Enter the connection details
+
+Follow the prompts and enter:
+
+| Setting | Value |
+| --- | --- |
+| API base URL | `https://lizh.ai/v1` |
+| API key | Create and copy an API key from [API Key Management](https://lizh.ai/keys) |
+| Model name | Find and copy the exact model name from the [Model Marketplace](https://lizh.ai/pricing), for example: `glm-5.2` |
+
+If the wizard asks for a Context length, enter the context length shown for the model. If you are unsure, keep the default value provided by Hermes.
+
+When setup is complete, Hermes saves the model, provider, and API URL to `~/.hermes/config.yaml`, so the configuration remains available after restarting your terminal.
+
+<Callout type="warning" title="Use hermes model for initial setup">
+  `hermes model` is the full terminal setup wizard and can add a provider, API URL, and API key. The `/model` command inside a Hermes chat session can only switch between providers and models that are already configured.
+</Callout>
+
+## Verify the connection
+
+Run:
+
+```bash
+hermes chat
+```
+
+Send a simple message after the chat starts. If Hermes returns a response, the API URL, API key, and model ID are configured correctly.
+
+To change the <WebsiteName /> model later, exit the current session and run:
+
+```bash
+hermes model
+```
+
+## Manual configuration (optional)
+
+If you cannot use the interactive wizard, edit `~/.hermes/config.yaml`:
+
+```yaml
+model:
+  default: "model ID copied from the model marketplace"
+  provider: custom
+  base_url: https://lizh.ai/v1
+  api_key: "your lizh.ai API key"
+```
+
+Save the file and run `hermes chat` again. YAML requires spaces for indentation, not tabs. Never commit a configuration file containing a real API key to a public repository.
+
+## Troubleshooting
+
+### 401 or Authentication failed
+
+The API key is invalid, expired, or incomplete. Check the key status in <WebsiteName /> API Key Management and create a new key if necessary.
+
+### 404, Model not found, or model unavailable
+
+The model ID must exactly match the name shown in the <WebsiteName /> model marketplace. Check capitalization, hyphens, and version numbers.
+
+### Cannot connect to the API
+
+Confirm that the API Base URL is `https://lizh.ai/v1`, including `/v1`, and verify that your network can reach <WebsiteName />.
+
+### <WebsiteName /> does not appear under `/model`
+
+Exit the Hermes chat session and run `hermes model` in your system terminal to configure the custom endpoint first. After setup, you can use `/model` inside a session to switch models.
+
+### `hermes: command not found`
+
+Close and reopen your terminal. If the command is still unavailable, follow the Hermes documentation to check the installation path and `PATH` configuration: [FAQ & Troubleshooting](https://hermes-agent.nousresearch.com/docs/reference/faq).

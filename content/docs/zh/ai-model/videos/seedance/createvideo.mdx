@@ -1,0 +1,65 @@
+---
+title: Seedance 视频生成
+description: 使用 Seedance 系列模型创建异步视频生成任务。
+---
+
+使用 Seedance 系列模型创建异步视频生成任务。请求通过 `metadata.content` 传递文本、图片、视频和音频参考素材。
+
+## 创建任务
+
+```bash
+curl https://lizh.ai/v1/video/generations/async \
+  -H "Authorization: Bearer $NEW_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "doubao-seedance-2-0-fast-260128",
+    "prompt": "Prompt",
+    "metadata": {
+      "content": [
+        {"type": "text", "text": "Prompt again"},
+        {"type": "image_url", "image_url": {"url": "asset://asset-20260319082447-qrrjp"}, "role": "reference_image"},
+        {"type": "image_url", "image_url": {"url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/r2v_tea_pic1.jpg"}, "role": "reference_image"},
+        {"type": "image_url", "image_url": {"url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/r2v_tea_pic2.jpg"}, "role": "reference_image"},
+        {"type": "video_url", "video_url": {"url": "https://ark-project.tos-cn-beijing.volces.com/doc_video/r2v_tea_video1.mp4"}, "role": "reference_video"},
+        {"type": "audio_url", "audio_url": {"url": "https://ark-project.tos-cn-beijing.volces.com/doc_audio/r2v_tea_audio1.mp3"}, "role": "reference_audio"}
+      ],
+      "generate_audio": true,
+      "ratio": "16:9",
+      "duration": 5,
+      "watermark": false,
+      "resolution": "720p"
+    }
+  }'
+```
+
+将 `$NEW_API_KEY` 替换为实际 API Key。`asset://` 地址用于引用已上传到平台的素材，公网素材可直接使用可访问的 URL。
+
+示例返回：
+
+```json
+{
+  "id": "task_NWn9Ox4TeQIdulxbQqDHu3Zf75lEI2g8",
+  "task_id": "task_NWn9Ox4TeQIdulxbQqDHu3Zf75lEI2g8",
+  "object": "video",
+  "model": "doubao-seedance-2-0-fast-260128",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1785432875,
+  "metadata": {
+    "upstream": {
+      "code": 0,
+      "data": {"id": "cgt-20260731013429-hp2f5"},
+      "msg": "ok"
+    }
+  }
+}
+```
+
+## 查询任务状态
+
+```bash
+curl -X GET "https://lizh.ai/v1/video/generations/task_NWn9Ox4TeQIdulxbQqDHu3Zf75lEI2g8" \
+  -H "Authorization: Bearer $NEW_API_KEY"
+```
+
+将 URL 中的 `task_NWn9Ox4TeQIdulxbQqDHu3Zf75lEI2g8` 替换为创建任务时返回的任务 ID。

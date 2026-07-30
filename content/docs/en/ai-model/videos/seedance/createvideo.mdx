@@ -1,0 +1,65 @@
+---
+title: Seedance Video Generation
+description: Create asynchronous video generation tasks with Seedance models.
+---
+
+Create an asynchronous video generation task with a Seedance model. Text, image, video, and audio reference assets are passed through `metadata.content`.
+
+## Create a task
+
+```bash
+curl https://lizh.ai/v1/video/generations/async \
+  -H "Authorization: Bearer $NEW_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "doubao-seedance-2-0-fast-260128",
+    "prompt": "Prompt",
+    "metadata": {
+      "content": [
+        {"type": "text", "text": "Prompt again"},
+        {"type": "image_url", "image_url": {"url": "asset://asset-20260319082447-qrrjp"}, "role": "reference_image"},
+        {"type": "image_url", "image_url": {"url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/r2v_tea_pic1.jpg"}, "role": "reference_image"},
+        {"type": "image_url", "image_url": {"url": "https://ark-project.tos-cn-beijing.volces.com/doc_image/r2v_tea_pic2.jpg"}, "role": "reference_image"},
+        {"type": "video_url", "video_url": {"url": "https://ark-project.tos-cn-beijing.volces.com/doc_video/r2v_tea_video1.mp4"}, "role": "reference_video"},
+        {"type": "audio_url", "audio_url": {"url": "https://ark-project.tos-cn-beijing.volces.com/doc_audio/r2v_tea_audio1.mp3"}, "role": "reference_audio"}
+      ],
+      "generate_audio": true,
+      "ratio": "16:9",
+      "duration": 5,
+      "watermark": false,
+      "resolution": "720p"
+    }
+  }'
+```
+
+Replace `$NEW_API_KEY` with your API key. Use `asset://` for platform-uploaded assets, or a publicly accessible URL for external assets.
+
+Example response:
+
+```json
+{
+  "id": "task_NWn9Ox4TeQIdulxbQqDHu3Zf75lEI2g8",
+  "task_id": "task_NWn9Ox4TeQIdulxbQqDHu3Zf75lEI2g8",
+  "object": "video",
+  "model": "doubao-seedance-2-0-fast-260128",
+  "status": "queued",
+  "progress": 0,
+  "created_at": 1785432875,
+  "metadata": {
+    "upstream": {
+      "code": 0,
+      "data": {"id": "cgt-20260731013429-hp2f5"},
+      "msg": "ok"
+    }
+  }
+}
+```
+
+## Get task status
+
+```bash
+curl -X GET "https://lizh.ai/v1/video/generations/task_NWn9Ox4TeQIdulxbQqDHu3Zf75lEI2g8" \
+  -H "Authorization: Bearer $NEW_API_KEY"
+```
+
+Replace `task_NWn9Ox4TeQIdulxbQqDHu3Zf75lEI2g8` with the task ID returned when the task was created.
